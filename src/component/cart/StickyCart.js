@@ -7,6 +7,7 @@ import { useCart } from "react-use-cart";
 import { SidebarContext } from "@context/SidebarContext";
 import useAsync from "@hooks/useAsync";
 import SettingServices from "@services/SettingServices";
+import useTranslation from "next-translate/useTranslation";
 
 const StickyCart = () => {
   const { totalItems, cartTotal } = useCart();
@@ -14,7 +15,7 @@ const StickyCart = () => {
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
 
   const currency = globalSetting?.default_currency || "$";
-
+  const { t } = useTranslation();
   return (
     <button aria-label="Cart" onClick={toggleCartDrawer} className="absolute">
       <div className="right-0 w-35 float-right fixed top-2/4 bottom-2/4 align-middle shadow-lg cursor-pointer z-30 hidden lg:block xl:block">
@@ -23,12 +24,11 @@ const StickyCart = () => {
             <IoBagHandleOutline />
           </span>
           <span className="px-2 text-sm font-serif font-medium">
-            {totalItems} Items
+            {totalItems} {t("common:items")}
           </span>
         </div>
         <div className="flex flex-col items-center justify-center bg-emerald-700 p-2 text-white text-base font-serif font-medium rounded-bl-lg mx-auto">
-          {currency}
-          {cartTotal.toFixed(2)}
+          {currency} {cartTotal.toFixed(2)}
         </div>
       </div>
     </button>

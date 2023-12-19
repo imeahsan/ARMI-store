@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { useCart } from "react-use-cart";
 import { IoBagCheckOutline, IoClose, IoBagHandle } from "react-icons/io5";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import CartItem from "@component/cart/CartItem";
@@ -17,7 +18,7 @@ const Cart = () => {
   const { isEmpty, items, cartTotal } = useCart();
   const { toggleCartDrawer, closeCartDrawer } = useContext(SidebarContext);
   const { currency } = useUtilsFunction();
-
+  const { t } = useTranslation();
   const {
     state: { userInfo },
   } = useContext(UserContext);
@@ -35,11 +36,10 @@ const Cart = () => {
       className="w-full py-3 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
     >
       <span className="align-middle font-medium font-serif">
-        Proceed To Checkout
+        {t("common:proceedToCheckoutBtn")}
       </span>
       <span className="rounded-lg font-bold font-serif py-2 px-3 bg-white text-emerald-600">
-        {currency}
-        {cartTotal.toFixed(2)}
+        {currency} {cartTotal.toFixed(2)}
       </span>
     </button>
   );
@@ -55,7 +55,7 @@ const Cart = () => {
             <span className="text-xl mr-2 mb-1">
               <IoBagCheckOutline />
             </span>
-            Shopping Cart
+            {t("common:shoppingCartDrawerTitle")}
           </h2>
           <button
             onClick={closeCartDrawer}
@@ -63,7 +63,7 @@ const Cart = () => {
           >
             <IoClose />
             <span className="font-sens text-sm text-gray-500 hover:text-red-400 ml-1">
-              Close
+              {t("common:closeBtn")}
             </span>
           </button>
         </div>
@@ -77,11 +77,10 @@ const Cart = () => {
                   </span>
                 </div>
                 <h3 className="font-serif font-semibold text-gray-700 text-lg pt-5">
-                  Your cart is empty
+                  {t("common:cartEmptyTitle")}
                 </h3>
                 <p className="px-12 text-center text-sm text-gray-500 pt-2">
-                  No items added in your cart. Please add product to your cart
-                  list.
+                  {t("common:cartEmptyText")}
                 </p>
               </div>
             </div>

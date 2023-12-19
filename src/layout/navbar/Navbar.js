@@ -33,7 +33,6 @@ const Navbar = () => {
   const {
     state: { userInfo },
   } = useContext(UserContext);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

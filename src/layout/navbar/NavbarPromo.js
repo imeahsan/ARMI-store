@@ -38,6 +38,7 @@ const NavbarPromo = () => {
       sameSite: "None",
       secure: true,
     });
+   
     Cookies.set("dir", lang?.iso_code, {
       sameSite: "None",
     });
@@ -58,6 +59,8 @@ const NavbarPromo = () => {
 
           const result = res?.find((language) => language?.iso_code === lang);
           setCurrentLang(result);
+          console.log(result);
+    
         } catch (err) {
           notifyError(err);
           console.log("error on getting lang", err);

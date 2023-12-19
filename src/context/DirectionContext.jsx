@@ -3,12 +3,12 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
 const DirectionContext = createContext();
-
+//todo
 export const DirectionProvider = ({ children }) => {
   const [direction, setDirection] = useState();
 
   const router = useRouter();
-
+  const currentLocale = router.locale;
   useEffect(() => {
     // Read cookie
     const dir = Cookies.get("_lang");
