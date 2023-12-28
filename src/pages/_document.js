@@ -16,36 +16,42 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href={setting?.favicon || "/favicon.png"} />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          ></link>
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          ></link>
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          ></link>
+          <link rel="manifest" href="/site.webmanifest"></link>
+          <link
+            rel="mask-icon"
+            href="/safari-pinned-tab.svg"
+            color="#5bbad5"
+          ></link>
+          <meta name="msapplication-TileColor" content="#da532c" />
           <meta
             property="og:title"
             content={
               setting?.meta_title ||
-              "ARMI - React Grocery & Organic Food Store e-commerce Template"
+              "ARMI - Auto Recycling and Modification Industry"
             }
           />
           <meta property="og:type" content="eCommerce Website" />
-          <meta
-            property="og:description"
-            content={
-              setting?.meta_description ||
-              "React Grocery & Organic Food Store e-commerce Template"
-            }
-          />
+
           <meta
             name="keywords"
             content={setting?.meta_keywords || "ecommenrce online store"}
-          />
-          <meta
-            property="og:url"
-            content={setting?.meta_url || "https://ARMI-store.vercel.app/"}
-          />
-          <meta
-            property="og:image"
-            content={
-              setting?.meta_img ||
-              "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png"
-            }
           />
         </Head>
         <body>

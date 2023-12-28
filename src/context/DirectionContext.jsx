@@ -13,20 +13,40 @@ export const DirectionProvider = ({ children }) => {
     // Read cookie
     const dir = Cookies.get("_lang");
 
-    if (dir === "de") {
+    if (currentLocale === "ar") {
       setDirection("rtl");
     } else {
       setDirection("ltr");
     }
+    console.log(currentLocale);
+    Cookies.set("_lang", currentLocale, {
+      sameSite: "None",
+      secure: true,
+    });
   }, []);
+
+  const handleRoute = (locale) => router.push(`${locale}${router.asPath}`);
+
   const setRTL = () => {
     setDirection("rtl");
+    router.push(router.pathname, router.asPath, { locale: "ar" });
+    Cookies.set("_lang", "de", {
+      sameSite: "None",
+      secure: true,
+    });
     // router.reload();
   };
   const setLTR = () => {
     setDirection("ltr");
-    // router.reload();
+    router.push(router.pathname, router.asPath, { locale: "en" });
+    // window.location.pathname = "/en";
+
+    Cookies.set("_lang", "en", {
+      sameSite: "None",
+      secure: true,
+    });
   };
+
   const value = {
     // states and funtions
     direction,

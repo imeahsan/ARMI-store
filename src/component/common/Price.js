@@ -15,8 +15,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
                 : "inline-block text-2xl"
             }
           >
-            {currency}
-            {getNumberTwo(price)}
+            {currency} {getNumberTwo(price)}
           </span>
           {originalPrice > price ? (
             <>

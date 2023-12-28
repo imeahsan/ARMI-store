@@ -23,7 +23,7 @@ const Layout = ({ title, description, children }) => {
           <title>
             {title
               ? `ARMI | ${title}`
-              : "ARMI - React Grocery & Organic Food Store e-commerce Template"}
+              : "ARMI - Auto Recycling and Modification "}
           </title>
           {description && <meta name="description" content={description} />}
           <link ref="icon" href="/favicon.png" />
