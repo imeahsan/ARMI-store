@@ -5,7 +5,7 @@ import Coupon from "@component/coupon/Coupon";
 import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
-const OfferCard = () => {
+const AuctionCard = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
 
@@ -23,4 +23,4 @@ const OfferCard = () => {
   );
 };
 
-export default OfferCard;
+export default AuctionCard;

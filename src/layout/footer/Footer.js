@@ -456,12 +456,13 @@ const Footer = () => {
         <p className="text-sm text-gray-500 leading-6">
           Copyright 2023 @{" "}
           <Link
-            href="https://themeforest.net/user/htmllover"
+            href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-500"
+            className="text-red-600"
+            style={{ color: "#D24549" }}
           >
-            HtmlLover
+            ARMI
           </Link>
           , All rights reserved.
         </p>

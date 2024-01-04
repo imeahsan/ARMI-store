@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 
 //internal import
+import NavbarPromo from "@layout/navbar/NavbarPromo";
 
 import Navbar from "@layout/navbar/Navbar";
 import Footer from "@layout/footer/Footer";
@@ -10,6 +11,7 @@ import FooterTop from "@layout/footer/FooterTop";
 import MobileFooter from "@layout/footer/MobileFooter";
 import FeatureCard from "@component/feature-card/FeatureCard";
 import { useDirection } from "@context/DirectionContext";
+import StickyCart from "@component/cart/StickyCart";
 
 const Layout = ({ title, description, children }) => {
   const { direction } = useDirection();
@@ -29,11 +31,14 @@ const Layout = ({ title, description, children }) => {
           <link ref="icon" href="/favicon.png" />
         </Head>
         <NavBarTop />
+        <NavbarPromo />
+
         <Navbar />
         <div
           className="bg-gray-50"
           // style={{ direction: "rtl" }}
         >
+          <StickyCart />
           {children}
         </div>
         <MobileFooter />

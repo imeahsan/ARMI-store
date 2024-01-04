@@ -18,7 +18,7 @@ export const DirectionProvider = ({ children }) => {
     } else {
       setDirection("ltr");
     }
-    console.log(currentLocale);
+    // console.log(currentLocale);
     Cookies.set("_lang", currentLocale, {
       sameSite: "None",
       secure: true,
@@ -29,7 +29,10 @@ export const DirectionProvider = ({ children }) => {
 
   const setRTL = () => {
     setDirection("rtl");
+    // alert(router.pathname);
+    // router.locale = "ar";
     router.push(router.pathname, router.asPath, { locale: "ar" });
+
     Cookies.set("_lang", "de", {
       sameSite: "None",
       secure: true,
@@ -38,6 +41,8 @@ export const DirectionProvider = ({ children }) => {
   };
   const setLTR = () => {
     setDirection("ltr");
+    router.locale = "en";
+
     router.push(router.pathname, router.asPath, { locale: "en" });
     // window.location.pathname = "/en";
 

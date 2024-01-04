@@ -14,6 +14,7 @@ import {
   FiPocket,
   FiPhoneIncoming,
 } from "react-icons/fi";
+import Image from "next/image";
 
 //internal import
 import { notifyError } from "@utils/toast";
@@ -38,7 +39,7 @@ const NavbarPromo = () => {
       sameSite: "None",
       secure: true,
     });
-   
+
     Cookies.set("dir", lang?.iso_code, {
       sameSite: "None",
     });
@@ -60,7 +61,6 @@ const NavbarPromo = () => {
           const result = res?.find((language) => language?.iso_code === lang);
           setCurrentLang(result);
           console.log(result);
-    
         } catch (err) {
           notifyError(err);
           console.log("error on getting lang", err);
@@ -71,8 +71,11 @@ const NavbarPromo = () => {
 
   return (
     <>
-      <div className="hidden lg:block xl:block bg-white border-b">
-        <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 h-12 flex justify-between items-center">
+      <div
+        className="hidden lg:block xl:block bg-white border-b"
+        style={{ zIndex: 99999 }}
+      >
+        <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center">
           <div className="inline-flex">
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
@@ -139,7 +142,7 @@ const NavbarPromo = () => {
                       </Link>
                     )}
 
-                    <Popover className="relative font-serif">
+                    {/* <Popover className="relative font-serif">
                       <Popover.Button className="group inline-flex items-center py-2 text-sm font-medium hover:text-emerald-600 focus:outline-none">
                         <span>
                           {showingTranslateValue(
@@ -307,7 +310,7 @@ const NavbarPromo = () => {
                           </div>
                         </Popover.Panel>
                       </Transition>
-                    </Popover>
+                    </Popover> */}
 
                     {storeCustomizationSetting?.navbar?.offers_menu_status && (
                       <Link
@@ -329,6 +332,24 @@ const NavbarPromo = () => {
               </div>
             </Popover>
           </div>
+          <div>
+            <Link
+              href="/"
+              className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
+            >
+              <Image
+                width={225}
+                height={225}
+                src={
+                  storeCustomizationSetting?.navbar?.header_logo ||
+                  "/logo/logo-light.svg"
+                }
+                alt="logo"
+                className="object-contain"
+              />
+            </Link>
+          </div>
+
           <div className="flex">
             {/* flag */}
             <div className="dropdown">

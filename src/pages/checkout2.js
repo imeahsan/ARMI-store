@@ -57,7 +57,7 @@ const Checkout = () => {
 
   return (
     <>
-      <Layout title="Checkout" description="this is checkout page">
+      <Layout title="Checkout2" description="this is checkout page">
         <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
           <div className="py-10 lg:py-12 px-0 2xl:max-w-screen-2xl w-full xl:max-w-screen-xl flex flex-col md:flex-row lg:flex-row">
             <div className="md:w-full lg:w-3/5 flex h-full flex-col order-2 sm:order-1 lg:order-1 ml-12">
@@ -247,7 +247,7 @@ const Checkout = () => {
                         </div>
                       )}
 
-                      {/* {storeSetting?.stripe_status && (
+                      {storeSetting?.stripe_status && (
                         <div className="col-span-6 sm:col-span-3">
                           <InputPayment
                             setShowCard={setShowCard}
@@ -258,7 +258,7 @@ const Checkout = () => {
                           />
                           <Error errorName={errors.paymentMethod} />
                         </div>
-                      )} */}
+                      )}
                     </div>
                   </div>
 

@@ -22,10 +22,10 @@ module.exports = withPWA({
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: ["en", "ar", "nl-NL"],
+    locales: ["en", "ar"],
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: "en",
+    // defaultLocale: "ar",
     // This is a list of locale domains and the default locale they
     // should handle (these are only required when setting up domain routing)
     domains: [
@@ -52,12 +52,19 @@ module.exports = withPWA({
       "res.cloudinary.com",
       "lh3.googleusercontent.com",
       "localhost",
+      "http://192.168.18.131",
       "images.dashter.com",
     ],
     remotePatterns: [
       {
         protocol: "http",
         hostname: "localhost",
+        port: "5055",
+        pathname: "/file/**",
+      },
+      {
+        protocol: "http",
+        hostname: "192.168.18.131",
         port: "5055",
         pathname: "/file/**",
       },

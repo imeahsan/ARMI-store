@@ -161,7 +161,7 @@ const AboutUs = () => {
             />
           </div>
         </div>
-        <div className="bg-gray-50 lg:py-20 py-10">
+        {/* <div className="bg-gray-50 lg:py-20 py-10">
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">
@@ -334,7 +334,7 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

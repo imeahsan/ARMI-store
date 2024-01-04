@@ -17,6 +17,8 @@ import MainCarousel from "@component/carousel/MainCarousel";
 import FeatureCategory from "@component/category/FeatureCategory";
 import AttributeServices from "@services/AttributeServices";
 import CMSkeleton from "@component/preloader/CMSkeleton";
+import PartsCard from "@component/offer/PartsCard";
+import AuctionCard from "@component/offer/AuctionCard";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -41,24 +43,26 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
         <Layout>
           <div className="min-h-screen">
             {/* <StickyCart /> */}
-            <div className="bg-white">
-              <div className="mx-auto py-5 max-w-screen-2xl px-3 sm:px-10">
-                <div className="flex w-full">
-                  <div className="flex-shrink-0 xl:pr-6 lg:block w-full lg:w-3/5">
-                    <MainCarousel />
-                  </div>
-                  <div className="w-full hidden lg:flex">
+            <div className="bg-white flex justify-between items-center">
+              <div className="mx-auto py-5 items-center max-w-screen-2xl px-3 sm:px-10 flex">
+                <div className="flex flex-col items-center md:flex-row justify-center">
+                  <div className="w-full  sm:flex mb-4">
                     <OfferCard />
                   </div>
-                </div>
-                {storeCustomizationSetting?.home?.promotion_banner_status && (
-                  <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6">
-                    <Banner />
+                  <div className="w-full  sm:flex mb-4">
+                    <PartsCard />
                   </div>
-                )}
+                  <div className="w-full  sm:flex mb-4">
+                    <AuctionCard />
+                  </div>
+                </div>
               </div>
             </div>
-
+            {storeCustomizationSetting?.home?.promotion_banner_status && (
+              <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6">
+                <Banner />
+              </div>
+            )}
             {/* feature category's */}
             {storeCustomizationSetting?.home?.featured_status && (
               <div className="bg-gray-100 lg:py-16 py-10">
