@@ -36,18 +36,18 @@ const FeatureCategory = () => {
       {loading ? (
         <CMSkeleton count={10} height={20} error={error} loading={loading} />
       ) : (
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-4">
           {data[0]?.children?.map((category, i) => (
-            <li className="group" key={i + 1}>
-              <div className="flex w-full h-full border border-gray-100 shadow-sm bg-white p-4 cursor-pointer transition duration-200 ease-linear transform group-hover:shadow-lg">
-                <div className="flex items-center">
+            <li className="group ml-4" key={i + 1}>
+              <div className="flex w-full h-full border border-gray-300 shadow-sm bg-white p-4 cursor-pointer transition duration-200 ease-linear transform group-hover:shadow-lg ">
+                <div className="flex flex-col	 w-full justify-center	 items-center">
                   <div>
                     {category.icon ? (
                       <Image
                         src={category?.icon}
                         alt="category"
-                        width={35}
-                        height={35}
+                        width={350}
+                        height={350}
                       />
                     ) : (
                       <Image
@@ -67,7 +67,7 @@ const FeatureCategory = () => {
                           showingTranslateValue(category?.name)
                         )
                       }
-                      className="text-sm text-gray-600 font-serif font-medium leading-tight line-clamp-1  group-hover"
+                      className="text-lg  font-serif font-medium leading-tight line-clamp-1  group-hover"
                     >
                       {showingTranslateValue(category?.name)}
                     </h3>
@@ -81,12 +81,12 @@ const FeatureCategory = () => {
                                 showingTranslateValue(child?.name)
                               )
                             }
-                            className="flex items-center font-serif text-xs text-gray-400 cursor-pointer"
+                            className="flex items-center font-serif text-md text-gray-800 cursor-pointer"
                           >
-                            <span className="text-xs text-gray-400 ">
+                            <span className="text-sm text-gray-800 ">
                               <IoChevronForwardSharp />
                             </span>
-                            {showingTranslateValue(child?.name)}
+                            &nbsp;{showingTranslateValue(child?.name)}
                           </a>
                         </li>
                       ))}

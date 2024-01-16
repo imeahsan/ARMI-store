@@ -43,11 +43,23 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
         <Layout>
           <div className="min-h-screen">
             {/* <StickyCart /> */}
-            <div className="bg-white flex justify-between items-center">
-              <div className="mx-auto py-5 items-center max-w-screen-2xl px-3 sm:px-10 flex">
-                <div className="flex flex-col items-center md:flex-row justify-center">
-                  <div className="w-full  sm:flex mb-4">
+            <div className="bg-white flex justify-center items-center">
+              <div className="mx-auto  py-5 items-center max-w-screen-2xl px-3 sm:px-10 flex">
+                <div className="flex w-full flex-col items-center lg:flex-row justify-center">
+                  <div className="flex-shrink m-2 lg:block w-full lg:w-1/2 md:w-1/2 sm:w-1/3 w-1/3  ">
+                    <MainCarousel />
+                  </div>
+                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2 ">
+                    <PartsCard />
+                  </div>
+                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2">
                     <OfferCard />
+                  </div>
+                </div>
+
+                {/* <div className="flex flex-col items-center md:flex-row justify-center">
+                  <div className="lg:w-2/5  sm:flex mb-4">
+                    <MainCarousel />
                   </div>
                   <div className="w-full  sm:flex mb-4">
                     <PartsCard />
@@ -55,7 +67,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                   <div className="w-full  sm:flex mb-4">
                     <AuctionCard />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             {storeCustomizationSetting?.home?.promotion_banner_status && (

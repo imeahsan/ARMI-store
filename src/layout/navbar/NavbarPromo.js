@@ -32,7 +32,7 @@ const NavbarPromo = () => {
 
   const { showingTranslateValue } = useUtilsFunction();
   const { direction, setRTL, setLTR } = useDirection();
-  console.log(direction);
+  // console.log(direction);
   const handleLanguage = (lang) => {
     setCurrentLang(lang);
     Cookies.set("_lang", lang?.iso_code, {
