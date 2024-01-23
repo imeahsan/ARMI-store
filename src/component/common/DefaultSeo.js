@@ -16,7 +16,7 @@ const DefaultSeo = () => {
     <NextSeo
       title={
         globalSetting?.meta_title ||
-        "ARMI - React Grocery & Organic Food Store e-commerce Template"
+        "ARMI "
       }
       openGraph={{
         type: "website",
@@ -24,7 +24,7 @@ const DefaultSeo = () => {
         url: globalSetting?.meta_url || "https://ARMI-store.vercel.app/",
         site_name:
           globalSetting?.meta_title ||
-          "ARMI - React Grocery & Organic Food Store e-commerce Template",
+          "ARMI ",
       }}
       twitter={{
         handle: "@handle",

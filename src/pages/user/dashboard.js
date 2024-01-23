@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import { IoLockOpenOutline } from "react-icons/io5";
+import { IoLockClosedOutline } from "react-icons/io5";
 import {
   FiCheck,
   FiFileText,
@@ -133,7 +133,7 @@ const Dashboard = ({ title, description, children }) => {
                   ))}
                   <span className="p-2 flex font-serif items-center rounded-md hover:bg-gray-50 w-full hover:text-emerald-600">
                     <span className="mr-2">
-                      <IoLockOpenOutline />
+                      <IoLockClosedOutline />
                     </span>{" "}
                     <button
                       onClick={handleLogOut}

@@ -15,7 +15,7 @@ const OfferCard = () => {
 
   return (
     <div className="" style={{ width: "100%", height: "500px" }}>
-      <div className="bg-gray-50 h-full shadow-2xl border border-gray-400 transition duration-150 ease-linear transform group-hover:border-emerald-500 rounded shadow ">
+      <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform group-hover:border-emerald-500 rounded shadow ">
         <div className="bg-orange-100 text-gray-900 px-6 py-2 rounded-t border-b flex items-center justify-center">
           <h3 className="text-base font-serif font-medium "></h3>
         </div>
@@ -61,7 +61,7 @@ const OfferCard = () => {
             }}
           >
             <Link
-              href={`${storeCustomizationSetting?.home?.promotion_button_link}`}
+              href={`/request-quotation`}
               className="text-lg font-serif font-medium px-6 py-2 bg-emerald-500 text-center rounded-full text-white hover:bg-emerald-700"
             >
               {t("common:getQuote")}

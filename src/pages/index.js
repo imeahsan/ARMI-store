@@ -46,8 +46,12 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             <div className="bg-white flex justify-center items-center">
               <div className="mx-auto  py-5 items-center max-w-screen-2xl px-3 sm:px-10 flex">
                 <div className="flex w-full flex-col items-center lg:flex-row justify-center">
-                  <div className="flex-shrink m-2 lg:block w-full lg:w-1/2 md:w-1/2 sm:w-1/3 w-1/3  ">
-                    <MainCarousel />
+                  {/* <div className="flex-shrink m-2 lg:block w-full lg:w-1/2 md:w-1/2 sm:w-1/3 w-1/3  ">  */}
+                  {/* <MainCarousel />
+                
+                 </div>   */}
+                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-2/3 m-2 ">
+                    <AuctionCard />{" "}
                   </div>
                   <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2 ">
                     <PartsCard />

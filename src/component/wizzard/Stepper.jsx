@@ -67,7 +67,7 @@ const Stepper = ({ steps, currentStep }) => {
         }
         key={index}
       >
-        <div className="relative flex flex-col items-center text-teal-600">
+        <div className="relative flex flex-col items-center  border-emerald-500">
           <div
             className={`rounded-full transition duration-500 ease-in-out  h-12 w-12 flex items-center justify-center py-3 ${
               step.selected

@@ -16,13 +16,13 @@ import HistoryCondition from "@component/wizzard/HistoryCondition";
 import ContactDetails from "@component/wizzard/ContactDetails";
 import PricingDetails from "@component/wizzard/PricingDetails";
 import Summary from "@component/wizzard/Summary";
+import Sidebar from "@component/wizzard/Sidebar";
 import { WizardProvider } from "@context/WizardContext";
 
-const TermAndConditions = () => {
+const QuotationRequest = () => {
   const { storeCustomizationSetting, loading, error } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   const { t } = useTranslation();
-
   const steps = [
     "Model & Variant",
     "History & Condition",
@@ -44,13 +44,14 @@ const TermAndConditions = () => {
       case 4:
         return <PricingDetails />;
       case 5:
-        return <Summary />;
+        return <Summary setCurrentStep={setCurrentStep} />;
     }
   };
 
-  const handleClick = (direction) => {
+  const handleClick = async (direction) => {
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;
+
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   };
 
@@ -64,17 +65,21 @@ const TermAndConditions = () => {
           className="md:w-2/3 mx-auto shaddow xl rounded-2xl pb-2 bg-white"
           style={{ backgroundColor: "#f1f5f9" }}
         >
-          <div className="container horizontal mt-5 mb-12 p-6">
+          <div className="container horizontal mt-5 mb-12 p-4">
             <Stepper steps={steps} currentStep={currentStep} />
           </div>
           {/* <div className="w-1/4"></div> */}
-          <div>{dispayStep(currentStep)}</div>
+          <div className=" flex  pb-4">
+            <Sidebar />
+            {dispayStep(currentStep)}
+          </div>
 
           {/* controller */}
           <StepperController
             handleClick={handleClick}
             steps={steps}
             currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
           />
         </div>
       </WizardProvider>
@@ -82,4 +87,4 @@ const TermAndConditions = () => {
   );
 };
 
-export default TermAndConditions;
+export default QuotationRequest;
