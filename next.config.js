@@ -22,7 +22,7 @@ module.exports = withPWA({
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: ["en", "ar"],
+    locales: ["ar", "en"],
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
     // defaultLocale: "ar",
@@ -30,12 +30,12 @@ module.exports = withPWA({
     // should handle (these are only required when setting up domain routing)
     domains: [
       {
-        domain: "example.en",
-        defaultLocale: "en",
-      },
-      {
         domain: "example.ar",
         defaultLocale: "ar",
+      },
+      {
+        domain: "example.en",
+        // defaultLocale: "en",
       },
     ],
   },

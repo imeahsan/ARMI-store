@@ -8,6 +8,7 @@ import requests, { instance } from "@services/httpServices";
 import useAsync from "@hooks/useAsync";
 import { useWizzard } from "@context/WizardContext";
 import { values } from "next-pwa/cache";
+import useTranslation from "next-translate/useTranslation";
 
 const MakeModelVariant = () => {
   const {
@@ -68,10 +69,11 @@ const MakeModelVariant = () => {
     setModel(e.target.value);
     getVariants(make, e.target.value);
   };
+  const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
       <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	">
-        MAKE MODEL AND VARIANT
+        {t("common:makeModelVariant")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -79,7 +81,7 @@ const MakeModelVariant = () => {
             htmlFor="country"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Manufacturer
+            {t("common:manufacturer")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -90,7 +92,7 @@ const MakeModelVariant = () => {
               onChange={handleMakeChange}
             >
               <option value={make} selected>
-                {make ? make : `Select Manufacturer`}
+                {make ? make : t("common:selectManufacturer")}
               </option>
               {manufacturers?.map((m) => (
                 <option value={m}>{m}</option>
@@ -103,7 +105,7 @@ const MakeModelVariant = () => {
             htmlFor="country"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Model
+            {t("common:Model")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -115,7 +117,7 @@ const MakeModelVariant = () => {
               value={model}
             >
               <option value="" selected disabled>
-                {model ? model : " Select Model"}
+                {model ? model : t("common:selectModel")}
               </option>
               {models?.map((m) => (
                 <option value={m}>{m}</option>
@@ -123,12 +125,13 @@ const MakeModelVariant = () => {
             </select>
           </div>
         </div>{" "}
+        {/* model */}
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label
             htmlFor="country"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Variant
+            {t("common:Variant")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -143,7 +146,7 @@ const MakeModelVariant = () => {
               value={variant}
             >
               <option value="" selected disabled>
-                {variant ? variant : "Select Variant"}
+                {variant ? variant : t("common:selectVariant")}
               </option>
               {variants?.map((m) => (
                 <option value={m}>{m}</option>
@@ -207,7 +210,7 @@ const MakeModelVariant = () => {
             htmlFor="year"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Registration Year
+            {t("common:RegistrationYear")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <select
@@ -221,7 +224,7 @@ const MakeModelVariant = () => {
               }}
             >
               <option value="" selected>
-                {year ? year : "Select RegistrationYear"}
+                {year ? year : t("common:selectRegYear")}
               </option>
 
               {options}
@@ -233,7 +236,7 @@ const MakeModelVariant = () => {
             htmlFor="cover-photo"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Image
+            {t("common:Image")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <div className="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -257,7 +260,7 @@ const MakeModelVariant = () => {
                     htmlFor="file-upload"
                     className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                   >
-                    <span>Upload a file</span>
+                    <span> {t("common:UploadAfile")}</span>
                     <input
                       id="file-upload"
                       name="file-upload"

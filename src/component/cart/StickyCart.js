@@ -11,13 +11,23 @@ import useTranslation from "next-translate/useTranslation";
 
 const StickyCart = () => {
   const { totalItems, cartTotal } = useCart();
-  const { toggleCartDrawer } = useContext(SidebarContext);
+  const { toggleCartDrawer, cartDrawerOpen, setCartDrawerOpen } =
+    useContext(SidebarContext);
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
 
   const currency = globalSetting?.default_currency || "$";
   const { t } = useTranslation();
   return (
-    <button aria-label="Cart" onClick={toggleCartDrawer} className="absolute">
+    <button
+      aria-label="Cart"
+      onClick={() => {
+        console.log(cartDrawerOpen);
+        setCartDrawerOpen(!cartDrawerOpen);
+        // toggleCartDrawer();
+        // alert();
+      }}
+      className="absolute"
+    >
       <div className="right-0 w-35 float-right fixed top-2/4 bottom-2/4 align-middle shadow-lg cursor-pointer z-30 hidden lg:block xl:block">
         <div className="flex flex-col items-center justify-center bg-indigo-50 rounded-tl-lg p-2 text-gray-700">
           <span className="text-2xl mb-1 text-emerald-600">

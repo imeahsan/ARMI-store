@@ -12,10 +12,10 @@ import MobileFooter from "@layout/footer/MobileFooter";
 import FeatureCard from "@component/feature-card/FeatureCard";
 import { useDirection } from "@context/DirectionContext";
 import StickyCart from "@component/cart/StickyCart";
+import CartDrawer from "@component/drawer/CartDrawer";
 
 const Layout = ({ title, description, children }) => {
   const { direction } = useDirection();
-  console.log(direction);
   return (
     <>
       <ToastContainer />
@@ -32,8 +32,9 @@ const Layout = ({ title, description, children }) => {
         </Head>
         <NavBarTop />
         <NavbarPromo />
+        <CartDrawer />
 
-        <Navbar />
+        {/* <Navbar /> */}
         <div
           className="bg-gray-50"
           // style={{ direction: "rtl" }}

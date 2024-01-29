@@ -56,7 +56,6 @@ const Navbar = () => {
 
   return (
     <>
-      <CartDrawer />
       {modalOpen && (
         <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       )}

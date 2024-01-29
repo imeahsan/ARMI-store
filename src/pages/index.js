@@ -19,6 +19,7 @@ import AttributeServices from "@services/AttributeServices";
 import CMSkeleton from "@component/preloader/CMSkeleton";
 import PartsCard from "@component/offer/PartsCard";
 import AuctionCard from "@component/offer/AuctionCard";
+import Link from "next/link";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
       setIsLoading(false);
     }
   }, [router]);
-
+  const { t } = useTranslation();
   return (
     <>
       {isLoading ? (
@@ -43,25 +44,109 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
         <Layout>
           <div className="min-h-screen">
             {/* <StickyCart /> */}
-            <div className="bg-white flex justify-center items-center">
-              <div className="mx-auto  py-5 items-center max-w-screen-2xl px-3 sm:px-10 flex">
-                <div className="flex w-full flex-col items-center lg:flex-row justify-center">
-                  {/* <div className="flex-shrink m-2 lg:block w-full lg:w-1/2 md:w-1/2 sm:w-1/3 w-1/3  ">  */}
-                  {/* <MainCarousel />
-                
-                 </div>   */}
-                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-2/3 m-2 ">
-                    <AuctionCard />{" "}
-                  </div>
-                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2 ">
-                    <PartsCard />
-                  </div>
-                  <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2">
-                    <OfferCard />
+            <div className="bg-white  border-4 flex justify-stretch	 items-stretch">
+              {/* *************************************************************** */}
+              <div class=" text-white  lg:block" style={{ width: "100vw" }}>
+                <div class="container  relative mx-auto max-w-max">
+                  <div
+                    class="flex  "
+                    // style={{ height: "100vh" }}
+                  >
+                    {/* <!-- First Image --> */}
+                    <div class="w-full lg:w-1/4 m-1 relative flex items-center justify-center ">
+                      <img
+                        src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272"
+                        alt="Image 1"
+                        class="w-full h-full rounded-md "
+                      />
+
+                      {/* <!-- Text Overlay --> */}
+                      <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
+                        <div class="text-center">
+                          <h2 class="text-2xl font-semibold mb-2">
+                            Image 1 Title
+                          </h2>
+                          <p class="text-sm">Description for Image 1.</p>
+                          <button class="mt-4 bg-white text-black py-2 px-4 rounded-full">
+                            Learn More
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* <!-- Second Image --> */}
+                    <div class=" sm:w-1/2 md:w-1/3 m-1  lg:w-2/4  relative">
+                      <img
+                        src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&width=1500"
+                        alt="Image 2"
+                        class="w-full h-full rounded-md "
+                      />
+
+                      {/* <!-- Text Overlay --> */}
+                      <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
+                        <div class="text-center">
+                          <h2 class="text-2xl font-semibold mb-2">
+                            Image 2 Title
+                          </h2>
+                          <p class="text-sm">Description for Image 1.</p>
+                          <a>
+                            {" "}
+                            <Link href={`/request-quotation`}>
+                              <button class="mt-4 bg-white text-black py-2 px-4 rounded-full">
+                                {t("common:getQuote")}
+                              </button>
+                            </Link>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* <!-- Third Image --> */}
+                    <div class="w-full sm:w-1/2 md:w-1/3 border-2 bg-black lg:w-1/4 m-1 relative flex  items-stretch">
+                      <img
+                        // src="https://img.freepik.com/free-photo/composition-different-car-accessories_23-2149030399.jpg?w=740&t=st=1706200946~exp=1706201546~hmac=7552b80c4f145fb62ce7b737fba100bf2ecea64aaddfe37e5b610476519da7d8"
+                        src="https://img.freepik.com/premium-photo/spare-parts-ball-joint-suspension_263357-544.jpg?w=740"
+                        alt="Image 3"
+                        class="w-full cover rounded-md"
+                        style={{}}
+                      />
+
+                      {/* <!-- Text Overlay --> */}
+                      <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
+                        <div class="text-center">
+                          <h2 class="text-2xl font-semibold mb-2">
+                            Image 1 Title
+                          </h2>
+                          <p class="text-sm">Description for Image 1.</p>
+                          <button class="mt-4 bg-white text-black py-2 px-4 rounded-full">
+                            Learn More
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* <div className="flex flex-col items-center md:flex-row justify-center">
+                {/* *************************************************************** */}
+
+                {/* <div className="flex w-full flex-col items-center lg:flex-row justify-center"> */}
+                {/* <div className="flex-shrink m-2 lg:block w-full lg:w-1/2 md:w-1/2 sm:w-1/3 w-1/3  ">  */}
+                {/* <MainCarousel />
+                
+                 </div>   */}
+
+                {/* <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-2/3 m-2 ">
+                    <AuctionCard />{" "}
+                  </div> */}
+                {/* <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2 ">
+                    <PartsCard />
+                  </div> */}
+                {/* <div className="w-full lg:w-1/2 md:w-1/3 sm:w-1/3 w-1/3 m-2">
+                    <OfferCard />
+                  </div> */}
+              </div>
+
+              {/* <div className="flex flex-col items-center md:flex-row justify-center">
                   <div className="lg:w-2/5  sm:flex mb-4">
                     <MainCarousel />
                   </div>
@@ -72,7 +157,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     <AuctionCard />
                   </div>
                 </div> */}
-              </div>
+              {/* </div> */}
             </div>
             {storeCustomizationSetting?.home?.promotion_banner_status && (
               <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6">
@@ -82,7 +167,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* feature category's */}
             {storeCustomizationSetting?.home?.featured_status && (
               <div className="bg-gray-100 lg:py-16 py-10">
-                <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+                <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 justify-center">
                   <div className="mb-10 flex justify-center">
                     <div className="text-center w-full lg:w-2/5">
                       <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
@@ -175,7 +260,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {storeCustomizationSetting?.home?.delivery_status && (
               <div className="block mx-auto max-w-screen-2xl">
                 <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
-                  <div className="lg:p-16 p-6 bg-emerald-500 shadow-sm border rounded-lg">
+                  <div className="lg:p-2 p-6 bg-emerald-500 shadow-sm border rounded-lg">
                     <CardTwo />
                   </div>
                 </div>

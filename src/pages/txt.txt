@@ -1,0 +1,239 @@
+    <div className="row">
+                  <div className="grid-banner-section masonry-grid-banner  ">
+                    <div className="main-grid ">
+                      <div className="grid-banner overlay_style">
+                        <div classNameName="grid-banner-image w-1/3">
+                          <img
+                            // srcset="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272&amp;width=375 375w"
+                            src="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272&"
+                            loading="lazy"
+                            className=""
+                            alt=""
+                            // width="533"
+                            // height="645"
+                          />
+                        </div>
+                        <div className="grid-banner-content bottom-left">
+                          <div className="grid-banner-inner left color-accent-1 gradient">
+                            <h6 className="sub-title">Services</h6>
+
+                            <h4 className="main-title">
+                              High quality service at an{" "}
+                              <span> affordable price</span>
+                            </h4>
+
+                            <p className="description">
+                              Nam vitae tortor ac justo congue venenatis. Donec
+                              ut tortor tellus. Cras quis urna scelerisque felis
+                              laoreet tristique.
+                            </p>
+
+                            <a
+                              href="/collections/break-disc"
+                              className="button primary-button"
+                            >
+                              Shop Now
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="additional-grids three-items style-5 ">
+                      <div className="grid-banner overlay-1 overlay_style">
+                        <div className="grid-banner-block-image ">
+                          <img
+                            className="grid-banner-image"
+                            srcset="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&amp;width=375 375w,//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&amp;width=550 550w,//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&amp;width=750 750w,//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&amp;width=1500 895w"
+                            sizes="100vw"
+                            src="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1.jpg?v=1687174273&amp;width=1500"
+                            loading="lazy"
+                            alt=""
+                            width="895"
+                            height="645"
+                          />
+                        </div>
+                        <div className="grid-banner-content  bottom-left">
+                          <div className="grid-banner-inner banner--content-align left color-accent-1 gradient">
+                            <h5 className="sub-title">Auto Parts Supplier</h5>
+
+                            <h4 className="main-title ">
+                              We provide quality <span>auto parts</span>
+                            </h4>
+
+                            <p className="description">
+                              Faucibus in ornare quam viverra orci. Justo nec
+                              ultrices dui sapien eget. Porttitor rhoncus dolor
+                              purus non enim praesent elementum.
+                            </p>
+
+                            <a
+                              href="/collections/engine-scan"
+                              className="banner-button  button primary-button"
+                            >
+                              Shop Now
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="grid-banner overlay-2 overlay_style">
+                        <div className="grid-banner-block-image ">
+                          <img
+                            className="grid-banner-image"
+                            srcset="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1_05746996-9422-4edd-aceb-f30a3852d787.jpg?v=1690610457&amp;width=375 375w,//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1_05746996-9422-4edd-aceb-f30a3852d787.jpg?v=1690610457&amp;width=1500 546w"
+                            sizes="100vw"
+                            src="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_1_05746996-9422-4edd-aceb-f30a3852d787.jpg?v=1690610457&amp;width=1500"
+                            loading="lazy"
+                            alt=""
+                            width="546"
+                            height="317"
+                          />
+                        </div>
+                        <div className="grid-banner-content  bottom-left">
+                          <div className="grid-banner-inner banner--content-align left color-accent-1 gradient">
+                            <h4 className="main-title ">
+                              All Model <span> Car Parts</span>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="grid-banner overlay-3 overlay_style">
+                        <div className="grid-banner-block-image ">
+                          <img
+                            className="grid-banner-image"
+                            srcset="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_2.jpg?v=1687174273&amp;width=375 375w,//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_2.jpg?v=1687174273&amp;width=1500 474w"
+                            sizes="100vw"
+                            src="//dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_2.jpg?v=1687174273&amp;width=1500"
+                            loading="lazy"
+                            alt=""
+                            width="474"
+                            height="317"
+                          />
+                        </div>
+                        <div className="grid-banner-content  bottom-left">
+                          <div className="grid-banner-inner banner--content-align left color-accent-1 gradient">
+                            <h4 className="main-title ">
+                              Expensive model car <span>tools</span>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                *************************************************
+
+
+                       <div class="bg-gray-900 text-white py-16">
+                  <div class="container mx-auto flex flex-wrap items-center justify-center">
+                    {/* <!-- First Image --> */}
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                      <img
+                        src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272"
+                        alt="Image 1"
+                        class="w-full h-auto rounded-md"
+                      />
+                    </div>
+
+                    {/* <!-- Second Image --> */}
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 ">
+                      <img
+                        src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_2.jpg?v=1687174273"
+                        alt="Image 2"
+                        class="w-full h-auto rounded-md"
+                      />
+                    </div>
+
+                    {/* <!-- Third Image --> */}
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                      <img
+                        src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272"
+                        alt="Image 3"
+                        class="w-full h-auto rounded-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                *****************************************************************************************
+
+
+                   <div class=" text-white  lg:block" style={{ width: "100vw" }}>
+                  <div class="container  relative mx-auto max-w-max">
+                    <div
+                      class="flex items-center   max-w-screen-2xl "
+                      // style={{ height: "100vh" }}
+                    >
+                      {/* <!-- First Image --> */}
+                      <div
+                        class="w-full lg:w-2/6 m-2 relative flex items-center justify-center "
+                      >
+                        <img
+                          src="https://i.pinimg.com/736x/68/9a/54/689a5435e2c76f00fc5d06ccd79d581d.jpg"
+                          alt="Image 1"
+                          class="w-full h-full rounded-md "
+                        />
+
+                        {/* <!-- Text Overlay --> */}
+                        <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+                          <div class="text-center">
+                            <h2 class="text-2xl font-semibold mb-2">
+                              Image 1 Title
+                            </h2>
+                            <p class="text-sm">Description for Image 1.</p>
+                            <button class="mt-4 bg-emerald-500 text-white py-2 px-4 rounded-full">
+                              Learn More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* <!-- Second Image --> */}
+                      <div class=" sm:w-1/2 md:w-1/3 lg:w-2/6 m-2 relative">
+                        <img
+                          src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272"
+                          alt="Image 2"
+                          class="w-full h-auto rounded-md"
+                        />
+
+                        {/* <!-- Text Overlay --> */}
+                        <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+                          <div class="text-center">
+                            <h2 class="text-2xl font-semibold mb-2">
+                              Image 2 Title
+                            </h2>
+                            <p class="text-sm">Description for Image 2.</p>
+                            <button class="mt-4 bg-emerald-500 text-white py-2 px-4 rounded-full">
+                              Learn More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* <!-- Third Image --> */}
+                      <div class="w-full sm:w-1/2 md:w-1/3 lg:w-2/6 m-2 relative">
+                        <img
+                          src="https://dt-cartrek.myshopify.com/cdn/shop/files/Rectangle_3.jpg?v=1687174272"
+                          alt="Image 3"
+                          class="w-full h-auto rounded-md"
+                        />
+
+                        {/* <!-- Text Overlay --> */}
+                        <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+                          <div class="text-center">
+                            <h2 class="text-2xl font-semibold mb-2">
+                              Image 3 Title
+                            </h2>
+                            <p class="text-sm">Description for Image 3.</p>
+                            <button class="mt-4 bg-emerald-500 text-white py-2 px-4 rounded-full">
+                              Learn More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>

@@ -12,44 +12,45 @@ export const DirectionProvider = ({ children }) => {
   useEffect(() => {
     // Read cookie
     const dir = Cookies.get("_lang");
-
+    console.log("curent locale=>>", currentLocale);
+    console.log("curent lang=>>", dir);
     if (currentLocale === "ar") {
       setDirection("rtl");
     } else {
       setDirection("ltr");
     }
-    // console.log(currentLocale);
+    console.log(currentLocale);
     Cookies.set("_lang", currentLocale, {
       sameSite: "None",
       secure: true,
     });
   }, []);
 
-  const handleRoute = (locale) => router.push(`${locale}${router.asPath}`);
+  const handleRoute = (locale) => router.push(`${locale}/${router.asPath}`);
 
-  const setRTL = () => {
+  const setRTL = async () => {
     setDirection("rtl");
     // alert(router.pathname);
     // router.locale = "ar";
-    router.push(router.pathname, router.asPath, { locale: "ar" });
 
-    Cookies.set("_lang", "de", {
+    Cookies.set("i18next", "ar", {
       sameSite: "None",
-      secure: true,
     });
+
+    await router.push(router.pathname, router.asPath, { locale: "ar" });
+
     // router.reload();
   };
-  const setLTR = () => {
+  const setLTR = async () => {
     setDirection("ltr");
     router.locale = "en";
 
-    router.push(router.pathname, router.asPath, { locale: "en" });
     // window.location.pathname = "/en";
 
-    Cookies.set("_lang", "en", {
+    Cookies.set("i18next", "en", {
       sameSite: "None",
-      secure: true,
     });
+    await router.push(router.pathname, router.asPath, { locale: "en" });
   };
 
   const value = {

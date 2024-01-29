@@ -13,10 +13,10 @@ const CardTwo = () => {
 
   return (
     <>
-      <div className="w-full bg-white shadow-sm lg:px-10 lg:py-5 p-6 rounded-lg">
+      <div className="w-full bg-white shadow-sm lg:px-10 lg:py-5  rounded-lg">
         <div className="flex justify-between items-center">
           <div className="lg:w-3/5">
-            <span className="text-base lg:text-lg">
+            {/* <span className="text-base lg:text-lg">
               <CMSkeleton
                 count={1}
                 height={20}
@@ -24,7 +24,7 @@ const CardTwo = () => {
                 loading={loading}
                 data={storeCustomizationSetting?.home?.quick_delivery_subtitle}
               />
-            </span>
+            </span> */}
             <h2 className="font-serif text-lg lg:text-2xl font-bold mb-1">
               <CMSkeleton
                 count={1}
@@ -55,17 +55,19 @@ const CardTwo = () => {
               )}
             </Link>
           </div>
-          <div className="w-1/5 flex-grow hidden lg:flex md:flex md:justify-items-center lg:justify-end">
-            <Image
-              width={373}
-              height={250}
-              alt="Quick Delivery to Your Home"
-              className="block w-auto object-contain"
-              src={
-                storeCustomizationSetting?.home?.quick_delivery_img ||
-                "/cta/delivery-boy.png"
-              }
-            />
+          <div className="w-1/5 flex-grow hidden lg:flex md:flex md:justify-items-center lg:justify-end right-500  relative left-16">
+            <div className="absolute  -top-40	">
+              <Image
+                width={500}
+                height={250}
+                alt="Quick Delivery to Your Home"
+                className="block w-auto object-contain right-500"
+                src={
+                  // storeCustomizationSetting?.home?.quick_delivery_img ||
+                  "/car-image.png"
+                }
+              />
+            </div>
           </div>
         </div>
       </div>

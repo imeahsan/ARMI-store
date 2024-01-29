@@ -1,4 +1,5 @@
 import { useWizzard } from "@context/WizardContext";
+import useTranslation from "next-translate/useTranslation";
 import React from "react";
 
 const HistoryCondition = () => {
@@ -15,18 +16,18 @@ const HistoryCondition = () => {
     setRunAndDrive,
     errors,
   } = useWizzard();
+
+  const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
       <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	uppercase">
-        History And Condition
+        {t("common:historyAndCondition")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div className="sm:col-span-2">
           {/* condition */}
           <div className="max-w-lg">
-            <p className="text-sm text-gray-500">
-              What is the overall condition of your vehicle?
-            </p>
+            <p className="text-sm text-gray-500">{t("common:q1")}</p>
             <div className="mt-4 space-y-4 ml-8">
               <div className="flex items-center">
                 <input
@@ -42,9 +43,10 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="condition"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Poor
+                  {t("common:Poor")}
+
                   <span></span>
                 </label>
               </div>
@@ -62,9 +64,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="condition1"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Average
+                  {t("common:Average")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -81,9 +83,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="condition2"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Full
+                  {t("common:Full")}
                 </label>
               </div>
             </div>
@@ -92,9 +94,7 @@ const HistoryCondition = () => {
         {/* history */}
         <div className="sm:col-span-2">
           <div className="max-w-lg">
-            <p className="text-sm text-gray-500">
-              What is the service history of your vehicle?
-            </p>
+            <p className="text-sm text-gray-500">{t("common:q2")}</p>
             <div className="mt-4 space-y-4 ml-8">
               <div className="flex items-center">
                 <input
@@ -110,9 +110,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="history"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  None
+                  {t("common:None")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -129,9 +129,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="history1"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Partial
+                  {t("common:Partial")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -148,9 +148,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="history2"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Full
+                  {t("common:Full")}
                 </label>
               </div>
             </div>
@@ -159,9 +159,7 @@ const HistoryCondition = () => {
         {/* fault */}
         <div className="sm:col-span-2">
           <div className="max-w-lg">
-            <p className="text-sm text-gray-500">
-              Does the vehicle has any major fault?{" "}
-            </p>
+            <p className="text-sm text-gray-500">{t("common:q3")}</p>
             <div className="mt-4 space-y-4 ml-8">
               <div className="flex items-center">
                 <input
@@ -177,9 +175,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="fault"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Yes
+                  {t("common:yes")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -196,9 +194,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="fault1"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  No
+                  {t("common:no")}
                 </label>
               </div>
             </div>
@@ -207,9 +205,7 @@ const HistoryCondition = () => {
         {/* loss */}
         <div className="sm:col-span-2">
           <div className="max-w-lg">
-            <p className="text-sm text-gray-500">
-              Has the vehicle previously been a total loss?
-            </p>
+            <p className="text-sm text-gray-500">{t("common:q4")}</p>
             <div className="mt-4 space-y-4 ml-8">
               <div className="flex items-center">
                 <input
@@ -225,9 +221,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="loss"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Yes
+                  {t("common:yes")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -244,9 +240,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="loss1"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  No
+                  {t("common:no")}
                 </label>
               </div>
             </div>
@@ -255,9 +251,7 @@ const HistoryCondition = () => {
         {/* run and drive */}
         <div className="sm:col-span-2">
           <div className="max-w-lg">
-            <p className="text-sm text-gray-500">
-              Does the vehicle run and drive?{" "}
-            </p>
+            <p className="text-sm text-gray-500">{t("common:q5")}</p>
             <div className="mt-4 space-y-4 ml-8">
               <div className="flex items-center">
                 <input
@@ -273,9 +267,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="drive"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  Yes
+                  {t("common:yes")}
                 </label>
               </div>
               <div className="flex items-center">
@@ -292,9 +286,9 @@ const HistoryCondition = () => {
                 />
                 <label
                   htmlFor="drive1"
-                  className="ml-3 block text-sm font-medium text-gray-700"
+                  className="ml-3 mr-3 block text-sm font-medium text-gray-700"
                 >
-                  No
+                  {t("common:no")}
                 </label>
               </div>
             </div>

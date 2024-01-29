@@ -1,7 +1,9 @@
 import { useWizzard } from "@context/WizardContext";
+import useTranslation from "next-translate/useTranslation";
 import React from "react";
 
 const StepperController = ({ handleClick, steps, currentStep }) => {
+  const { t } = useTranslation();
   // alert(currentStep);
   const { validateForm, submitData } = useWizzard();
   let stepper =
@@ -17,7 +19,7 @@ const StepperController = ({ handleClick, steps, currentStep }) => {
              : "cursor-pointer"
          } `}
         >
-          Back
+          {t("common:Back")}
         </button>
         {/* next button */}
         <button
@@ -39,7 +41,9 @@ const StepperController = ({ handleClick, steps, currentStep }) => {
 
           className="bg-emerald-500 text-white uppercase py-2 px-4 rounded-xl font-semibold cursor-pointer   hover:bg-slate-700 hover:text-white transition duration-200 ease-in-out"
         >
-          {currentStep === steps.length - 1 ? "Submit" : "Next"}
+          {currentStep === steps.length - 1
+            ? t("common:Submit")
+            : t("common:Next")}
         </button>
       </div>
     ) : null;

@@ -40,9 +40,7 @@ const NavbarPromo = () => {
       secure: true,
     });
 
-    Cookies.set("dir", lang?.iso_code, {
-      sameSite: "None",
-    });
+    console.log(navigator.language);
 
     if (lang.iso_code === "en") {
       setLTR();
@@ -368,7 +366,7 @@ const NavbarPromo = () => {
                         handleLanguage(language);
                       }}
                       key={i + 1}
-                      href="/"
+                      href="#"
                     >
                       <div
                         className={`flot-l flag ${language?.flag?.toLowerCase()}`}

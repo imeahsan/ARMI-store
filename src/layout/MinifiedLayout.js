@@ -38,7 +38,7 @@ const MinifiedLayout = ({ title, description, children }) => {
         // className="bg-gray-50"
         // style={{ direction: "rtl" }}
         >
-          {/* <StickyCart /> */}
+          <StickyCart />
           {children}
         </div>
         <MobileFooter />

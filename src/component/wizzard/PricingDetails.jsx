@@ -1,6 +1,7 @@
 import React from "react";
 import Example from "./labels";
 import { useWizzard } from "@context/WizardContext";
+import useTranslation from "next-translate/useTranslation";
 
 const PricingDetails = () => {
   const {
@@ -19,10 +20,11 @@ const PricingDetails = () => {
     errors,
     validateForm,
   } = useWizzard();
+  const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
       <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	uppercase">
-        Pricing
+        {t("common:Pricing")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -30,25 +32,26 @@ const PricingDetails = () => {
             htmlFor="first-name"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Price quoted elsewhere
+            {t("common:priceQuoted")}
           </label>
-          <div className="mt-1 sm:mt-0 sm:col-span-2">
+          <div
+            className="mt-1 sm:mt-0 sm:col-span-2"
+            style={{ direction: "ltr" }}
+          >
             <div className="mt-1 relative rounded-md shadow-sm">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 sm:text-sm">$</span>
-              </div>
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"></div>
               <input
                 type="text"
                 name="price"
                 id="price"
-                className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                className="focus:ring-indigo-500  focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                 placeholder="0.00"
                 value={quotedPrice}
                 onChange={(e) => {
                   setQuotedPrice(e.target.value);
                 }}
               />
-              <div className="absolute inset-y-0 right-0 flex items-center">
+              <div className="absolute inset-y-0 right-0 mr-0 flex items-center">
                 <label htmlFor="currency" className="sr-only">
                   Currency
                 </label>
@@ -78,12 +81,15 @@ const PricingDetails = () => {
             htmlFor="first-name"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Expected Price{" "}
+            {t("common:ExpectedPrice")}
           </label>
-          <div className="mt-1 sm:mt-0 sm:col-span-2">
+          <div
+            className="mt-1 sm:mt-0 sm:col-span-2"
+            style={{ direction: "ltr" }}
+          >
             <div className="mt-1 relative rounded-md shadow-sm">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <span className="text-gray-500 sm:text-sm">$</span>
+                {/* <span className="text-gray-500 sm:text-sm">$</span> */}
               </div>
               <input
                 type="text"
@@ -140,7 +146,7 @@ const PricingDetails = () => {
               }}
             >
               <option value="" selected>
-                {MOT ? MOT : " Select RegistrationYear"}
+                {MOT ? MOT : " "}
               </option>
             </select>
           </div>
@@ -151,7 +157,7 @@ const PricingDetails = () => {
             htmlFor="last-name"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Mileage
+            {t("common:Mileage")}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <input
@@ -174,7 +180,7 @@ const PricingDetails = () => {
             htmlFor="detail"
             className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
           >
-            Additional Details
+            {t("common:priceQuoted")}{" "}
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
             <textarea
