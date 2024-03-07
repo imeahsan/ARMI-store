@@ -7,15 +7,20 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+// import {  Pagination, Navigation } from "swiper";
 
 //internal import
 import useAsync from "@hooks/useAsync";
 import { SidebarContext } from "@context/SidebarContext";
 import CategoryServices from "@services/CategoryServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import useTranslation from "next-translate/useTranslation";
+import ProductCard from "@component/product/ProductCard";
 
-const CategoryCarousel = () => {
+const CategoryMainCarousel = ({ popularProducts, attributes }) => {
   const router = useRouter();
+  SwiperCore.use([Autoplay]);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -24,15 +29,17 @@ const CategoryCarousel = () => {
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const { data, error } = useAsync(() => CategoryServices.getShowingCategory());
 
-  const handleCategoryClick = (id, category) => {
-    const category_name = showingTranslateValue(category)
-      ?.toLowerCase()
-      .replace(/[^A-Z0-9]+/gi, "-");
+  // console.log('category',data)
 
-    router.push(`/search?category=${category_name}&_id=${id}`);
+  const handleCategoryClick = (id, categoryName) => {
+    const category_name = categoryName
+      ?.toLowerCase()
+      ?.replace(/[^A-Z0-9]+/gi, "-");
+    const url = `/search?category=${category_name}&_id=${id}`;
+    router.push(url);
     setIsLoading(!isLoading);
   };
-
+  const { t } = useTranslation();
   return (
     <>
       <Swiper
@@ -42,22 +49,34 @@ const CategoryCarousel = () => {
           swiper.navigation.init();
           swiper.navigation.update();
         }}
-        spaceBetween={8}
-        navigation={true}
-        allowTouchMove={false}
+        spaceBetween={4}
+        navigation={false}
+        allowTouchMove={true}
         loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
           // when window width is >= 640px
+          300: {
+            width: 300,
+            slidesPerView: 2.5,
+          },
           375: {
             width: 375,
-            slidesPerView: 2,
+            slidesPerView: 2.5,
           },
           // when window width is >= 768px
           414: {
             width: 414,
-            slidesPerView: 3,
+            slidesPerView: 2.5,
           },
           // when window width is >= 768px
+          640: {
+            width: 640,
+            slidesPerView: 3,
+          },
           660: {
             width: 660,
             slidesPerView: 4,
@@ -66,76 +85,57 @@ const CategoryCarousel = () => {
           // when window width is >= 768px
           768: {
             width: 768,
-            slidesPerView: 6,
+            slidesPerView: 4,
           },
 
           // when window width is >= 768px
           991: {
             width: 991,
-            slidesPerView: 8,
+            slidesPerView: 5,
           },
 
           // when window width is >= 768px
           1140: {
             width: 1140,
-            slidesPerView: 9,
+            slidesPerView: 5,
           },
           1680: {
             width: 1680,
-            slidesPerView: 10,
+            slidesPerView: 5,
           },
           1920: {
-            width: 1920,
-            slidesPerView: 10,
+            width: 1680,
+            slidesPerView: 5,
           },
         }}
-        modules={[Navigation]}
-        className="mySwiper category-slider my-10"
+        modules={[Navigation, Autoplay]}
+        className="mySwiper category-slider "
       >
         {error ? (
           <p className="flex justify-center align-middle items-center m-auto text-xl text-red-500">
             <span> {error}</span>
           </p>
         ) : (
-          <div>
-            {data[0]?.children?.map((category, i) => (
-              <SwiperSlide key={i + 1} className="group">
-                <div
-                  onClick={() =>
-                    handleCategoryClick(category?._id, category.name)
-                  }
-                  className="text-center cursor-pointer p-3 bg-white rounded-lg"
-                >
-                  <div className="bg-white p-2 mx-auto w-10 h-10 rounded-full shadow-md">
-                    {category?.icon ? (
-                      <Image
-                        src={category?.icon}
-                        alt="category"
-                        width="35"
-                        height="35"
-                      />
-                    ) : (
-                      <Image
-                        src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        alt="category"
-                        width="35"
-                        height="35"
-                      />
-                    )}
-                  </div>
-
-                  <h3 className="text-xs text-gray-600 mt-2 font-serif group-hover:text-gray-500">
-                    {showingTranslateValue(category?.name)}
-                  </h3>
-                </div>
+          <div className="px-10 mx-auto max-w-screen-xl   ">
+            {popularProducts.map((product, i) => (
+              <SwiperSlide key={i + 1} className=" px-1 md:px-4">
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  attributes={attributes}
+                />
               </SwiperSlide>
             ))}
           </div>
         )}
-        <button ref={prevRef} className="prev ">
+        <button ref={prevRef} className="prev drop-shadow-lg">
           <IoChevronBackOutline />
         </button>
-        <button ref={nextRef} className="next">
+        <button
+          ref={nextRef}
+          className="next drop-shadow-lg"
+          // style={{ left: "110%", zIndex: 9999 }}
+        >
           <IoChevronForward />
         </button>
       </Swiper>
@@ -143,4 +143,4 @@ const CategoryCarousel = () => {
   );
 };
 
-export default React.memo(CategoryCarousel);
+export default React.memo(CategoryMainCarousel);

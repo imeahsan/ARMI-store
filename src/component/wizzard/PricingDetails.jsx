@@ -23,7 +23,7 @@ const PricingDetails = () => {
   const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
-      <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	uppercase">
+      <h1 className=" text-red-600 tracking-wide font-bold	text-center	uppercase">
         {t("common:Pricing")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -44,7 +44,7 @@ const PricingDetails = () => {
                 type="text"
                 name="price"
                 id="price"
-                className="focus:ring-indigo-500  focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                className="focus:ring-gray-500  focus:border-gray-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                 placeholder="0.00"
                 value={quotedPrice}
                 onChange={(e) => {
@@ -58,7 +58,7 @@ const PricingDetails = () => {
                 <select
                   id="currency"
                   name="currency"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                  className="focus:ring-gray-500 focus:border-gray-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                   onChange={(e) => {
                     setCurrency(e.target.value);
                   }}
@@ -95,7 +95,7 @@ const PricingDetails = () => {
                 type="text"
                 name="price"
                 id="price"
-                className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                className="focus:ring-gray-500 focus:border-gray-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                 placeholder="0.00"
                 value={expectedPrice}
                 onChange={(e) => {
@@ -109,7 +109,7 @@ const PricingDetails = () => {
                 <select
                   id="currency"
                   name="currency"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                  className="focus:ring-gray-500 focus:border-gray-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                   onChange={(e) => {
                     setCurrency(e.target.value);
                   }}
@@ -139,7 +139,7 @@ const PricingDetails = () => {
               id="year"
               name="year"
               autoComplete="year"
-              className="max-w-lg block focus:ring-emerald-500 focus:border-emerald-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block focus:ring-gray-500 focus:border-gray-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               required={true}
               onChange={(e) => {
                 setMOT(e.target.value);
@@ -167,7 +167,7 @@ const PricingDetails = () => {
               name="last-name"
               id="last-name"
               autoComplete="family-name"
-              className="max-w-lg block w-full shadow-sm focus:ring-emerald-500 focus:border-emerald-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block w-full shadow-sm focus:ring-gray-500 focus:border-gray-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               value={Mileage}
               onChange={(e) => {
                 setMileage(e.target.value);
@@ -187,7 +187,7 @@ const PricingDetails = () => {
               id="detail"
               name="detail"
               rows={3}
-              className="max-w-lg shadow-sm block w-full focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm border border-gray-300 rounded-md"
+              className="max-w-lg shadow-sm block w-full focus:ring-gray-500 focus:border-gray-500 sm:text-sm border border-gray-300 rounded-md"
               defaultValue={""}
               placeholder="Extra details"
               value={details}

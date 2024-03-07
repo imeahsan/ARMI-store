@@ -54,7 +54,7 @@ const ContactUs = () => {
               />
             ) : (
               <div className="border p-10 rounded-lg text-center">
-                <span className="flex justify-center text-4xl text-emerald-500 mb-4">
+                <span className="flex justify-center text-4xl text-red-500 mb-4">
                   <FiMail />
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
@@ -65,7 +65,7 @@ const ContactUs = () => {
                 <p className="mb-0 text-base opacity-90 leading-7">
                   <a
                     href={`mailto:${storeCustomizationSetting?.contact_us?.email_box_email}`}
-                    className="text-emerald-500"
+                    className="text-red-500"
                   >
                     {showingTranslateValue(
                       storeCustomizationSetting?.contact_us?.email_box_email
@@ -87,7 +87,7 @@ const ContactUs = () => {
               />
             ) : (
               <div className="border p-10 rounded-lg text-center">
-                <span className="flex justify-center text-4xl text-emerald-500 mb-4">
+                <span className="flex justify-center text-4xl text-red-500 mb-4">
                   <FiBell />
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
@@ -98,7 +98,7 @@ const ContactUs = () => {
                 <p className="mb-0 text-base opacity-90 leading-7">
                   <a
                     href={`mailto:${storeCustomizationSetting?.contact_us?.call_box_phone}`}
-                    className="text-emerald-500"
+                    className="text-red-500"
                   >
                     {showingTranslateValue(
                       storeCustomizationSetting?.contact_us?.call_box_phone
@@ -119,7 +119,7 @@ const ContactUs = () => {
               />
             ) : (
               <div className="border p-10 rounded-lg text-center">
-                <span className="flex justify-center text-4xl text-emerald-500 mb-4">
+                <span className="flex justify-center text-4xl text-red-500 mb-4">
                   <FiMapPin />
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
@@ -157,7 +157,7 @@ const ContactUs = () => {
                 height={874}
                 src={
                   storeCustomizationSetting?.contact_us?.midLeft_col_img ||
-                  "/contact-us.png"
+                  "/contact-us.avif"
                 }
                 alt="logo"
                 className="block w-auto"
@@ -252,7 +252,7 @@ const ContactUs = () => {
                   <div className="relative">
                     <button
                       data-variant="flat"
-                      className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-emerald-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-emerald-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
+                      className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-red-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-red-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
                     >
                       {t("common:contact-page-form-send-btn")}
                     </button>

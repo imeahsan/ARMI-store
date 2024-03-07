@@ -45,7 +45,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link1}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -61,7 +61,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link2}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -77,7 +77,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link3}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     {showingTranslateValue(
                       storeCustomizationSetting?.footer_block_one_link_three_title
@@ -96,7 +96,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link4}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -127,7 +127,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link1}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -144,7 +144,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link2}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -160,7 +160,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link3}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -176,7 +176,7 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link4}`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -211,7 +211,7 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link1
                         : "#"
                     }`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -231,7 +231,7 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link2
                         : "#"
                     }`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -251,7 +251,7 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link3
                         : "#"
                     }`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -271,7 +271,7 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link4
                         : "#"
                     }`}
-                    className="text-gray-600 inline-block w-full hover:text-emerald-500"
+                    className="text-gray-600 inline-block w-full hover:text-red-500"
                   >
                     <CMSkeleton
                       count={1}
@@ -306,9 +306,9 @@ const Footer = () => {
                 />
               </Link>
               <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
-                {showingTranslateValue(
+                {/* {showingTranslateValue(
                   storeCustomizationSetting?.footer?.block4_address
-                )}
+                )} */}
                 <CMSkeleton
                   count={1}
                   height={10}
@@ -423,7 +423,7 @@ const Footer = () => {
                   <p className="text-base leading-7 font-medium block">
                     {t("common:footer-call-us")}
                   </p>
-                  <h5 className="text-2xl font-bold text-emerald-500 leading-7">
+                  <h5 className="text-2xl font-bold text-red-500 leading-7">
                     {/* +012345-67900 */}
                     {storeCustomizationSetting?.footer?.bottom_contact}
                   </h5>

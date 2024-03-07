@@ -317,15 +317,17 @@ p:not(:last-of-type) {
   height: 30px;
   line-height: 30px;
 }
+/* category css */
 .category-slider button.prev,
 .category-slider button.next {
   text-align: center;
-  background-color: #34d399;
+  background-color: #808080;
+  
   color: #ffffff;
-  margin: 15px 2px 0 2px;
+  margin: -15px 2px 2px;
   position: absolute;
   z-index: 10;
-  top: 15%;
+  top: 50%;
   border-radius: 3px;
 }
 .category-slider button.prev {
@@ -338,7 +340,7 @@ p:not(:last-of-type) {
 }
 .category-slider button.next:hover,
 .category-slider button.prev {
-  background-color: #10b981;
+  background-color: #808080;
 }
 .category-slider button.prev svg,
 .category-slider button.next svg {

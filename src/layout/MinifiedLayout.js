@@ -12,6 +12,7 @@ import MobileFooter from "@layout/footer/MobileFooter";
 import FeatureCard from "@component/feature-card/FeatureCard";
 import { useDirection } from "@context/DirectionContext";
 import StickyCart from "@component/cart/StickyCart";
+import CartDrawer from "@component/drawer/CartDrawer";
 
 const MinifiedLayout = ({ title, description, children }) => {
   const { direction } = useDirection();
@@ -32,7 +33,7 @@ const MinifiedLayout = ({ title, description, children }) => {
         </Head>
         <NavBarTop />
         <NavbarPromo />
-
+        <CartDrawer />
         {/* <Navbar /> */}
         <div
         // className="bg-gray-50"

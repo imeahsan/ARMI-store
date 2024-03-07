@@ -72,7 +72,7 @@ const MakeModelVariant = () => {
   const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
-      <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	">
+      <h1 className=" text-red-600 tracking-wide font-bold	text-center	">
         {t("common:makeModelVariant")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -88,7 +88,7 @@ const MakeModelVariant = () => {
               id="country"
               name="country"
               autoComplete="country-name"
-              className="max-w-lg block focus:ring-emerald-500 focus:border-emerald-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block focus:ring-gray-500 focus:border-gray-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               onChange={handleMakeChange}
             >
               <option value={make} selected>
@@ -112,7 +112,7 @@ const MakeModelVariant = () => {
               id="country"
               name="country"
               autoComplete="country-name"
-              className="max-w-lg block focus:ring-emerald-500 focus:border-emerald-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block focus:ring-gray-500 focus:border-gray-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               onChange={handleModelChange}
               value={model}
             >
@@ -138,7 +138,7 @@ const MakeModelVariant = () => {
               id="country"
               name="country"
               autoComplete="country-name"
-              className="max-w-lg block focus:ring-emerald-500 focus:border-emerald-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block focus:ring-gray-500 focus:border-gray-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               onChange={(e) => {
                 setVariant(e.target.value);
                 console.log(variant);
@@ -164,7 +164,7 @@ const MakeModelVariant = () => {
                   id="push-everything"
                   name="push-notifications"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-gray-500 h-4 w-4 text-gray-500 border-gray-300"
                 />
                 <label
                   htmlFor="push-everything"
@@ -178,7 +178,7 @@ const MakeModelVariant = () => {
                   id="push-email"
                   name="push-notifications"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-gray-500 h-4 w-4 text-gray-500 border-gray-300"
                 />
                 <label
                   htmlFor="push-email"
@@ -192,7 +192,7 @@ const MakeModelVariant = () => {
                   id="push-nothing"
                   name="push-notifications"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-gray-500 h-4 w-4 text-gray-500 border-gray-300"
                 />
                 <label
                   htmlFor="push-nothing"
@@ -217,7 +217,7 @@ const MakeModelVariant = () => {
               id="year"
               name="year"
               autoComplete="year"
-              className="max-w-lg block focus:ring-emerald-500 focus:border-emerald-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+              className="max-w-lg block focus:ring-gray-500 focus:border-gray-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
               required={true}
               onChange={(e) => {
                 setYear(e.target.value);

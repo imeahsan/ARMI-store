@@ -82,14 +82,14 @@ const CouponDetails = ({ coupon }) => {
                         Inactive
                       </span>
                     ) : (
-                      <span className="text-emerald-600 inline-block">
+                      <span className="text-red-600 inline-block">
                         Active
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="font-serif border border-dashed bg-emerald-50 py-2 border-emerald-300 rounded-lg text-center block">
+                <div className="font-serif border border-dashed bg-emerald-50 py-2 border-red-300 rounded-lg text-center block">
                   <CopyToClipboard
                     text={coupon.couponCode}
                     onCopy={() => handleCopied(coupon.couponCode)}

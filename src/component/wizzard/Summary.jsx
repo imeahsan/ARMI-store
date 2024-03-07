@@ -5,7 +5,7 @@ const Summary = ({ setCurrentStep }) => {
   const { requestNo } = useWizzard();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
-      <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	uppercase">
+      <h1 className=" text-red-600 tracking-wide font-bold	text-center	uppercase">
         Summary
       </h1>
       {requestNo ? (
@@ -16,8 +16,7 @@ const Summary = ({ setCurrentStep }) => {
             conatct us ans about this request my nentioning your request number.
           </p>
           <h1 className="  tracking-wide font-semibold">
-            Request Number:{" "}
-            <span className="text-emerald-500">{requestNo}</span>
+            Request Number: <span className="text-red-600">{requestNo}</span>
           </h1>
         </div>
       ) : (

@@ -7,6 +7,7 @@ import useGetSetting from "@hooks/useGetSetting";
 import PageHeader from "@component/header/PageHeader";
 import CMSkeleton from "@component/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import VideoPlayer from "@component/common/VideoPlayer";
 
 const AboutUs = () => {
   const { storeCustomizationSetting, loading, error } = useGetSetting();
@@ -60,7 +61,7 @@ const AboutUs = () => {
                     />
                   ) : (
                     <>
-                      <span className="text-3xl block font-extrabold font-serif mb-4 text-gray-800">
+                      <span className="text-3xl block font-extrabold font-serif mb-4 text-red-600">
                         {showingTranslateValue(
                           storeCustomizationSetting?.about_us?.card_two_title
                         )}
@@ -89,7 +90,7 @@ const AboutUs = () => {
                     />
                   ) : (
                     <>
-                      <span className="text-3xl block font-extrabold font-serif mb-4 text-gray-800">
+                      <span className="text-3xl block font-extrabold font-serif mb-4 text-red-600">
                         {showingTranslateValue(
                           storeCustomizationSetting?.about_us?.card_one_title
                         )}
@@ -149,7 +150,7 @@ const AboutUs = () => {
             </p>
           </div>
           <div className="mt-10 lg:mt-12 flex flex-col sm:grid gap-4">
-            <Image
+            {/* <Image
               width={1920}
               height={570}
               src={
@@ -158,10 +159,14 @@ const AboutUs = () => {
               }
               alt="logo"
               className="block rounded-lg"
-            />
+            /> */}
+           
+            <VideoPlayer />
           </div>
         </div>
-        {/* <div className="bg-gray-50 lg:py-20 py-10">
+
+        {/* team */}
+        <div className="bg-gray-50 lg:py-20 py-10">
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">
@@ -334,7 +339,7 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </Layout>
   );

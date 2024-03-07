@@ -62,7 +62,7 @@ const QuotationRequest = () => {
     >
       <WizardProvider>
         <div
-          className="md:w-2/3 mx-auto shaddow xl rounded-2xl pb-2 bg-white"
+          className="lg:w-2/3 mx-auto shaddow xl rounded-2xl pb-2 bg-white"
           style={{ backgroundColor: "#f1f5f9" }}
         >
           <div className="container horizontal mt-5 mb-12 p-4">

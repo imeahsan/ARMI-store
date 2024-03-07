@@ -89,7 +89,7 @@ const ProductModal = ({
       setVariants(result);
       setSelectVariant(result2);
       setSelectVa(result2);
-      setImg(result2?.image);
+      // setImg(result2?.image);
       setStock(result2?.quantity);
       const price = getNumber(result2?.price);
       const originalPrice = getNumber(result2?.originalPrice);
@@ -108,7 +108,7 @@ const ProductModal = ({
       setStock(product.variants[0]?.quantity);
       setSelectVariant(product.variants[0]);
       setSelectVa(product.variants[0]);
-      setImg(product.variants[0]?.image);
+      // setImg(product.variants[0]?.image);
       const price = getNumber(product.variants[0]?.price);
       const originalPrice = getNumber(product.variants[0]?.originalPrice);
       const discountPercentage = getNumber(
@@ -119,7 +119,7 @@ const ProductModal = ({
       setOriginalPrice(originalPrice);
     } else {
       setStock(product?.stock);
-      setImg(product?.image[0]);
+      // setImg(product?.image[0]);
       const price = getNumber(product?.prices?.price);
       const originalPrice = getNumber(product?.prices?.originalPrice);
       const discountPercentage = getNumber(
@@ -214,8 +214,7 @@ const ProductModal = ({
   const category_name = showingTranslateValue(product?.category?.name)
     ?.toLowerCase()
     ?.replace(/[^A-Z0-9]+/gi, "-");
-
-  // console.log("product", product, "stock", stock);
+  console.log("product", product, "stock", stock);
 
   return (
     <>
@@ -329,7 +328,7 @@ const ProductModal = ({
                   <button
                     onClick={() => handleAddToCart(product)}
                     disabled={product.quantity < 1}
-                    className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-emerald-500 hover:bg-emerald-600 w-full h-12"
+                    className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
                   >
                     {t("common:addToCart")}
                   </button>
@@ -347,7 +346,7 @@ const ProductModal = ({
                       >
                         <button
                           type="button"
-                          className="text-gray-600 font-serif font-medium underline ml-2 hover:text-teal-600"
+                          className="text-gray-600 font-serif font-medium underline ml-2 hover:text-gray-600"
                           onClick={() => setIsLoading(!isLoading)}
                         >
                           {category_name}
@@ -371,7 +370,7 @@ const ProductModal = ({
               <div className="flex justify-end mt-2">
                 <p className="text-xs sm:text-sm text-gray-600">
                   Call Us To Order By Mobile Number :{" "}
-                  <span className="text-emerald-700 font-semibold">
+                  <span className="text-red-700 font-semibold">
                     +0044235234
                   </span>{" "}
                 </p>

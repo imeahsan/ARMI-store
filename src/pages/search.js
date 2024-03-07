@@ -34,7 +34,7 @@ const Search = ({ products, attributes }) => {
                 <Card />
               </div> */}
               <div className="relative">
-                <CategoryCarousel />
+                {/* <CategoryCarousel /> */}
               </div>
               {productData?.length === 0 ? (
                 <div className="text-center align-middle mx-auto p-5 my-5">
@@ -92,7 +92,7 @@ const Search = ({ products, attributes }) => {
                   {productData?.length > visibleProduct && (
                     <button
                       onClick={() => setVisibleProduct((pre) => pre + 10)}
-                      className="w-auto mx-auto md:text-sm leading-5 flex items-center transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none bg-indigo-100 text-gray-700 px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-emerald-600 h-12 mt-6 text-sm lg:text-sm"
+                      className="w-auto mx-auto md:text-sm leading-5 flex items-center transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none bg-indigo-100 text-gray-700 px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-gray-600 h-12 mt-6 text-sm lg:text-sm"
                     >
                       {t("common:loadMoreBtn")}
                     </button>

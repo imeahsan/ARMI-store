@@ -72,12 +72,12 @@ function MyApp({ Component, pageProps }) {
             <Provider store={store}>
               <PersistGate loading={null} persistor={persistor}>
                 <SidebarProvider>
-                  <Elements stripe={stripePromise}>
+                  {/* <Elements stripe={stripePromise}> */}
                     <CartProvider>
                       <DefaultSeo />
                       <Component {...pageProps} />
                     </CartProvider>
-                  </Elements>
+                  {/* </Elements> */}
                 </SidebarProvider>
               </PersistGate>
             </Provider>

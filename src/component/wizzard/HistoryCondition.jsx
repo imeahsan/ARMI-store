@@ -20,7 +20,7 @@ const HistoryCondition = () => {
   const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
-      <h1 className=" text-emerald-500 tracking-wide font-bold	text-center	uppercase">
+      <h1 className=" text-red-600 tracking-wide font-bold	text-center	uppercase">
         {t("common:historyAndCondition")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -34,7 +34,7 @@ const HistoryCondition = () => {
                   id="condition"
                   name="condition"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"poor"}
                   checked={condition === "poor"}
                   onChange={(e) => {
@@ -55,7 +55,7 @@ const HistoryCondition = () => {
                   id="condition1"
                   name="condition"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"average"}
                   checked={condition === "average"}
                   onChange={(e) => {
@@ -74,7 +74,7 @@ const HistoryCondition = () => {
                   id="condition2"
                   name="condition"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"full"}
                   checked={condition === "full"}
                   onChange={(e) => {
@@ -101,7 +101,7 @@ const HistoryCondition = () => {
                   id="history"
                   name="history"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"none"}
                   checked={history === "none"}
                   onChange={(e) => {
@@ -120,7 +120,7 @@ const HistoryCondition = () => {
                   id="history1"
                   name="history"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"partial"}
                   checked={history === "partial"}
                   onChange={(e) => {
@@ -139,7 +139,7 @@ const HistoryCondition = () => {
                   id="history2"
                   name="history"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"full"}
                   checked={history === "full"}
                   onChange={(e) => {
@@ -166,7 +166,7 @@ const HistoryCondition = () => {
                   id="fault"
                   name="fault"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"yes"}
                   checked={fault === "yes"}
                   onChange={(e) => {
@@ -185,7 +185,7 @@ const HistoryCondition = () => {
                   id="fault1"
                   name="fault"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"no"}
                   checked={fault === "no"}
                   onChange={(e) => {
@@ -212,7 +212,7 @@ const HistoryCondition = () => {
                   id="loss"
                   name="loss"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"yes"}
                   checked={loss === "yes"}
                   onChange={(e) => {
@@ -231,7 +231,7 @@ const HistoryCondition = () => {
                   id="loss1"
                   name="loss1"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"no"}
                   checked={loss === "no"}
                   onChange={(e) => {
@@ -258,7 +258,7 @@ const HistoryCondition = () => {
                   id="drive"
                   name="push-notifications"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"yes"}
                   checked={runAndDrive === "yes"}
                   onChange={(e) => {
@@ -277,7 +277,7 @@ const HistoryCondition = () => {
                   id="drive1"
                   name="push-notifications"
                   type="radio"
-                  className="focus:ring-emerald-500 h-4 w-4 text-emerald-500 border-gray-300"
+                  className="focus:ring-red-600 h-4 w-4 text-red-600 border-gray-300"
                   value={"no"}
                   checked={runAndDrive === "no"}
                   onChange={(e) => {

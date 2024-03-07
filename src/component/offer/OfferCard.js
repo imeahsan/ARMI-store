@@ -14,15 +14,15 @@ const OfferCard = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="" style={{ width: "100%", height: "500px" }}>
-      <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform group-hover:border-emerald-500 rounded shadow ">
-        <div className="bg-orange-100 text-gray-900 px-6 py-2 rounded-t border-b flex items-center justify-center">
+    <div className="rounded-2xl" style={{ width: "100%", height: "475px" }}>
+      <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform group-hover:border-emerald-500 rounded-2xl shadow ">
+        <div className=" rounded-t-2xl text-gray-900 px-6 py-2 rounded-t flex items-center  justify-center">
           <h3 className="text-base font-serif font-medium "></h3>
         </div>
-        <div className="overflow-hidden" style={{ alignItems: "center" }}>
+        <div className="overflow-hidden pt-4" style={{ alignItems: "center" }}>
           <p
             style={{
-              fontSize: "16px",
+              fontSize: "14px",
               lineHeight: "24px",
               textAlign: "center",
               letterSpacing: "5px",
@@ -33,6 +33,8 @@ const OfferCard = () => {
           <h1
             style={{
               fontSize: "42px",
+              fontWeight: 600,
+
               lineHeight: "38px",
               textAlign: "center",
               letterSpacing: "-1px",
@@ -48,9 +50,10 @@ const OfferCard = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              height: "225px",
             }}
           >
-            <Image src={"/parts-animated-1.gif"} width={275} height={225} />
+            <Image src={"/buy-vehicle.png"} width={275} height={225} />
           </div>
 
           <div
@@ -62,7 +65,7 @@ const OfferCard = () => {
           >
             <Link
               href={`/request-quotation`}
-              className="text-lg font-serif font-medium px-6 py-2 bg-emerald-500 text-center rounded-full text-white hover:bg-emerald-700"
+              className="text-lg font-serif font-medium px-6 py-2  text-center rounded-full text-white hover:bg-gray-500 bg-red-500"
             >
               {t("common:getQuote")}
             </Link>

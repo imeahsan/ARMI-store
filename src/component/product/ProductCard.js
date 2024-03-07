@@ -45,6 +45,7 @@ const ProductCard = ({ product, attributes }) => {
       variant: p.prices,
       price: p.prices.price,
       originalPrice: product.prices?.originalPrice,
+      slug,
     };
     addItem(newItem);
   };
@@ -66,8 +67,12 @@ const ProductCard = ({ product, attributes }) => {
       )}
 
       <div className="group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center bg-white relative">
-        <div className="w-full flex justify-between">
-          <Stock product={product} stock={product.stock} card />
+        <div className="w-full flex justify-between ">
+          <Stock
+            product={product}
+            stock={product.stock}
+            card
+          />
           <Discount product={product} />
         </div>
         <div
@@ -133,7 +138,7 @@ const ProductCard = ({ product, attributes }) => {
                     item.id === product._id && (
                       <div
                         key={item.id}
-                        className="h-9 w-auto flex flex-wrap items-center justify-evenly py-1 px-2 bg-emerald-500 text-white rounded"
+                        className="h-9 w-auto flex flex-wrap items-center justify-evenly py-1 px-2 bg-red-500 text-white rounded"
                       >
                         <button
                           onClick={() =>
@@ -166,7 +171,7 @@ const ProductCard = ({ product, attributes }) => {
               <button
                 onClick={() => handleAddItem(product)}
                 aria-label="cart"
-                className="h-9 w-9 flex items-center justify-center border border-gray-200 rounded text-emerald-500 hover:border-emerald-500 hover:bg-emerald-500 hover:text-white transition-all"
+                className="h-9 w-9 flex items-center justify-center border border-gray-200 rounded text-red-500 hover:border-red-500 hover:bg-red-500 hover:text-white transition-all"
               >
                 <span className="text-xl">
                   <IoBagAddSharp />

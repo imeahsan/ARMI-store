@@ -17,7 +17,7 @@ const ContactDetails = () => {
   const { t } = useTranslation();
   return (
     <div className=" w-3/4 border-4   p-2 border-collapse">
-      <h1 className=" text-emerald-500 tracking-wide font-bold uppercase	text-center	">
+      <h1 className=" text-red-600 tracking-wide font-bold uppercase	text-center	">
         {t("common:ContactDetails")}
       </h1>
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -36,7 +36,7 @@ const ContactDetails = () => {
                   name="username"
                   id="username"
                   autoComplete="name"
-                  className="flex-1 block w-full focus:ring-emerald-500 focus:border-emerald-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                  className="flex-1 block w-full focus:ring-gray-500 focus:border-gray-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -59,7 +59,7 @@ const ContactDetails = () => {
                   name="phone"
                   id="username"
                   autoComplete="phone"
-                  className="flex-1 block w-full focus:ring-emerald-500 focus:border-emerald-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                  className="flex-1 block w-full focus:ring-gray-500 focus:border-gray-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                   value={phone}
                   onChange={(e) => {
                     setPhone(e.target.value);
@@ -82,7 +82,7 @@ const ContactDetails = () => {
                   name="email"
                   id="email"
                   autoComplete="email"
-                  className="flex-1 block w-full focus:ring-emerald-500 focus:border-emerald-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                  className="flex-1 block w-full focus:ring-gray-500 focus:border-gray-500 min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -104,7 +104,7 @@ const ContactDetails = () => {
                 name="address"
                 autoComplete="address"
                 rows={3}
-                className="max-w-lg shadow-sm block w-full focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm border border-gray-300 rounded-md"
+                className="max-w-lg shadow-sm block w-full focus:ring-gray-500 focus:border-gray-500 sm:text-sm border border-gray-300 rounded-md"
                 defaultValue={""}
                 placeholder={t("common:completeAddress")}
                 value={address}

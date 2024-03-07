@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useDropzone } from 'react-dropzone';
-import { FiUploadCloud } from 'react-icons/fi';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useDropzone } from "react-dropzone";
+import { FiUploadCloud } from "react-icons/fi";
 
 const Uploader = ({ setImageUrl, imageUrl }) => {
   const [files, setFiles] = useState([]);
@@ -9,7 +9,7 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
   const upload_Preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: "image/*",
     multiple: false,
     maxSize: 100000, //the size of image,
     onDrop: (acceptedFiles) => {
@@ -41,13 +41,13 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
     if (files) {
       files.forEach((file) => {
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', uploadPreset);
+        formData.append("file", file);
+        formData.append("upload_preset", uploadPreset);
         axios({
           url: uploadURL,
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            "Content-Type": "application/x-www-form-urlencoded",
           },
           data: formData,
         })
@@ -76,7 +76,7 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
       >
         <input {...getInputProps()} />
         <span className="mx-auto flex justify-center">
-          <FiUploadCloud className="text-3xl text-emerald-500" />
+          <FiUploadCloud className="text-3xl text-red-500" />
         </span>
         <p className="text-sm mt-2">Drag your image here</p>
         <em className="text-xs text-gray-400">

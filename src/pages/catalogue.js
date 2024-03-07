@@ -36,7 +36,6 @@ import Discount from "@component/common/Discount";
 import ImageCarousel from "@component/carousel/ImageCarousel";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
-  console.log("product", product);
   const router = useRouter();
 
   const { lang, showingTranslateValue, getNumber, currency } =
@@ -51,7 +50,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
   const [value, setValue] = useState("");
   const [price, setPrice] = useState(0);
-  const [img, setImg] = useState(product?.image[0]);
+  const [img, setImg] = useState("");
   const [originalPrice, setOriginalPrice] = useState(0);
   const [stock, setStock] = useState(0);
   const [discount, setDiscount] = useState(0);
@@ -103,7 +102,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       setVariants(result);
       setSelectVariant(result2);
       setSelectVa(result2);
-      // setImg(result2?.image);
+      setImg(result2?.image);
       setStock(result2?.quantity);
       const price = getNumber(result2?.price);
       const originalPrice = getNumber(result2?.originalPrice);
@@ -122,7 +121,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       setStock(product.variants[0]?.quantity);
       setSelectVariant(product.variants[0]);
       setSelectVa(product.variants[0]);
-      // setImg(product.variants[0]?.image);
+      setImg(product.variants[0]?.image);
       const price = getNumber(product.variants[0]?.price);
       const originalPrice = getNumber(product.variants[0]?.originalPrice);
       const discountPercentage = getNumber(
@@ -133,7 +132,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       setOriginalPrice(originalPrice);
     } else {
       setStock(product?.stock);
-      // setImg(product?.image[0]);
+      setImg(product?.image[0]);
       const price = getNumber(product?.prices?.price);
       const originalPrice = getNumber(product?.prices?.originalPrice);
       const discountPercentage = getNumber(
@@ -546,7 +545,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 // you can use getServerSideProps alternative for getStaticProps and getStaticPaths
 
 export const getServerSideProps = async (context) => {
-  const { slug } = context.params;
+  const { slug } = context.params || null;
 
   const [data, attributes] = await Promise.all([
     ProductServices.getShowingStoreProducts({
