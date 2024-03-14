@@ -99,7 +99,7 @@ const CategoryMainCarousel = () => {
           },
         }}
         autoplay={{
-          delay: 2500,
+          delay: 25000,
           disableOnInteraction: false,
         }}
         modules={[Navigation, Autoplay]}
@@ -118,14 +118,14 @@ const CategoryMainCarousel = () => {
                     () => {}
                     // handleCategoryClick(category?._id, category.name)
                   }
-                  className="bg-gray-50 lg:py-16     sm:px-4 mb-2"
+                  className="bg-gray-50 lg:py-8     sm:px-4 mb-2 category-container"
                 >
-                  <div className="flex w-full h-full border shadow-md rounded-lg	 bg-gray-200   cursor-pointer transition duration-200 ease-linear transform group-hover:shadow-lg ">
+                  <div className="flex w-full h-full border shadow-md rounded-lg	 bg-gray-200   cursor-pointer  image-container">
                     <div className=" w-full justify-center	 items-center pb">
                       <div class="  relative h-72 lg:h-96">
                         {/* <!-- Text Overlay --> */}
                         <div class="absolute top-0 left-0 right-0 bottom-0 flex items-start mb-8 justify-center">
-                          <div class="text-center">
+                          <div class="text-center ">
                             <h2 class="lg:text-2xl font-black mb-2  mt-4 uppercase italic">
                               {showingTranslateValue(category?.name)}
                             </h2>
@@ -136,30 +136,20 @@ const CategoryMainCarousel = () => {
                             <Image
                               src={category?.icon}
                               alt="category"
-                              width={300}
-                              height={300}
-                              className="mt-2 object-contain transition duration-150 ease-linear transform group-hover:scale-105"
+                              width={275}
+                              height={275}
+                              style={{
+                                objectFit: "contain",
+                              }}
+                              sizes="100%"
+                              className="mt-4 object-contain transition duration-150 ease-linear transform hover:-translate-y-2"
                             />
+
+                            {/* </div> */}
                           </div>
                         </div>
                         <div class="absolute top-0  left-0 right-0 bottom-0  flex items-end mb-8 justify-center ">
                           <div class="text-center ">
-                            {/* <a>
-                              <button
-                                className=""
-                                class="mt-4 bg-red-500 text-white py-2 px-4  rounded-full"
-                                style={{ width: "100%", height: "50px" }}
-                                onClick={() => {
-                                  handleCategoryClick(
-                                    category?._id,
-                                    category?.name.en
-                                  );
-                                }}
-                              >
-                                {t("common:shopNow")}
-                              </button>
-                            </a> */}
-
                             <Link
                               href={`#`}
                               className="text-sm font-serif font-medium px-6 py-2 bg-red-500 text-center rounded-full text-white hover:bg-red-700"

@@ -8,7 +8,7 @@ const StepperController = ({ handleClick, steps, currentStep }) => {
   const { validateForm, submitData } = useWizzard();
   let stepper =
     currentStep < steps.length ? (
-      <div className="container flex justify-around mt-4 mb-8">
+      <div className=" flex justify-around mt-4 mb-8">
         {/* back button */}
         <button
           onClick={() => handleClick()}

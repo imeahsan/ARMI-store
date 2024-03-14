@@ -112,86 +112,7 @@ const Footer = () => {
               </ul>
             </div>
           )}
-          {storeCustomizationSetting?.footer?.block2_status && (
-            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-              <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
-                <CMSkeleton
-                  count={1}
-                  height={20}
-                  // error={error}
-                  loading={loading}
-                  data={storeCustomizationSetting?.footer?.block2_title}
-                />
-              </h3>
-              <ul className="text-sm lg:text-15px flex flex-col space-y-3">
-                <li className="flex items-baseline">
-                  <Link
-                    href={`${storeCustomizationSetting?.footer?.block2_sub_link1}`}
-                    className="text-gray-600 inline-block w-full hover:text-red-500"
-                  >
-                    <CMSkeleton
-                      count={1}
-                      height={10}
-                      // error={error}
-                      loading={loading}
-                      data={
-                        storeCustomizationSetting?.footer?.block2_sub_title1
-                      }
-                    />
-                  </Link>
-                </li>
 
-                <li className="flex items-baseline">
-                  <Link
-                    href={`${storeCustomizationSetting?.footer?.block2_sub_link2}`}
-                    className="text-gray-600 inline-block w-full hover:text-red-500"
-                  >
-                    <CMSkeleton
-                      count={1}
-                      height={10}
-                      // error={error}
-                      loading={loading}
-                      data={
-                        storeCustomizationSetting?.footer?.block2_sub_title2
-                      }
-                    />
-                  </Link>
-                </li>
-                <li className="flex items-baseline">
-                  <Link
-                    href={`${storeCustomizationSetting?.footer?.block2_sub_link3}`}
-                    className="text-gray-600 inline-block w-full hover:text-red-500"
-                  >
-                    <CMSkeleton
-                      count={1}
-                      height={10}
-                      // error={error}
-                      loading={loading}
-                      data={
-                        storeCustomizationSetting?.footer?.block2_sub_title3
-                      }
-                    />
-                  </Link>
-                </li>
-                <li className="flex items-baseline">
-                  <Link
-                    href={`${storeCustomizationSetting?.footer?.block2_sub_link4}`}
-                    className="text-gray-600 inline-block w-full hover:text-red-500"
-                  >
-                    <CMSkeleton
-                      count={1}
-                      height={10}
-                      // error={error}
-                      loading={loading}
-                      data={
-                        storeCustomizationSetting?.footer?.block2_sub_title4
-                      }
-                    />
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          )}
           {storeCustomizationSetting?.footer?.block3_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
               <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
@@ -289,15 +210,11 @@ const Footer = () => {
           )}
           {storeCustomizationSetting?.footer?.block4_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-              <Link
-                href="/"
-                className="mr-3 lg:mr-12 xl:mr-12"
-                rel="noreferrer"
-              >
+              <Link href="/" className="" rel="noreferrer">
                 {" "}
                 <Image
                   width={110}
-                  height={40}
+                  height={110}
                   src={
                     storeCustomizationSetting?.footer?.block4_logo ||
                     "/logo/logo-color.svg"
@@ -327,6 +244,22 @@ const Footer = () => {
                   Email : {storeCustomizationSetting?.footer?.block4_email}
                 </span>
               </p>
+            </div>
+          )}
+          {storeCustomizationSetting?.footer?.block4_status && (
+            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3 ">
+              <div
+                className="bg-gray h-full w-full flex flex-col justify-center flex-nowrap	
+               items-center	  "
+              >
+                <Image
+                  width={110}
+                  height={40}
+                  src={"/recycle.png"}
+                  alt="recycle"
+                />
+                <Image width={110} height={40} src={"/e2e.png"} alt="logo" />
+              </div>
             </div>
           )}
         </div>

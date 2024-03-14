@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 //internal import
@@ -12,6 +12,18 @@ import VideoPlayer from "@component/common/VideoPlayer";
 const AboutUs = () => {
   const { storeCustomizationSetting, loading, error } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
+  useEffect(() => {
+    const hash = window.location.hash;
+
+    setTimeout(() => {
+      if (hash) {
+        const elementToScrollTo = document.querySelector(hash);
+        if (elementToScrollTo) {
+          elementToScrollTo.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, 3000);
+  }, []);
 
   // console.log("data", data, );
 
@@ -160,13 +172,13 @@ const AboutUs = () => {
               alt="logo"
               className="block rounded-lg"
             /> */}
-           
+
             <VideoPlayer />
           </div>
         </div>
 
         {/* team */}
-        <div className="bg-gray-50 lg:py-20 py-10">
+        <div className="bg-gray-50 lg:py-20 py-10" id="team">
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">

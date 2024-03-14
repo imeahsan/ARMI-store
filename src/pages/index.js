@@ -22,6 +22,7 @@ import AuctionCard from "@component/offer/AuctionCard";
 import Link from "next/link";
 import CategoryMainCarousel from "@component/carousel/CategoryMainCarousel";
 import DiscountedProductsCarousel from "@component/carousel/DiscountedProductsCarousel";
+import Test from "@component/Test";
 
 const Home = ({ popularProducts, discountProducts, attributes }) => {
   const router = useRouter();
@@ -232,77 +233,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               )}
 
               {/* popular products */}
-              {storeCustomizationSetting?.home?.popular_products_status && (
-                <div className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
-                  <div className="mb-10 flex justify-center">
-                    <div className="text-center w-full lg:w-2/5">
-                      <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
-                        <CMSkeleton
-                          count={1}
-                          height={30}
-                          // error={error}
-                          loading={loading}
-                          data={storeCustomizationSetting?.home?.popular_title}
-                        />
-                      </h2>
-                      <p className="text-base font-sans text-gray-600 leading-6">
-                        <CMSkeleton
-                          count={5}
-                          height={10}
-                          error={error}
-                          loading={loading}
-                          data={
-                            storeCustomizationSetting?.home?.popular_description
-                          }
-                        />
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="w-full">
-                      {loading ? (
-                        <CMSkeleton
-                          count={20}
-                          height={20}
-                          error={error}
-                          loading={loading}
-                        />
-                      ) : (
-                        <DiscountedProductsCarousel
-                          popularProducts={popularProducts}
-                          attributes={attributes}
-                        />
 
-                        // <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                        //   {popularProducts
-                        //     ?.slice(
-                        //       0,
-                        //       storeCustomizationSetting?.home
-                        //         ?.popular_product_limit
-                        //     )
-                        //     .map((product) => (
-                        //       <ProductCard
-                        //         key={product._id}
-                        //         product={product}
-                        //         attributes={attributes}
-                        //       />
-                        //     ))}
-                        // </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* promotional banner card */}
-
-              {/* discounted products */}
-              {storeCustomizationSetting?.home?.discount_product_status &&
-                discountProducts?.length > 0 && (
-                  <div
-                    id="discount"
-                    className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10"
-                  >
+              <Test>
+                {storeCustomizationSetting?.home?.popular_products_status && (
+                  <div className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
                     <div className="mb-10 flex justify-center">
                       <div className="text-center w-full lg:w-2/5">
                         <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
@@ -312,20 +246,19 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                             // error={error}
                             loading={loading}
                             data={
-                              storeCustomizationSetting?.home
-                                ?.latest_discount_title
+                              storeCustomizationSetting?.home?.popular_title
                             }
                           />
                         </h2>
                         <p className="text-base font-sans text-gray-600 leading-6">
                           <CMSkeleton
                             count={5}
-                            height={20}
-                            // error={error}
+                            height={10}
+                            error={error}
                             loading={loading}
                             data={
                               storeCustomizationSetting?.home
-                                ?.latest_discount_description
+                                ?.popular_description
                             }
                           />
                         </p>
@@ -342,15 +275,16 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                           />
                         ) : (
                           <DiscountedProductsCarousel
-                            popularProducts={discountProducts}
+                            popularProducts={popularProducts}
                             attributes={attributes}
                           />
+
                           // <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
-                          //   {discountProducts
+                          //   {popularProducts
                           //     ?.slice(
                           //       0,
                           //       storeCustomizationSetting?.home
-                          //         ?.latest_discount_product_limit
+                          //         ?.popular_product_limit
                           //     )
                           //     .map((product) => (
                           //       <ProductCard
@@ -365,17 +299,77 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     </div>
                   </div>
                 )}
-            </div>
-          </div>
-          <div
-            className="parallax-banner relative overflow-hidden bg-black  bg-fixed bg-cover bg-center h-80 md:h-96"
-            // style={customStyles}
-          >
-            <div className="parallax-content absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-              <h1 className="text-4xl md:text-6xl font-bold">
-                Your Banner Title
-              </h1>
-              <p className="mt-4 text-lg">Your Banner Subtitle</p>
+
+                {/* discounted products */}
+                {storeCustomizationSetting?.home?.discount_product_status &&
+                  discountProducts?.length > 0 && (
+                    <div
+                      id="discount"
+                      className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10"
+                    >
+                      <div className="mb-10 flex justify-center">
+                        <div className="text-center w-full lg:w-2/5">
+                          <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
+                            <CMSkeleton
+                              count={1}
+                              height={30}
+                              // error={error}
+                              loading={loading}
+                              data={
+                                storeCustomizationSetting?.home
+                                  ?.latest_discount_title
+                              }
+                            />
+                          </h2>
+                          <p className="text-base font-sans text-gray-600 leading-6">
+                            <CMSkeleton
+                              count={5}
+                              height={20}
+                              // error={error}
+                              loading={loading}
+                              data={
+                                storeCustomizationSetting?.home
+                                  ?.latest_discount_description
+                              }
+                            />
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex">
+                        <div className="w-full">
+                          {loading ? (
+                            <CMSkeleton
+                              count={20}
+                              height={20}
+                              error={error}
+                              loading={loading}
+                            />
+                          ) : (
+                            <DiscountedProductsCarousel
+                              popularProducts={discountProducts}
+                              attributes={attributes}
+                            />
+                            // <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
+                            //   {discountProducts
+                            //     ?.slice(
+                            //       0,
+                            //       storeCustomizationSetting?.home
+                            //         ?.latest_discount_product_limit
+                            //     )
+                            //     .map((product) => (
+                            //       <ProductCard
+                            //         key={product._id}
+                            //         product={product}
+                            //         attributes={attributes}
+                            //       />
+                            //     ))}
+                            // </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+              </Test>
             </div>
           </div>
         </Layout>

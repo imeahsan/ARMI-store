@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   const { make, model, variant, year, image } = useWizzard();
   return (
-    <div className=" w-1/4 border-4  p-2 bg-white border-collapse">
+    <div className=" w-1/4 border-4  p-2 bg-white border-collapse hidden sm:block">
       <h1 className="  text-red-600 tracking-wide font-bold	text-center	">
         {t("common:yourVehicle")}
       </h1>

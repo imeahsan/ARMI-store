@@ -33,13 +33,11 @@ const Search = ({ products, attributes }) => {
               {/* <div className="w-full grid grid-col gap-4 grid-cols-1 2xl:gap-6 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2">
                 <Card />
               </div> */}
-              <div className="relative">
-                {/* <CategoryCarousel /> */}
-              </div>
+              <div className="relative">{/* <CategoryCarousel /> */}</div>
               {productData?.length === 0 ? (
-                <div className="text-center align-middle mx-auto p-5 my-5">
+                <div className="text-center  align-middle mx-auto p-5 my-5">
                   <Image
-                    className="my-4"
+                    className="my-4 mx-auto"
                     src="/no-result.svg"
                     alt="no-result"
                     width={400}
@@ -81,11 +79,14 @@ const Search = ({ products, attributes }) => {
                 <>
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
                     {productData?.slice(0, visibleProduct).map((product, i) => (
-                      <ProductCard
-                        key={i + 1}
-                        product={product}
-                        attributes={attributes}
-                      />
+                      <div className="m-2 shadow-lg">
+                        {" "}
+                        <ProductCard
+                          key={i + 1}
+                          product={product}
+                          attributes={attributes}
+                        />
+                      </div>
                     ))}
                   </div>
 
@@ -111,18 +112,23 @@ export default Search;
 
 export const getServerSideProps = async (context) => {
   const { query, _id } = context.query;
-
+  // console.log(query);
   const [data, attributes] = await Promise.all([
-    ProductServices.getShowingStoreProducts({
-      category: _id ? _id : "",
-      title: query ? encodeURIComponent(query) : "",
-    }),
+    query
+      ? ProductServices.getShowingStoreProducts({
+          category: _id ? _id : "",
+          title: query ? encodeURIComponent(query) : "",
+        })
+      : ProductServices.getShowingProducts({
+          category: _id ? _id : "",
+          title: query ? encodeURIComponent(query) : "",
+        }),
     AttributeServices.getShowingAttributes({}),
   ]);
 
   return {
     props: {
-      products: data?.products,
+      products: data,
       attributes,
     },
   };

@@ -65,11 +65,11 @@ const QuotationRequest = () => {
           className="lg:w-2/3 mx-auto shaddow xl rounded-2xl pb-2 bg-white"
           style={{ backgroundColor: "#f1f5f9" }}
         >
-          <div className="container horizontal mt-5 mb-12 p-4">
+          <div className="  mt-5 mb-0 sm:mb-12 p-4">
             <Stepper steps={steps} currentStep={currentStep} />
           </div>
           {/* <div className="w-1/4"></div> */}
-          <div className=" flex  pb-4">
+          <div className=" flex justify-center pb-4">
             <Sidebar />
             {dispayStep(currentStep)}
           </div>

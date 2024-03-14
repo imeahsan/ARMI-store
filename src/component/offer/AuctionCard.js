@@ -14,8 +14,8 @@ const AuctionCard = () => {
   const { t } = useTranslation();
   return (
     <div className=" group mr-1 " style={{ width: "100%", height: "475px" }}>
-      <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform group-hover:border-emerald-500 rounded-2xl shadow ">
-        <div className=" rounded-t-2xl text-gray-900 px-6 py-2 rounded-t  flex items-center  justify-center">
+      <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform  rounded-2xl  ">
+        <div className=" rounded-t-2xl text-gray-900 px-6 py-2   flex items-center  justify-center">
           <h3 className="text-base font-serif font-medium "></h3>
         </div>
         <div className="overflow-hidden pt-4" style={{ alignItems: "center" }}>
