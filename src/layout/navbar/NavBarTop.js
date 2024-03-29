@@ -37,7 +37,7 @@ const NavBarTop = () => {
     Cookies.remove("couponInfo");
     router.push("/");
   };
-  console.log(storeCustomizationSetting?.navbar?.logout);
+  // console.log(storeCustomizationSetting?.navbar?.logout);
 
   return (
     <>

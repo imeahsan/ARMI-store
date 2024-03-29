@@ -44,10 +44,13 @@ const FeatureCard = () => {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 mx-auto">
-      {featurePromo.map((promo) => (
+      {featurePromo.map((promo, index) => (
         <div
           key={promo.id}
-          className=" border-r border-gray-200 py-1 flex items-center justify-center bg-white"
+          className={
+            " border-r border-gray-200 py-1 flex items-center justify-center bg-white" +
+            (index === 0 ? " border-l" : "")
+          }
         >
           <div className="mr-3">
             <promo.icon

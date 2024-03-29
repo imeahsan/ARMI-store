@@ -57,7 +57,7 @@ const CardTwo = () => {
           </div>
           <div className="w-full sm:w-1/5  md:w-1/2 lg:w-2/5 flex-grow  lg:flex md:flex md:justify-items-end lg:justify-end right-500  relative left-16">
             <div className="absolute md:-top-20 lg:-top-40	hidden md:block">
-              <Image
+              <img
                 width={500}
                 height={250}
                 alt="Quick Delivery to Your Home"
@@ -68,7 +68,7 @@ const CardTwo = () => {
                 }`}
                 src={
                   // storeCustomizationSetting?.home?.quick_delivery_img ||
-                  "/car-image.png"
+                  "/car-image-min.png"
                 }
               />
             </div>

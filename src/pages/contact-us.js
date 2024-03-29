@@ -8,12 +8,13 @@ import { FiMail, FiMapPin, FiBell } from "react-icons/fi";
 import Layout from "@layout/Layout";
 import Label from "@component/form/Label";
 import Error from "@component/form/Error";
-import { notifySuccess } from "@utils/toast";
+import { notifyError, notifySuccess } from "@utils/toast";
 import InputArea from "@component/form/InputArea";
 import PageHeader from "@component/header/PageHeader";
 import useGetSetting from "@hooks/useGetSetting";
 import CMSkeleton from "@component/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import { instance } from "@services/httpServices";
 
 const ContactUs = () => {
   const { t } = useTranslation();
@@ -26,10 +27,28 @@ const ContactUs = () => {
   const { showingTranslateValue } = useUtilsFunction();
   const { storeCustomizationSetting, loading, error } = useGetSetting();
 
-  const submitHandler = () => {
-    notifySuccess(
-      "your message sent successfully. We will contact you shortly."
-    );
+  const submitHandler = async ({ ...data }) => {
+    try {
+      console.log(data);
+      let formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("subject", data.subject);
+      formData.append("message", data.message);
+
+      let res = await instance.post("/utils/contact", formData);
+      if (res.data.success) {
+        console.log(res.data);
+        notifySuccess(
+          "your message sent successfully. We will contact you shortly."
+        );
+        return true;
+      }
+      notifyError("Unable to process your request. Please try again later.");
+    } catch (e) {
+      console.error(e);
+      notifyError("Unable to process your request. Please try again later.");
+    }
   };
 
   return (

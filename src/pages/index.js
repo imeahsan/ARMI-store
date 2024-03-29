@@ -183,7 +183,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             )}
             {/* feature category's */}
             {storeCustomizationSetting?.home?.featured_status && (
-              <div className=" lg:py-16 py-10 w-11/12 mx-auto ">
+              <div
+                className=" lg:py-16 py-10 w-11/12 mx-auto "
+                style={{ direction: "ltr" }}
+              >
                 <div className="mx-auto max-w-screen-2xl  justify-center ">
                   <div className="mb-10 flex justify-center">
                     <div className="text-center w-full lg:w-2/5">
@@ -265,7 +268,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                       </div>
                     </div>
                     <div className="flex">
-                      <div className="w-full">
+                      <div className="w-full" style={{ direction: "ltr" }}>
                         {loading ? (
                           <CMSkeleton
                             count={20}
@@ -336,7 +339,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                         </div>
                       </div>
                       <div className="flex">
-                        <div className="w-full">
+                        <div className="w-full" style={{ direction: "ltr" }}>
                           {loading ? (
                             <CMSkeleton
                               count={20}

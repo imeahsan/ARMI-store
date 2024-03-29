@@ -33,15 +33,17 @@ const NavbarPromo = () => {
 
   const { showingTranslateValue } = useUtilsFunction();
   const { direction, setRTL, setLTR } = useDirection();
-  console.log(direction);
+  // console.log(direction);
   const handleLanguage = (lang) => {
+    console.log(lang);
     setCurrentLang(lang);
+    localStorage.setItem("_lang", lang?.iso_code);
     Cookies.set("_lang", lang?.iso_code, {
       sameSite: "None",
       secure: true,
     });
 
-    console.log(navigator.language);
+    // console.log(navigator.language);
 
     if (lang.iso_code === "en") {
       setLTR();
@@ -56,16 +58,16 @@ const NavbarPromo = () => {
         try {
           const res = await SettingServices.getShowingLanguage();
           setLanguages(res);
-          console.log("result", res);
+          // console.log("result", res);
 
           const result = res?.find((language) => language?.iso_code === lang);
-          console.log("result", result);
+          // console.log("result", result);
           setCurrentLang(result);
           console.log(result);
-          console.log("flag", currentLang?.flag?.toLowerCase());
+          // console.log("flag", currentLang?.flag?.toLowerCase());
         } catch (err) {
           notifyError(err);
-          console.log("error on getting lang", err);
+          // console.log("error on getting lang", err);
         }
       }
     })();
@@ -79,18 +81,18 @@ const NavbarPromo = () => {
         style={{ zIndex: 99999, direction: "ltr" }}
       >
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center">
-          <div className="w-1/3 inline-flex">
+          <div className="w-1/3 hidden lg:flex xl:flex">
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center md:justify-start md:space-x-10">
                   <Popover.Group
                     as="nav"
-                    className=" space-x-10 items-center hidden lg:flex xl:flex"
+                    className=" space-x-10 items-center hidden lg:flex xl:flex "
                   >
                     {storeCustomizationSetting?.navbar?.contact_menu_status && (
                       <Link
                         onClick={() => setIsLoading(!isLoading)}
-                        href="/contact-us"
+                        href="/"
                         className="font-serif mx-4 py-2 text-sm font-medium hover:text-red-600 whitespace-nowrap	tracking-wide"
                       >
                         {t("common:HOME")}
@@ -122,7 +124,7 @@ const NavbarPromo = () => {
               </div>
             </Popover>
           </div>
-          <div className="w-1/1  md:w-2/8  flex justify-center">
+          <div className=" md:w-2/8  flex lg:justify-center justify-start">
             <Link href="/" className="   ">
               <Image
                 width={225}
@@ -133,7 +135,7 @@ const NavbarPromo = () => {
                   "/logo/logo-light.svg"
                 }
                 alt="logo"
-                className=" lg:mr-12 sm:-translate-x-12  block md:-translate-x-20 lg:-translate-x-0"
+                className="block lg:-translate-x-0 -translate-x-10"
               />
             </Link>
           </div>

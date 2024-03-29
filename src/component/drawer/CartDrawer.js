@@ -8,7 +8,7 @@ import { SidebarContext } from "@context/SidebarContext";
 
 const CartDrawer = () => {
   const { cartDrawerOpen, closeCartDrawer } = useContext(SidebarContext);
-console.log(cartDrawerOpen);
+  // console.log(cartDrawerOpen);
   return (
     <Drawer
       open={cartDrawerOpen}

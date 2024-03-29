@@ -34,7 +34,6 @@ const Layout = ({ title, description, children }) => {
         <NavbarPromo />
         <CartDrawer />
 
-        {/* <Navbar /> */}
         <div
           className="bg-gray-50"
           // style={{ direction: "rtl" }}

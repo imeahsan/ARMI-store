@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
 
 //internal import
 import useAsync from "@hooks/useAsync";
@@ -43,8 +44,8 @@ const CategoryCarousel = () => {
           swiper.navigation.update();
         }}
         spaceBetween={8}
-        navigation={true}
-        allowTouchMove={false}
+        navigation={false}
+        allowTouchMove={true}
         loop={true}
         breakpoints={{
           // when window width is >= 640px
@@ -89,7 +90,7 @@ const CategoryCarousel = () => {
             slidesPerView: 10,
           },
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper category-slider my-10"
       >
         {error ? (

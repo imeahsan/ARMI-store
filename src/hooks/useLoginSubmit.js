@@ -26,6 +26,7 @@ const useLoginSubmit = (setModalOpen) => {
   const submitHandler = ({
     name,
     email,
+    phone,
     registerEmail,
     verifyEmail,
     password,
@@ -54,7 +55,7 @@ const useLoginSubmit = (setModalOpen) => {
         });
     }
     if (name && email && password) {
-      CustomerServices.verifyEmailAddress({ name, email, password })
+      CustomerServices.verifyEmailAddress({ name, email, phone, password })
         .then((res) => {
           setLoading(false);
           setModalOpen(false);

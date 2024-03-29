@@ -173,8 +173,7 @@ const useCheckoutSubmit = () => {
           message: `${res.user_info.name}, Placed ${currency}${parseFloat(
             res.total
           ).toFixed(2)} order!`,
-          image:
-            "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png",
+          image: "image.png",
         };
         // notification api call
         await NotificationServices.addNotification(notificationInfo);
@@ -218,8 +217,7 @@ const useCheckoutSubmit = () => {
         message: `${resOrder.user_info.name}, Placed ${currency}${parseFloat(
           resOrder.total
         ).toFixed(2)} order!`,
-        image:
-          "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png",
+        image: "image.png",
       };
       // notification api call
       await NotificationServices.addNotification(notificationInfo);

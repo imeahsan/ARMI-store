@@ -34,7 +34,7 @@ const PartsCard = () => {
           <h1
             style={{
               fontSize: "42px",
-              fontWeight: 600,
+              fontWeight: "bold",
               lineHeight: "38px",
               textAlign: "center",
               letterSpacing: "-1px",

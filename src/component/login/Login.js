@@ -26,10 +26,10 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
             <InputArea
               register={register}
               defaultValue="justin@gmail.com"
-              label="Email"
+              label=""
               name="registerEmail"
-              type="email"
-              placeholder="Email"
+              type="text"
+              placeholder="Email / Phone"
               Icon={FiMail}
             />
             <Error errorName={errors.registerEmail} />
@@ -38,7 +38,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
             <InputArea
               register={register}
               defaultValue="12345678"
-              label="Password"
+              // label="Password"
               name="password"
               type="password"
               placeholder="Password"

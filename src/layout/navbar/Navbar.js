@@ -38,12 +38,12 @@ const Navbar = () => {
 
     // return;
     if (searchText) {
-      router.push(`/search?query=${searchText}`, null, { scroll: false });
-      setSearchText("");
+      router.replace(`/search?query=${searchText}`, null, { scroll: false });
+      // setSearchText("");
       handleLogEvent("search", `searched ${searchText}`);
     } else {
-      router.push(`/ `, null, { scroll: false });
-      setSearchText("");
+      router.push(`/search `, null, { scroll: false });
+      // setSearchText("");
     }
   };
 
@@ -62,7 +62,7 @@ const Navbar = () => {
 
       <div className=" top-0 z-20">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-          <div className="top-bar h-16 lg:h-auto flex items-center justify-center py-4 mx-auto">
+          <div className="top-bar h-16 lg:h-auto flex items-center justify-center pt-8 mx-auto">
             {/* <Link
               href="/"
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
@@ -86,13 +86,13 @@ const Navbar = () => {
                 <div className="flex flex-col mx-auto w-full">
                   <form
                     onSubmit={handleSubmit}
-                    className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-md rounded-md w-full"
+                    className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-lg rounded-md w-full"
                   >
-                    <label className="flex items-center py-0.5 w-100">
+                    <label className="flex items-center py-0.5 w-100 ">
                       <input
                         onChange={(e) => setSearchText(e.target.value)}
                         value={searchText}
-                        className="form-input sm-6 pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
+                        className="form-input  sm-6 pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
                         placeholder={t(`common:search-placeholder`)}
                       />
                     </label>
