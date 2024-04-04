@@ -37,7 +37,7 @@ const TermAndConditions = () => {
           <br />
           <CMSkeleton count={15} height={15} loading={loading} />
           {/* <div className="mb-6 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:terms-condition-cookies")}
             </h2>
             <div className="font-sans leading-7">
@@ -45,7 +45,7 @@ const TermAndConditions = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:terms-condition-license")}
             </h2>
             <div className="font-sans leading-7">
@@ -67,7 +67,7 @@ const TermAndConditions = () => {
               <p>{t("common:terms-condition-license-docs8")}</p>
             </div>
             <div className="my-6 lg:my-8 last:mb-0">
-              <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+              <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
                 {t("common:terms-condition-liability")}
               </h2>
               <div className="font-sans leading-7">
@@ -75,7 +75,7 @@ const TermAndConditions = () => {
               </div>
             </div>
             <div className="my-6 lg:my-8 last:mb-0">
-              <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+              <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
                 {t("common:terms-condition-privacy")}
               </h2>
               <div className="font-sans leading-7">
@@ -90,7 +90,7 @@ const TermAndConditions = () => {
               </div>
             </div>
             <div className="my-6 lg:my-8 last:mb-0">
-              <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+              <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
                 {t("common:terms-condition-rights")}
               </h2>
               <div className="font-sans leading-7">
@@ -98,7 +98,7 @@ const TermAndConditions = () => {
               </div>
             </div>
             <div className="my-6 lg:my-8 last:mb-0">
-              <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+              <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
                 {t("common:terms-condition-website")}
               </h2>
               <div className="font-sans leading-7">
@@ -106,7 +106,7 @@ const TermAndConditions = () => {
               </div>
             </div>
             <div className="my-6 lg:my-8 last:mb-0">
-              <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+              <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
                 {t("common:terms-condition-disclaimer")}
               </h2>
               <div className="font-sans leading-7">

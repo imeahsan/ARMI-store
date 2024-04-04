@@ -250,7 +250,7 @@ const ProductModal = ({
                 <Link href={`/product/${product.slug}`} passHref>
                   <h1
                     onClick={() => setModalOpen(false)}
-                    className="text-heading text-lg md:text-xl lg:text-2xl font-semibold font-serif hover:text-black cursor-pointer"
+                    className="text-heading text-lg md:text-xl lg:text-2xl font-bold font-serif hover:text-black cursor-pointer"
                   >
                     {showingTranslateValue(product?.title)}
                   </h1>
@@ -310,7 +310,7 @@ const ProductModal = ({
                         <FiMinus />
                       </span>
                     </button>
-                    <p className="font-semibold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
+                    <p className="font-bold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
                       {item}
                     </p>
                     <button
@@ -328,7 +328,7 @@ const ProductModal = ({
                   <button
                     onClick={() => handleAddToCart(product)}
                     disabled={product.quantity < 1}
-                    className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
+                    className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
                   >
                     {t("common:addToCart")}
                   </button>
@@ -337,7 +337,7 @@ const ProductModal = ({
               <div className="flex items-center mt-4">
                 <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                   <div>
-                    <span className="font-serif font-semibold py-1 text-sm d-block">
+                    <span className="font-serif font-bold py-1 text-sm d-block">
                       <span className="text-gray-700">
                         {t("common:category")}:
                       </span>{" "}
@@ -370,9 +370,7 @@ const ProductModal = ({
               <div className="flex justify-end mt-2">
                 <p className="text-xs sm:text-sm text-gray-600">
                   Call Us To Order By Mobile Number :{" "}
-                  <span className="text-red-700 font-semibold">
-                    +0044235234
-                  </span>{" "}
+                  <span className="text-red-700 font-bold">+0044235234</span>{" "}
                 </p>
               </div>
             </div>

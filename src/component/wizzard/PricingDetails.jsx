@@ -198,7 +198,7 @@ const PricingDetails = () => {
           </div>
         </div>
       </div>
-      <div className="p-8 text-red-600 font-semibold">
+      <div className="p-8 text-red-600 font-bold">
         {errors?.map((e) => (
           <p> * {e}</p>
         ))}

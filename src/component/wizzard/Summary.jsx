@@ -15,7 +15,7 @@ const Summary = ({ setCurrentStep }) => {
             contact you within 1 bussiness day for further queries, you can also
             conatct us ans about this request my nentioning your request number.
           </p>
-          <h1 className="  tracking-wide font-semibold">
+          <h1 className="  tracking-wide font-bold">
             Request Number: <span className="text-red-600">{requestNo}</span>
           </h1>
         </div>
@@ -26,7 +26,7 @@ const Summary = ({ setCurrentStep }) => {
             and try submitting your request again
           </p>
           <h1
-            className="  tracking-wide font-semibold"
+            className="  tracking-wide font-bold"
             onClick={() => setCurrentStep(4)}
           >
             <span className="text-emerald-500">Go Back</span>

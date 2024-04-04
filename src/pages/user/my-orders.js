@@ -74,7 +74,7 @@ const MyOrders = () => {
               </h2>
             ) : data?.orders?.length === 0 ? (
               <div className="text-center">
-                <span className="flex justify-center my-30 pt-16 text-red-500 font-semibold text-6xl">
+                <span className="flex justify-center my-30 pt-16 text-red-500 font-bold text-6xl">
                   <IoBagHandle />
                 </span>
                 <h2 className="font-medium text-md my-4 text-gray-600">
@@ -83,9 +83,7 @@ const MyOrders = () => {
               </div>
             ) : (
               <div className="flex flex-col">
-                <h2 className="text-xl font-serif font-semibold mb-5">
-                  My Orders
-                </h2>
+                <h2 className="text-xl font-serif font-bold mb-5">My Orders</h2>
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div className="align-middle inline-block border border-gray-100 rounded-md min-w-full pb-2 sm:px-6 lg:px-8">
                     <div className="overflow-hidden border-b last:border-b-0 border-gray-100 rounded-md">
@@ -94,38 +92,38 @@ const MyOrders = () => {
                           <tr className="bg-gray-100">
                             <th
                               scope="col"
-                              className="text-left text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-left text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               ID
                             </th>
                             <th
                               scope="col"
-                              className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               OrderTime
                             </th>
 
                             <th
                               scope="col"
-                              className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               Method
                             </th>
                             <th
                               scope="col"
-                              className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               Status
                             </th>
                             <th
                               scope="col"
-                              className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               Total
                             </th>
                             <th
                               scope="col"
-                              className="text-right text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                              className="text-right text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                             >
                               Action
                             </th>
@@ -137,7 +135,7 @@ const MyOrders = () => {
                               <OrderHistory order={order} />
                               <td className="px-5 py-3 whitespace-nowrap text-right text-sm">
                                 <Link
-                                  className="px-3 py-1 bg-emerald-100 text-xs text-emerald-600 hover:bg-emerald-500 hover:text-white transition-all font-semibold rounded-full"
+                                  className="px-3 py-1 bg-emerald-100 text-xs text-emerald-600 hover:bg-emerald-500 hover:text-white transition-all font-bold rounded-full"
                                   href={`/order/${order._id}`}
                                 >
                                   Details

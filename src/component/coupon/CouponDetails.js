@@ -33,27 +33,27 @@ const CouponDetails = ({ coupon }) => {
           <div className="ml-5">
             {dayjs().isAfter(dayjs(coupon.endTime)) ? (
               <span className="inline-block mb-2">
-                <div className="flex items-center font-semibold">
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                <div className="flex items-center font-bold">
+                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                     00
                   </span>
                 </div>
               </span>
             ) : (
               <span className="inline-block mb-2">
-                <div className="flex items-center font-semibold">
+                <div className="flex items-center font-bold">
                   <OfferTimer expiryTimestamp={new Date(coupon.endTime)} />
                 </div>
               </span>
@@ -82,9 +82,7 @@ const CouponDetails = ({ coupon }) => {
                         Inactive
                       </span>
                     ) : (
-                      <span className="text-red-600 inline-block">
-                        Active
-                      </span>
+                      <span className="text-red-600 inline-block">Active</span>
                     )}
                   </div>
                 </div>
@@ -96,11 +94,11 @@ const CouponDetails = ({ coupon }) => {
                   >
                     <button className="block w-full">
                       {copied && coupon.couponCode === copiedCode ? (
-                        <span className="text-emerald-600 text-base leading-7 font-semibold">
+                        <span className="text-emerald-600 text-base leading-7 font-bold">
                           Copied!
                         </span>
                       ) : (
-                        <span className="uppercase font-serif font-semibold text-base leading-7 text-emerald-600">
+                        <span className="uppercase font-serif font-bold text-base leading-7 text-emerald-600">
                           {coupon.couponCode}{" "}
                         </span>
                       )}

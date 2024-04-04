@@ -38,9 +38,7 @@ const CheckoutCard = ({ item }) => {
                 <FiMinus />
               </span>
             </div>
-            <p className="text-sm font-semibold text-dark px-1">
-              {item.quantity}
-            </p>
+            <p className="text-sm font-bold text-dark px-1">{item.quantity}</p>
             <div
               className="cursor-pointer"
               onClick={() => updateItemQuantity(item.id, item.quantity + 1)}

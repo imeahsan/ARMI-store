@@ -29,7 +29,7 @@ const RecentOrder = ({ data, loading, error }) => {
             </h2>
           ) : data?.orders?.length === 0 ? (
             <div className="text-center">
-              <span className="flex justify-center my-30 pt-16 text-red-500 font-semibold text-6xl">
+              <span className="flex justify-center my-30 pt-16 text-red-500 font-bold text-6xl">
                 <IoBagHandle />
               </span>
               <h2 className="font-medium text-md my-4 text-gray-600">
@@ -51,32 +51,32 @@ const RecentOrder = ({ data, loading, error }) => {
                         <tr className="bg-gray-100">
                           <th
                             scope="col"
-                            className="text-left text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                            className="text-left text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                           >
                             ID
                           </th>
                           <th
                             scope="col"
-                            className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                            className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                           >
                             OrderTime
                           </th>
 
                           <th
                             scope="col"
-                            className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                            className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                           >
                             Method
                           </th>
                           <th
                             scope="col"
-                            className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                            className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                           >
                             Status
                           </th>
                           <th
                             scope="col"
-                            className="text-center text-xs font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider"
+                            className="text-center text-xs font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider"
                           >
                             Total
                           </th>

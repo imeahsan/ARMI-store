@@ -89,7 +89,7 @@ const Order = ({ params }) => {
                     loading ? (
                       "Loading..."
                     ) : (
-                      <button className="mb-3 sm:mb-0 md:mb-0 lg:mb-0 flex items-center justify-center bg-emerald-500  text-white transition-all font-serif text-sm font-semibold h-10 py-2 px-5 rounded-md">
+                      <button className="mb-3 sm:mb-0 md:mb-0 lg:mb-0 flex items-center justify-center bg-emerald-500  text-white transition-all font-serif text-sm font-bold h-10 py-2 px-5 rounded-md">
                         {showingTranslateValue(
                           storeCustomizationSetting?.dashboard?.download_button
                         )}{" "}
@@ -103,7 +103,7 @@ const Order = ({ params }) => {
 
                 <ReactToPrint
                   trigger={() => (
-                    <button className="mb-3 sm:mb-0 md:mb-0 lg:mb-0 flex items-center justify-center bg-emerald-500  text-white transition-all font-serif text-sm font-semibold h-10 py-2 px-5 rounded-md">
+                    <button className="mb-3 sm:mb-0 md:mb-0 lg:mb-0 flex items-center justify-center bg-emerald-500  text-white transition-all font-serif text-sm font-bold h-10 py-2 px-5 rounded-md">
                       {showingTranslateValue(
                         storeCustomizationSetting?.dashboard?.print_button
                       )}{" "}

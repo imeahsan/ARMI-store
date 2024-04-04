@@ -68,11 +68,7 @@ const ProductCard = ({ product, attributes }) => {
 
       <div className="group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center bg-white relative">
         <div className="w-full flex justify-between ">
-          <Stock
-            product={product}
-            stock={product.stock}
-            card
-          />
+          <Stock product={product} stock={product.stock} card />
           <Discount product={product} />
         </div>
         <div
@@ -149,7 +145,7 @@ const ProductCard = ({ product, attributes }) => {
                             <IoRemove />
                           </span>
                         </button>
-                        <p className="text-sm text-dark px-1 font-serif font-semibold">
+                        <p className="text-sm text-dark px-1 font-serif font-bold">
                           {item.quantity}
                         </p>
                         <button

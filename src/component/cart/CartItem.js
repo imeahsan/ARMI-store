@@ -50,9 +50,7 @@ const CartItem = ({ item, currency }) => {
                 <FiMinus />
               </span>
             </button>
-            <p className="text-sm font-semibold text-dark px-1">
-              {item.quantity}
-            </p>
+            <p className="text-sm font-bold text-dark px-1">{item.quantity}</p>
             <button onClick={() => handleIncreaseQuantity(item)}>
               <span className="text-dark text-base">
                 <FiPlus />

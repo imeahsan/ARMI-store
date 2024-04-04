@@ -24,7 +24,7 @@ const Category = () => {
     <div className="flex flex-col w-full h-full bg-white cursor-pointer scrollbar-hide">
       {categoryDrawerOpen && (
         <div className="w-full flex justify-between items-center h-16 px-6 py-4 bg-gray-200 text-white border-b border-gray-100">
-          <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center">
+          <h2 className="font-bold font-serif text-lg m-0 text-heading flex align-center">
             <Link href="/" className="mr-10">
               <Image
                 width={100}
@@ -45,7 +45,7 @@ const Category = () => {
       )}
       <div className="w-full max-h-full">
         {categoryDrawerOpen && (
-          <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center border-b px-8 py-3">
+          <h2 className="font-bold font-serif text-lg m-0 text-heading flex align-center border-b px-8 py-3">
             All Categories
           </h2>
         )}
@@ -71,7 +71,7 @@ const Category = () => {
 
         {categoryDrawerOpen && (
           <div className="relative grid gap-2 mt-5">
-            <h3 className="font-semibold font-serif text-lg m-0 text-heading flex align-center border-b px-8 py-3">
+            <h3 className="font-bold font-serif text-lg m-0 text-heading flex align-center border-b px-8 py-3">
               {/* Pages */}
             </h3>
             <div className="relative grid gap-1 p-6">

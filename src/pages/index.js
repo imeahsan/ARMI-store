@@ -79,7 +79,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               {/* <!-- Text Overlay --> */}
               {/* <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
                         <div class="text-center">
-                          <h2 class="text-2xl font-semibold mb-2">
+                          <h2 class="text-2xl font-bold mb-2">
                             Image 1 Title
                           </h2>
                           <p class="text-sm">Description for Image 1.</p>
@@ -101,7 +101,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               {/* <!-- Text Overlay --> */}
               {/* <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
                         <div class="text-center">
-                          <h2 class="text-2xl font-semibold mb-2">
+                          <h2 class="text-2xl font-bold mb-2">
                             Sell your Car
                           </h2>
                           <p class="text-sm">
@@ -132,7 +132,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               {/* <!-- Text Overlay --> */}
               {/* <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end mb-8 justify-center">
                         <div class="text-center">
-                          <h2 class="text-2xl font-semibold mb-2">Buy Parts</h2>
+                          <h2 class="text-2xl font-bold mb-2">Buy Parts</h2>
                           <p class="text-sm">Buy genuine parts</p>
                           <button class="mt-4 bg-white text-black py-2 px-4 rounded-full">
                             {t("common:shopNow")}
@@ -190,7 +190,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                 <div className="mx-auto max-w-screen-2xl  justify-center ">
                   <div className="mb-10 flex justify-center">
                     <div className="text-center w-full lg:w-2/5">
-                      <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
+                      <h2 className="text-xl lg:text-2xl mb-2 font-serif font-bold">
                         <CMSkeleton
                           count={1}
                           height={30}
@@ -242,7 +242,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                   <div className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
                     <div className="mb-10 flex justify-center">
                       <div className="text-center w-full lg:w-2/5">
-                        <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
+                        <h2 className="text-xl lg:text-2xl mb-2 font-serif font-bold">
                           <CMSkeleton
                             count={1}
                             height={30}
@@ -312,7 +312,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     >
                       <div className="mb-10 flex justify-center">
                         <div className="text-center w-full lg:w-2/5">
-                          <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
+                          <h2 className="text-xl lg:text-2xl mb-2 font-serif font-bold">
                             <CMSkeleton
                               count={1}
                               height={30}

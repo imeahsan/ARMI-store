@@ -40,7 +40,7 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
             </h6>
           </div>
           <div className="lg:text-right text-left">
-            <h2 className="text-lg font-serif font-semibold mt-4 lg:mt-0 md:mt-0">
+            <h2 className="text-lg font-serif font-bold mt-4 lg:mt-0 md:mt-0">
               <Link href="/">
                 <Image
                   width={110}
@@ -99,32 +99,32 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
                 <tr className="text-xs bg-gray-100">
                   <th
                     scope="col"
-                    className="font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider text-left"
+                    className="font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider text-left"
                   >
                     Sr.
                   </th>
                   <th
                     scope="col"
-                    className="font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider text-left"
+                    className="font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider text-left"
                   >
                     Product Name
                   </th>
                   <th
                     scope="col"
-                    className="font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider text-center"
+                    className="font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider text-center"
                   >
                     Quantity
                   </th>
                   <th
                     scope="col"
-                    className="font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider text-center"
+                    className="font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider text-center"
                   >
                     Item Price
                   </th>
 
                   <th
                     scope="col"
-                    className="font-serif font-semibold px-6 py-2 text-gray-700 uppercase tracking-wider text-right"
+                    className="font-serif font-bold px-6 py-2 text-gray-700 uppercase tracking-wider text-right"
                   >
                     Amount
                   </th>
@@ -142,7 +142,7 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
             <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 block">
               Payment Method
             </span>
-            <span className="text-sm text-gray-500 font-semibold font-serif block">
+            <span className="text-sm text-gray-500 font-bold font-serif block">
               {data?.paymentMethod}
             </span>
           </div>
@@ -150,7 +150,7 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
             <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 block">
               Shipping Cost
             </span>
-            <span className="text-sm text-gray-500 font-semibold font-serif block">
+            <span className="text-sm text-gray-500 font-bold font-serif block">
               {currency}
               {getNumberTwo(data.shippingCost)}
             </span>
@@ -159,7 +159,7 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
             <span className="mb-1 font-bold font-serif text-sm uppercase text-gray-600 block">
               Discount
             </span>
-            <span className="text-sm text-gray-500 font-semibold font-serif block">
+            <span className="text-sm text-gray-500 font-bold font-serif block">
               {currency}
               {getNumberTwo(data.discount)}
             </span>

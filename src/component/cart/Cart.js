@@ -51,7 +51,7 @@ const Cart = () => {
       )}
       <div className="flex flex-col w-full h-full justify-between items-middle bg-white rounded cursor-pointer">
         <div className="w-full flex justify-between items-center relative px-5 py-4 border-b bg-indigo-50 border-gray-100">
-          <h2 className="font-semibold font-serif text-lg m-0 text-heading flex items-center">
+          <h2 className="font-bold font-serif text-lg m-0 text-heading flex items-center">
             <span className="text-xl mr-2 mb-1">
               <IoBagCheckOutline />
             </span>
@@ -76,7 +76,7 @@ const Cart = () => {
                     <IoBagHandle />
                   </span>
                 </div>
-                <h3 className="font-serif font-semibold text-gray-700 text-lg pt-5">
+                <h3 className="font-serif font-bold text-gray-700 text-lg pt-5">
                   {t("common:cartEmptyTitle")}
                 </h3>
                 <p className="px-12 text-center text-sm text-gray-500 pt-2">

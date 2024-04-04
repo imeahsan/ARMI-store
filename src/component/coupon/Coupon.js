@@ -71,32 +71,32 @@ const Coupon = ({ couponInHome }) => {
                     )}
                   </div>
                 </div>
-                <h2 className="pl-1 font-serif text-base text-gray-700 leading-6 font-semibold mb-2">
+                <h2 className="pl-1 font-serif text-base text-gray-700 leading-6 font-bold mb-2">
                   {showingTranslateValue(coupon?.title)}
                 </h2>
                 {dayjs().isAfter(dayjs(coupon.endTime)) ? (
                   <span className="inline-block mb-2">
-                    <div className="flex items-center font-semibold">
-                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-semibold mx-1 px-2 py-1 rounded">
+                    <div className="flex items-center font-bold">
+                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-bold mx-1 px-2 py-1 rounded">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-semibold mx-1 px-2 py-1 rounded">
+                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-bold mx-1 px-2 py-1 rounded">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-semibold mx-1 px-2 py-1 rounded">
+                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-bold mx-1 px-2 py-1 rounded">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-semibold mx-1 px-2 py-1 rounded">
+                      <span className="flex items-center justify-center bg-red-500 text-white text-sm font-serif font-bold mx-1 px-2 py-1 rounded">
                         00
                       </span>
                     </div>
                   </span>
                 ) : (
                   <span className="inline-block mb-2">
-                    <div className="flex items-center font-semibold">
+                    <div className="flex items-center font-bold">
                       <OfferTimer
                         expiryTimestamp={new Date(coupon.endTime)}
                         darkGreen
@@ -117,11 +117,11 @@ const Coupon = ({ couponInHome }) => {
                       >
                         <button className="block w-full">
                           {copied && coupon.couponCode === copiedCode ? (
-                            <span className="text-red-600 text-sm leading-7 font-semibold">
+                            <span className="text-red-600 text-sm leading-7 font-bold">
                               Copied!
                             </span>
                           ) : (
-                            <span className="uppercase font-serif font-semibold text-sm leading-7 text-red-600">
+                            <span className="uppercase font-serif font-bold text-sm leading-7 text-red-600">
                               {coupon.couponCode}{" "}
                             </span>
                           )}
@@ -160,27 +160,27 @@ const Coupon = ({ couponInHome }) => {
               <div className="ml-5">
                 {dayjs().isAfter(dayjs(coupon.endTime)) ? (
                   <span className="inline-block mb-2">
-                    <div className="flex items-center font-semibold">
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                    <div className="flex items-center font-bold">
+                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-bold px-2 py-1 rounded mx-1">
                         00
                       </span>
                     </div>
                   </span>
                 ) : (
                   <span className="inline-block mb-2">
-                    <div className="flex items-center font-semibold">
+                    <div className="flex items-center font-bold">
                       <OfferTimer expiryTimestamp={new Date(coupon.endTime)} />
                     </div>
                   </span>
@@ -227,11 +227,11 @@ const Coupon = ({ couponInHome }) => {
                       >
                         <button className="block w-full">
                           {copied && coupon.couponCode === copiedCode ? (
-                            <span className="text-red-600 text-base leading-7 font-semibold">
+                            <span className="text-red-600 text-base leading-7 font-bold">
                               Copied!
                             </span>
                           ) : (
-                            <span className="uppercase font-serif font-semibold text-base leading-7 text-red-600">
+                            <span className="uppercase font-serif font-bold text-base leading-7 text-red-600">
                               {coupon.couponCode}{" "}
                             </span>
                           )}

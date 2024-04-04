@@ -24,7 +24,7 @@ const Card = () => {
             />
             <div className="absolute top-0 left-0 z-10 p-r-16 flex-col flex w-full text-center justify-center">
               <div className="pt-4">
-                <h2 className="font-serif text-base sm:text-lg md:text-lg lg:text-lg font-semibold text-gray-100">
+                <h2 className="font-serif text-base sm:text-lg md:text-lg lg:text-lg font-bold text-gray-100">
                   {item.title} <br />
                   <span className="text-lg sm:text-2xl md:text-2xl lg:text-2xl font-bold text-white">
                     {item.subTitle}

@@ -52,7 +52,7 @@ const ChangePassword = () => {
       )}
       description="This is change-password page"
     >
-      <h2 className="text-xl font-serif font-semibold mb-5">
+      <h2 className="text-xl font-serif font-bold mb-5">
         {showingTranslateValue(
           storeCustomizationSetting?.dashboard?.change_password
         )}

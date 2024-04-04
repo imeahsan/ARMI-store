@@ -40,7 +40,7 @@ const AboutUs = () => {
         <div className="max-w-screen-2xl mx-auto lg:py-20 py-10 px-4 sm:px-10">
           <div className="grid grid-flow-row lg:grid-cols-2 gap-4 lg:gap-16 items-center">
             <div className="">
-              <h3 className="text-xl lg:text-3xl mb-2 font-serif font-semibold">
+              <h3 className="text-xl lg:text-3xl mb-2 font-serif font-bold">
                 {/* {t("common:about-section-title")} */}
 
                 <CMSkeleton
@@ -182,7 +182,7 @@ const AboutUs = () => {
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">
-                <h3 className="text-xl lg:text-3xl mb-2 font-serif font-semibold">
+                <h3 className="text-xl lg:text-3xl mb-2 font-serif font-bold">
                   <CMSkeleton
                     count={1}
                     height={50}
@@ -217,7 +217,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_one_name
                     )}
@@ -241,7 +241,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_two_name
                     )}
@@ -265,7 +265,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_three_name
                     )}
@@ -289,7 +289,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_four_name
                     )}
@@ -313,7 +313,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_five_name
                     )}
@@ -337,7 +337,7 @@ const AboutUs = () => {
                   className="block rounded-lg"
                 />
                 <div className="py-4">
-                  <h5 className="text-lg font-semibold font-serif">
+                  <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
                       storeCustomizationSetting?.about_us?.founder_six_name
                     )}

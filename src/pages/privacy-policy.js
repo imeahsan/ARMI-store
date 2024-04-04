@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
           <br />
           <CMSkeleton count={15} height={15} loading={loading} />
           {/* <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-consent")}
             </h2>
             <div className="font-sans leading-7">
@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-information")}
             </h2>
             <div className="font-sans leading-7">
@@ -52,7 +52,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-use-information")}
             </h2>
             <div className="font-sans leading-7">
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-log-file")}
             </h2>
             <div className="font-sans leading-7">
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-advertising")}
             </h2>
             <div className="font-sans leading-7">
@@ -86,7 +86,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-third-party")}
             </h2>
             <div className="font-sans leading-7">
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-ccpa-rights")}
             </h2>
             <div className="font-sans leading-7">
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
           <div className="mb-8 lg:mb-12 last:mb-0">
-            <h2 className="text-xl xl:text-2xl xl:leading-7 font-semibold font-serif mb-2 lg:mb-4">
+            <h2 className="text-xl xl:text-2xl xl:leading-7 font-bold font-serif mb-2 lg:mb-4">
               {t("common:privacy-policy-children-information")}
             </h2>
             <div className="font-sans leading-7">

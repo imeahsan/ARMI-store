@@ -244,14 +244,14 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
             <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
               <div className="flex items-center pb-4">
                 <ol className="flex items-center w-full overflow-hidden font-serif">
-                  <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-gray-500 font-semibold">
+                  <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-gray-500 font-bold">
                     <Link href="/">Home</Link>
                   </li>
                   <li className="text-sm mt-[1px]">
                     {" "}
                     <FiChevronRight />{" "}
                   </li>
-                  <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-gray-500 font-semibold ">
+                  <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-gray-500 font-bold ">
                     <Link
                       href={`/search?category=${category_name}&_id=${product?.category?._id}`}
                     >
@@ -309,7 +309,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
                       <div className=" w-3/5 xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
                         <div className="mb-6">
-                          <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
+                          <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-bold font-serif text-gray-800">
                             {showingTranslateValue(product?.title)}
                           </h1>
 
@@ -397,7 +397,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                     <FiMinus />
                                   </span>
                                 </button>
-                                <p className="font-semibold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
+                                <p className="font-bold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
                                   {item}
                                 </p>
                                 <button
@@ -412,7 +412,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               </div>
                               <button
                                 onClick={() => handleAddToCart(product)}
-                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
+                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
                               >
                                 {t("common:addToCart")}
                               </button>
@@ -420,7 +420,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           </div>
 
                           <div className="flex flex-col mt-4">
-                            <span className="font-serif font-semibold py-1 text-sm d-block">
+                            <span className="font-serif font-bold py-1 text-sm d-block">
                               <span className="text-gray-800">
                                 {t("common:category")}:
                               </span>{" "}
@@ -442,7 +442,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           <div className="mt-8">
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
                               Call Us To Order By Mobile Number :{" "}
-                              <span className="text-red-700 font-semibold">
+                              <span className="text-red-700 font-bold">
                                 +0044235234
                               </span>{" "}
                             </p>
@@ -450,7 +450,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                           {/* social share */}
                           <div className="mt-2">
-                            <h3 className="text-base font-semibold mb-1 font-serif">
+                            <h3 className="text-base font-bold mb-1 font-serif">
                               {t("common:shareYourSocial")}
                             </h3>
                             <p className="font-sans text-sm text-gray-500">
@@ -517,7 +517,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
               {/* related products */}
               {relatedProducts?.length >= 2 && (
                 <div className="pt-10 lg:pt-20 lg:pb-10">
-                  <h3 className="leading-7 text-lg lg:text-xl mb-3 font-semibold font-serif hover:text-gray-600">
+                  <h3 className="leading-7 text-lg lg:text-xl mb-3 font-bold font-serif hover:text-gray-600">
                     {t("common:relatedProducts")}
                   </h3>
                   <div className="flex">

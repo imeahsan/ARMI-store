@@ -11,7 +11,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
           <span
             className={
               card
-                ? "inline-block text-lg font-semibold text-gray-800"
+                ? "inline-block text-lg font-bold text-gray-800"
                 : "inline-block text-2xl"
             }
           >
@@ -37,7 +37,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
           <span
             className={
               card
-                ? "inline-block text-lg font-semibold text-gray-800"
+                ? "inline-block text-lg font-bold text-gray-800"
                 : "inline-block text-2xl"
             }
           >

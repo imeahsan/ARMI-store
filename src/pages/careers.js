@@ -80,7 +80,7 @@ const Careers = () => {
                 className="w-full mx-auto flex flex-col justify-center"
               >
                 <div className="mb-12">
-                  <h3 className="text-xl md:text-2xl lg:text-2xl font-semibold font-serif mb-3">
+                  <h3 className="text-xl md:text-2xl lg:text-2xl font-bold font-serif mb-3">
                     <CMSkeleton
                       count={1}
                       height={50}
@@ -209,7 +209,7 @@ const Careers = () => {
                   <div className="relative">
                     <button
                       data-variant="flat"
-                      className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-red-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-red-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
+                      className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-red-500 text-white px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 hover:text-white hover:bg-red-600 h-12 mt-1 text-sm lg:text-base w-full sm:w-auto"
                     >
                       {t("common:contact-page-form-send-btn")}
                     </button>

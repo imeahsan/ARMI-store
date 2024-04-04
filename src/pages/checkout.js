@@ -64,7 +64,7 @@ const Checkout = () => {
               <div className="mt-5 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit(submitHandler)}>
                   <div className="form-group">
-                    <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
+                    <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       01.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.personal_details
@@ -127,7 +127,7 @@ const Checkout = () => {
                   </div>
 
                   <div className="form-group mt-12">
-                    <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
+                    <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       02.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.shipping_details
@@ -221,7 +221,7 @@ const Checkout = () => {
                   </div>
 
                   <div className="form-group mt-12">
-                    <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
+                    <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       03.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.payment_method
@@ -302,7 +302,6 @@ const Checkout = () => {
                                 ?.confirm_button
                             )}
                             <span className="text-xl ml-2">
-                            
                               <IoArrowForward />
                             </span>
                           </span>
@@ -316,7 +315,7 @@ const Checkout = () => {
 
             <div className="md:w-full lg:w-2/5 lg:ml-10 xl:ml-14 md:ml-6 flex flex-col h-full md:sticky lg:sticky top-28 md:order-2 lg:order-2 ">
               <div className="border p-5 lg:px-8 lg:py-8 rounded-lg bg-white order-1 sm:order-2">
-                <h2 className="font-semibold font-serif text-lg pb-4">
+                <h2 className="font-bold font-serif text-lg pb-4">
                   {showingTranslateValue(
                     storeCustomizationSetting?.checkout?.order_summary
                   )}
@@ -329,7 +328,7 @@ const Checkout = () => {
 
                   {isEmpty && (
                     <div className="text-center py-10">
-                      <span className="flex justify-center my-auto text-gray-500 font-semibold text-4xl">
+                      <span className="flex justify-center my-auto text-gray-500 font-bold text-4xl">
                         <IoBagHandle />
                       </span>
                       <h2 className="font-medium font-serif text-sm pt-2 text-gray-600">
@@ -339,7 +338,7 @@ const Checkout = () => {
                   )}
                 </div>
 
-                <div className="flex items-center mt-4 py-4 lg:py-4 text-sm w-full font-semibold text-heading last:border-b-0 last:text-base last:pb-0">
+                <div className="flex items-center mt-4 py-4 lg:py-4 text-sm w-full font-bold text-heading last:border-b-0 last:text-base last:pb-0">
                   <form className="w-full">
                     {couponInfo.couponCode ? (
                       <span className="bg-emerald-50 px-4 py-3 leading-tight w-full rounded-md flex justify-between">
@@ -359,7 +358,7 @@ const Checkout = () => {
                         />
                         <button
                           onClick={handleCouponCode}
-                          className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border border-gray-200 rounded-md placeholder-white focus-visible:outline-none focus:outline-none px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 mt-3 sm:mt-0 sm:ml-3 md:mt-0 md:ml-3 lg:mt-0 lg:ml-3 hover:text-white hover:bg-gray-500 h-12 text-sm lg:text-base w-full sm:w-auto"
+                          className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold text-center justify-center border border-gray-200 rounded-md placeholder-white focus-visible:outline-none focus:outline-none px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 mt-3 sm:mt-0 sm:ml-3 md:mt-0 md:ml-3 lg:mt-0 lg:ml-3 hover:text-white hover:bg-gray-500 h-12 text-sm lg:text-base w-full sm:w-auto"
                         >
                           {showingTranslateValue(
                             storeCustomizationSetting?.checkout?.apply_button
@@ -369,7 +368,7 @@ const Checkout = () => {
                     )}
                   </form>
                 </div>
-                <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
+                <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
                     storeCustomizationSetting?.checkout?.sub_total
                   )}
@@ -377,7 +376,7 @@ const Checkout = () => {
                     {currency} {cartTotal?.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
+                <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
                     storeCustomizationSetting?.checkout?.shipping_cost
                   )}
@@ -385,7 +384,7 @@ const Checkout = () => {
                     {currency} {shippingCost.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
+                <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
                     storeCustomizationSetting?.checkout?.discount
                   )}
