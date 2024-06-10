@@ -7,11 +7,14 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import Image from "next/image";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { useDirection } from "@context/DirectionContext";
 
 const AuctionCard = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   const { t } = useTranslation();
+  const { direction } = useDirection();
+
   return (
     <div className=" group mr-1 " style={{ width: "100%", height: "475px" }}>
       <div className="bg-gray-50 h-full shadow-2xl   transition duration-150 ease-linear transform  rounded-2xl  ">
@@ -20,32 +23,57 @@ const AuctionCard = () => {
         </div>
         <div className="overflow-hidden pt-4" style={{ alignItems: "center" }}>
           <p
-            style={{
-              fontSize: "14px",
-              lineHeight: "24px",
-              textAlign: "center",
-              letterSpacing: "5px",
-            }}
+            style={
+              direction === "rtl"
+                ? {
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    lineHeight: "24px",
+                    textAlign: "center",
+                    letterSpacing: "0px",
+                  }
+                : {
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    lineHeight: "24px",
+                    textAlign: "center",
+                    letterSpacing: "5px",
+                  }
+            }
           >
-            ONLINE 24/7{" "}
+            {t("common:online247")}
           </p>
           <h1
-            style={{
-              fontSize: "42px",
-              fontWeight: "bold",
+            style={
+              direction === "rtl"
+                ? {
+                    fontSize: "38px",
+                    fontWeight: "bold",
 
-              lineHeight: "38px",
-              textAlign: "center",
-              letterSpacing: "-1px",
-            }}
+                    lineHeight: "50px",
+                    textAlign: "center",
+                    letterSpacing: "-1px",
+                  }
+                : {
+                    fontSize: "42px",
+                    fontWeight: "bold",
+
+                    lineHeight: "50px",
+                    textAlign: "center",
+                    letterSpacing: "-1px",
+                  }
+            }
           >
-            VEHICLE
-            <br />
-            <b style={{ color: "#D24549" }}>AUCTIONS</b>
+              {t("common:AUCTIONS")}
+
+              <br />
+            <b style={{ color: "#D24549", marginTop: "5px !important" }}>
+                {t("common:VEHICLE")}
+            </b>
           </h1>
           <div
             style={{
-              marginTop: "25px",
+              marginTop: "10px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -63,10 +91,10 @@ const AuctionCard = () => {
             }}
           >
             <Link
-              href={`/request-quotation`}
+              href={`/auctions`}
               className="text-lg font-serif font-medium px-6 py-2 mt-2 bg-red-500 text-center rounded-full text-white hover:bg-gray-500"
             >
-              {t("common:getQuote")}
+              {t("common:BidNow")}
             </Link>
           </div>
         </div>

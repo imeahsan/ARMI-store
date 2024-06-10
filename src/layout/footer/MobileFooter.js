@@ -63,7 +63,7 @@ const MobileFooter = () => {
               <Image
                 width={29}
                 height={29}
-                src={userInfo.image}
+                src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + userInfo.image}
                 alt="user"
                 className="rounded-full"
               />

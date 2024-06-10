@@ -29,7 +29,7 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
         <img
           className="inline-flex border-2 border-gray-100 w-24 max-h-24"
           src={file.preview}
-          alt={file.name}
+          alt={process.env.NEXT_PUBLIC_CLOUDINARY_URL + file.name}
         />
       </div>
     </div>
@@ -52,7 +52,7 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
           data: formData,
         })
           .then((res) => {
-            setImageUrl(res.data.secure_url);
+            setImageUrl(res.data.url);
           })
           .catch((err) => console.log(err));
       });
@@ -87,7 +87,7 @@ const Uploader = ({ setImageUrl, imageUrl }) => {
         {imageUrl ? (
           <img
             className="inline-flex border rounded-md border-gray-100 w-24 max-h-24 p-2"
-            src={imageUrl}
+            src={process.env.NEXT_PUBLIC_CLOUDINARY_URL + imageUrl}
             alt="product"
           />
         ) : (

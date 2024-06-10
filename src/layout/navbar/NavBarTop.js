@@ -59,7 +59,7 @@ const NavBarTop = () => {
               <a
                 href={`tel:${
                   storeCustomizationSetting?.navbar?.phone_number ||
-                  "+099949343"
+                  "920005662"
                 }`}
                 className="font-bold text-red-500 ml-1"
               >
@@ -113,9 +113,10 @@ const NavBarTop = () => {
                     <span className="mr-1">
                       <IoLockOpenOutline />
                     </span>
-                    {showingTranslateValue(
+                    {/* {showingTranslateValue(
                       storeCustomizationSetting?.navbar?.logout
-                    )}
+                    )} */}
+                    Logout
                   </button>
                 ) : (
                   <button

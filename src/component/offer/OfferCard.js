@@ -7,11 +7,13 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import Image from "next/image";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { useDirection } from "@context/DirectionContext";
 
 const OfferCard = () => {
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   const { t } = useTranslation();
+  const { direction } = useDirection();
 
   return (
     <div className="rounded-2xl" style={{ width: "100%", height: "475px" }}>
@@ -21,32 +23,54 @@ const OfferCard = () => {
         </div>
         <div className="overflow-hidden pt-4" style={{ alignItems: "center" }}>
           <p
-            style={{
-              fontSize: "14px",
-              lineHeight: "24px",
-              textAlign: "center",
-              letterSpacing: "5px",
-            }}
+            style={
+              direction === "rtl"
+                ? {
+                    fontWeight: 500,
+                    fontSize: "16px",
+                    lineHeight: "24px",
+                    textAlign: "center",
+                    letterSpacing: "0px",
+                  }
+                : {
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    lineHeight: "24px",
+                    textAlign: "center",
+                    letterSpacing: "5px",
+                  }
+            }
           >
-            BEST PRICE PAID{" "}
+            {t("common:offerTopText")}
           </p>
           <h1
-            style={{
-              fontSize: "42px",
-              fontWeight: "bold",
+            style={
+              direction === "rtl"
+                ? {
+                    fontSize: "38px",
+                    fontWeight: "bold",
 
-              lineHeight: "38px",
-              textAlign: "center",
-              letterSpacing: "-1px",
-            }}
+                    lineHeight: "50px",
+                    textAlign: "center",
+                    letterSpacing: "-1px",
+                  }
+                : {
+                    fontSize: "42px",
+                    fontWeight: "bold",
+
+                    lineHeight: "50px",
+                    textAlign: "center",
+                    letterSpacing: "-1px",
+                  }
+            }
           >
-            WE BUY ANY
+            {t("common:weBuyAny")}
             <br />
-            <b style={{ color: "#D24549" }}>VEHICLE</b>
+            <b style={{ color: "#D24549" }}> {t("common:VEHICLE")}</b>
           </h1>
           <div
             style={{
-              marginTop: "25px",
+              marginTop: "10px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "react-use-cart";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //internal import
 import useAsync from "@hooks/useAsync";
@@ -33,8 +33,8 @@ const useCheckoutSubmit = () => {
   const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   const router = useRouter();
-  const stripe = useStripe();
-  const elements = useElements();
+  // const stripe = useStripe();
+  // const elements = useElements();
   const couponRef = useRef("");
   const { isEmpty, emptyCart, items, cartTotal } = useCart();
 
@@ -137,14 +137,14 @@ const useCheckoutSubmit = () => {
       };
 
       if (data.paymentMethod === "Card") {
-        if (!stripe || !elements) {
-          return;
-        }
+      //   if (!stripe || !elements) {
+      //     return;
+      //   }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-          type: "card",
-          card: elements.getElement(CardElement),
-        });
+        // const { error, paymentMethod } = await stripe.createPaymentMethod({
+        //   type: "card",
+        //   card: elements.getElement(CardElement),
+        // });
 
         // console.log('error', error);
 
@@ -286,7 +286,7 @@ const useCheckoutSubmit = () => {
     showCard,
     setShowCard,
     error,
-    stripe,
+    // stripe,
     couponInfo,
     couponRef,
     handleCouponCode,

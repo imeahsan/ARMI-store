@@ -65,6 +65,7 @@
     "sharp": "^0.32.6",
     "socket.io-client": "^4.4.0",
     "swiper": "^8.4.7",
+    "swr": "^2.2.5",
     "tailwind-scrollbar-hide": "^1.0.4",
     "use-local-storage-state": "^13.0.0"
   },

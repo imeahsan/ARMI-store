@@ -51,7 +51,6 @@ const NavbarPromo = () => {
       setRTL();
     }
   };
-
   useEffect(() => {
     (async () => {
       {
@@ -131,11 +130,11 @@ const NavbarPromo = () => {
                 height={225}
                 // layout="responsive"
                 src={
-                  storeCustomizationSetting?.navbar?.header_logo ||
-                  "/logo/logo-light.svg"
+                  // storeCustomizationSetting?.navbar?.logo ||
+                  "/logo/logo-light.jpeg"
                 }
                 alt="logo"
-                className="block lg:-translate-x-0 -translate-x-10"
+                className="block lg:-translate-x-0 -translate-x-1"
               />
             </Link>
           </div>

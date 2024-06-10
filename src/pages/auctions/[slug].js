@@ -17,7 +17,6 @@ import {
   WhatsappShareButton,
 } from "react-share";
 //internal import
-import { BsAmazon } from "react-icons/bs";
 
 import Price from "@component/common/Price";
 import Stock from "@component/common/Stock";
@@ -35,11 +34,20 @@ import ProductServices from "@services/ProductServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import Discount from "@component/common/Discount";
 import ImageCarousel from "@component/carousel/ImageCarousel";
+import AuctionServices from "@services/AuctionServices";
+import Bids from "@component/common/Bids";
+import TimeLeft from "@component/common/TimeLeft";
+import AuctionPrice from "@component/common/AuctionPrice";
+import Bidder from "@component/Bidder";
+import { UserContext } from "@context/UserContext";
+import LoginModal from "@component/modal/LoginModal";
+import axios from "axios";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
-  console.log("product", product);
   const router = useRouter();
-
+  const {
+    state: { userInfo },
+  } = useContext(UserContext);
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
 
@@ -49,7 +57,9 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const { handleAddItem, item, setItem } = useAddToCart();
 
   // react hook
-
+  const handleOpenLogin = () => {
+    setModalOpen(!modalOpen);
+  };
   const [value, setValue] = useState("");
   const [price, setPrice] = useState(0);
   const [img, setImg] = useState(product?.image[0]);
@@ -61,7 +71,9 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const [selectVa, setSelectVa] = useState({});
   const [variantTitle, setVariantTitle] = useState([]);
   const [variants, setVariants] = useState([]);
-
+  const [modalOpen, setModalOpen] = useState(false);
+  const [timeUntilEnd, setTimeUntilEnd] = useState();
+  const [error, setError] = useState();
   useEffect(() => {
     if (value) {
       const result = product?.variants?.filter((variant) =>
@@ -114,6 +126,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
       setOriginalPrice(originalPrice);
+      setItem(originalPrice);
     } else if (product?.variants?.length > 0) {
       const result = product?.variants?.filter((variant) =>
         Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
@@ -166,59 +179,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
     setIsLoading(false);
   }, [product]);
 
-  const handleAddToCart = (p) => {
-    if (p.variants.length === 1 && p.variants[0].quantity < 1)
-      return notifyError("Insufficient stock");
-    // if (notAvailable) return notifyError('This Variation Not Available Now!');
-    if (stock <= 0) return notifyError("Insufficient stock");
-    // console.log('selectVariant', selectVariant);
-
-    if (
-      product?.variants.map(
-        (variant) =>
-          Object.entries(variant).sort().toString() ===
-          Object.entries(selectVariant).sort().toString()
-      )
-    ) {
-      const { variants, categories, description, ...updatedProduct } = product;
-      const newItem = {
-        ...updatedProduct,
-        id: `${
-          p.variants.length <= 1
-            ? p._id
-            : p._id +
-              variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) => selectVariant[att._id]
-                )
-                .join("-")
-        }`,
-
-        title: `${
-          p.variants.length <= 1
-            ? showingTranslateValue(product?.title)
-            : showingTranslateValue(product?.title) +
-              "-" +
-              variantTitle
-                ?.map(
-                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
-                  (att) =>
-                    att.variants?.find((v) => v._id === selectVariant[att._id])
-                )
-                .map((el) => showingTranslateValue(el?.name))
-        }`,
-        image: img,
-        variant: selectVariant,
-        price: price,
-        originalPrice: originalPrice,
-      };
-      handleAddItem(newItem);
-    } else {
-      return notifyError("Please select all variant first!");
-    }
-  };
-
   const handleChangeImage = (img) => {
     setImg(img);
   };
@@ -227,13 +187,100 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
   // category name slug
   const category_name = showingTranslateValue(product?.category?.name)
-    .toLowerCase()
-    .replace(/[^A-Z0-9]+/gi, "-");
+    ?.toLowerCase()
+    ?.replace(/[^A-Z0-9]+/gi, "-");
 
   // console.log("discount", discount);
+  // bids data
+  const [bids, setBids] = useState();
+  const getBids = async () => {
+    let { bids } = await AuctionServices.getBids(product._id);
+    if (bids.length > 0) {
+      setItem(bids[0].price);
+    } else {
+      setItem(originalPrice);
+    }
+    setBids(bids);
+  };
+  useEffect(() => {
+    setInterval(getBids, 60000);
+    getBids();
+    if (new Date(product?.endTime) < new Date()) {
+      setTimeUntilEnd("Bid Ended");
+    } else {
+      setInterval(() => {
+        calculateTimeUntilEnd(product?.endTime), 1000;
+      });
+    }
+  }, []);
 
+  function calculateTimeUntilEnd(bidEndTime) {
+    var currentTime = new Date();
+    var timeDifference = new Date(bidEndTime) - currentTime;
+    if (timeDifference < 0) {
+      // return setTimeUntilEnd("Bid Ended");
+    }
+    var seconds = Math.floor(timeDifference / 1000);
+
+    // Calculate days, hours, minutes, and remaining seconds
+    var days = Math.floor(seconds / (24 * 3600));
+    seconds -= days * 24 * 3600;
+    var hours = Math.floor(seconds / 3600);
+    seconds -= hours * 3600;
+    var minutes = Math.floor(seconds / 60);
+    seconds -= minutes * 60;
+
+    // Format the remaining time as a string
+    var formattedString =
+      days +
+      " days, " +
+      hours +
+      " hours, " +
+      minutes +
+      " minutes, " +
+      seconds +
+      " seconds";
+
+    return setTimeUntilEnd(formattedString);
+    //   return   {
+    //     days: days,
+    //     hours: hours,
+    //     minutes: minutes,
+    //     seconds: seconds,
+    //     formattedString: formattedString,
+    //   };
+  }
+
+  // for placing bid
+  const handlePlaceBid = async () => {
+    console.log(userInfo);
+    if (bids.length > 1) {
+      console.log("iten", item);
+      console.log(bids[0]?.price);
+      console.log(item > bids[0]?.price);
+      if (item < bids[0]?.price) {
+        setError(
+          "Bid Amount should be greater than Highest Bid  " + bids[0]?.price
+        );
+        return;
+      } else {
+        // alert(34);
+        await axios.patch(
+          process.env.NEXT_PUBLIC_API_BASE_URL + "/auctions/bid/" + product._id,
+          {
+            bider: userInfo._id,
+            price: item,
+          }
+        );
+        getBids();
+      }
+    }
+  };
   return (
     <>
+      {modalOpen && (
+        <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      )}
       {isLoading ? (
         <Loading loading={isLoading} />
       ) : (
@@ -253,15 +300,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     <FiChevronRight />{" "}
                   </li>
                   <li className="text-sm pl-1 transition duration-200 ease-in cursor-pointer hover:text-gray-500 font-bold ">
-                    <Link
-                      href={`/search?category=${category_name}&_id=${product?.category?._id}`}
-                    >
+                    <Link href={`/auctions`}>
                       <button
                         className="text-gray-600 font-serif font-medium underline ml-2 hover:text-gray-600"
                         type="button"
                         onClick={() => setIsLoading(!isLoading)}
                       >
-                        {category_name}
+                        Auctions{" "}
                       </button>
                     </Link>
                   </li>
@@ -277,7 +322,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
               <div className="w-full rounded-lg p-3 lg:p-12 bg-white">
                 <div className="flex flex-col xl:flex-row">
                   <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
-                    <Discount slug product={product} discount={discount} />
+                    <TimeLeft
+                      endTime={product.endTime}
+                      startTime={product.startTime}
+                      slug
+                      product={product}
+                      discount={discount}
+                    />
 
                     {product.image[0] ? (
                       <Image
@@ -322,41 +373,18 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           </p>
 
                           <div className="relative">
-                            <Stock stock={stock} />
+                            <Bids bids={product.bids.length} page />
                           </div>
                         </div>
-                        <Price
+                        <AuctionPrice
                           price={price}
                           product={product}
                           currency={currency}
                           originalPrice={originalPrice}
                         />
 
-                        <div className="mb-4">
-                          {variantTitle?.map((a, i) => (
-                            <span key={i + 1}>
-                              <h4 className="text-sm py-1">
-                                {showingTranslateValue(a?.name)}:
-                              </h4>
-                              <div className="flex flex-row mb-3">
-                                <VariantList
-                                  att={a._id}
-                                  lang={lang}
-                                  option={a.option}
-                                  setValue={setValue}
-                                  varTitle={variantTitle}
-                                  setSelectVa={setSelectVa}
-                                  variants={product.variants}
-                                  selectVariant={selectVariant}
-                                  setSelectVariant={setSelectVariant}
-                                />
-                              </div>
-                            </span>
-                          ))}
-                        </div>
-
                         <div>
-                          <div className="text-sm leading-6 text-gray-500 md:leading-7">
+                          <div className="text-sm leading-6 text-gray-500 md:leading-7 text-wrap">
                             {isReadMore
                               ? showingTranslateValue(
                                   product?.description
@@ -384,26 +412,42 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )}
-                          </div>
 
+                            <p className="text-red-500 font-bold">
+                              {timeUntilEnd}
+                            </p>
+                          </div>
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                               <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
+                                {/* <p>{item}</p> */}
+                                <input
+                                  defaultValue={
+                                    bids && bids?.length > 0
+                                      ? bids[0].price
+                                      : originalPrice
+                                  }
+                                  min={
+                                    bids && bids?.length > 0
+                                      ? bids[0].price
+                                      : originalPrice
+                                  }
+                                  value={item}
+                                  onChange={(e) => {
+                                    setItem(e.target.value);
+                                  }}
+                                  type="number"
+                                  style={{
+                                    textAlign: "center",
+                                    border: "none",
+                                  }}
+                                  className="font-bold flex items-center align-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24"
+                                ></input>
                                 <button
-                                  onClick={() => setItem(item - 1)}
-                                  disabled={item === 1}
-                                  className="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
-                                >
-                                  <span className="text-dark text-base">
-                                    <FiMinus />
-                                  </span>
-                                </button>
-                                <p className="font-bold flex items-center justify-center h-full  transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8  md:w-20 xl:w-24">
-                                  {item}
-                                </p>
-                                <button
-                                  onClick={() => setItem(item + 1)}
-                                  disabled={selectVariant?.quantity <= item}
+                                  onClick={() => setItem(parseInt(item) + 10)}
+                                  disabled={
+                                    new Date() > new Date(product.endTime)
+                                  }
                                   className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
                                 >
                                   <span className="text-dark text-base">
@@ -412,15 +456,30 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </button>
                               </div>
                               <button
-                                onClick={() => handleAddToCart(product)}
-                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-red-500 hover:bg-red-600 w-full h-12"
+                                disabled={
+                                  new Date() > new Date(product.endTime)
+                                }
+                                onClick={
+                                  userInfo ? handlePlaceBid : handleOpenLogin
+                                }
+                                className={
+                                  "text-sm leading-4 inline-flex items-center cursor-pointer " +
+                                  "transition ease-in-out duration-300 font-bold font-serif text-center justify-center border-0 border-transparent rounded-md" +
+                                  " focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4  " +
+                                  " w-full h-12" +
+                                  `${
+                                    new Date() > new Date(product.endTime)
+                                      ? " bg-gray-500 "
+                                      : "hover:text-white bg-red-500 hover:bg-red-600"
+                                  }`
+                                }
                               >
-                                {t("common:addToCart")}
+                                {t("common:placeBid")}
                               </button>
                             </div>
                           </div>
-
-                          <div className="flex flex-col mt-4">
+                          <p className="text-red-500 font-bold">{error}</p>
+                          {/* <div className="flex flex-col mt-4">
                             <span className="font-serif font-bold py-1 text-sm d-block">
                               <span className="text-gray-800">
                                 {t("common:category")}:
@@ -438,7 +497,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               </Link>
                             </span>
                             <Tags product={product} />
-                          </div>
+                          </div> */}
 
                           <div className="mt-8">
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
@@ -449,39 +508,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             </p>
                           </div>
 
-                          {/* buy on amamzon and noon */}
-                          {product.NoonLink || product.AmazonLink ? (
-                            <div className="mt-2">
-                              <h3 className="text-base font-bold mb-1 font-serif">
-                                {t("common:BuyOnOtherPlatforms")}
-                              </h3>
-                              {/* <p className="font-sans text-sm text-gray-500">
-                              {t("common:shareYourSocialText")}
-                            </p> */}
-                              <ul className="flex mt-4">
-                                {product.NoonLink ? (
-                                  <li className="flex items-center text-center   mr-8 hover:bg-gray-200  mr-2 transition ease-in-out duration-500">
-                                    <a href={product.NoonLink}>
-                                      <img
-                                        src="/noon-logo-t.png"
-                                        style={{ height: "72px" }}
-                                      />
-                                    </a>
-                                  </li>
-                                ) : null}
-                                {product.AmazonLink ? (
-                                  <li className="flex items-center text-center    hover:bg-gray-200  mr-2 transition ease-in-out duration-500">
-                                    <a href={product.NoonLink} target="_blank">
-                                      <img
-                                        src="/amazon-logo.png"
-                                        style={{ height: "72px" }}
-                                      />
-                                    </a>
-                                  </li>
-                                ) : null}
-                              </ul>
-                            </div>
-                          ) : null}
                           {/* social share */}
                           <div className="mt-2">
                             <h3 className="text-base font-bold mb-1 font-serif">
@@ -539,8 +565,9 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                       {/* shipping description card */}
 
                       <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
-                        <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
-                          <Card />
+                        <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-1 rounded-lg">
+                          {/* <Card /> */}
+                          <Bidder bids={bids} />
                         </div>
                       </div>
                     </div>
@@ -583,7 +610,7 @@ export const getServerSideProps = async (context) => {
   const { slug } = context.params;
 
   const [data, attributes] = await Promise.all([
-    ProductServices.getShowingStoreProducts({
+    AuctionServices.getShowingStoreProducts({
       category: "",
       slug: slug,
     }),
@@ -591,18 +618,18 @@ export const getServerSideProps = async (context) => {
     AttributeServices.getShowingAttributes({}),
   ]);
   let product = {};
-
+  console.log("slug ==>> ", data);
   if (slug) {
-    product = data?.products?.find((p) => p.slug === slug);
+    product = await AuctionServices.getProductBySlug(slug);
   }
-
-  return {
+  let props = {
     props: {
       product,
       relatedProducts: data?.relatedProducts,
       attributes,
     },
   };
+  return props;
 };
 
 export default ProductScreen;

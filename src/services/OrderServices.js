@@ -12,6 +12,9 @@ const OrderServices = {
   getOrderCustomer: async ({ page = 1, limit = 8 }) => {
     return requests.get(`/order?limit=${limit}&page=${page}`);
   },
+  getCustomerAuctions: async ({ id }) => {
+    return requests.get(`/auctions/userWonBids/${id}`);
+  },
   getOrderById: async (id, body) => {
     return requests.get(`/order/${id}`, body);
   },

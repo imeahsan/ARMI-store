@@ -99,6 +99,13 @@ const Dashboard = ({ title, description, children }) => {
       href: "/user/change-password",
       icon: FiFileText,
     },
+    {
+      title: showingTranslateValue(
+        storeCustomizationSetting?.dashboard?.auctions
+      ),
+      href: "/user/auctions",
+      icon: FiFileText,
+    },
   ];
 
   return (

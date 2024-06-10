@@ -1386,3 +1386,14 @@ p:not(:last-of-type) {
   background: #10b981 !important;
   color: #e2e8f0;
 }
+
+/* *[dir='ltr'] {
+   @apply font-openSans !important;
+ }
+
+*[dir='rtl'] {
+   @apply font-sans !important;
+ } */
+html[lang="ar"] * {
+  font-family: "Tahoma", serif;
+}

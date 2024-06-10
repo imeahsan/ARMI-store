@@ -452,9 +452,9 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <h3 className="text-base font-bold mb-1 font-serif">
                               {t("common:shareYourSocial")}
                             </h3>
-                            <p className="font-sans text-sm text-gray-500">
+                            {/* <p className="font-sans text-sm text-gray-500">
                               {t("common:shareYourSocialText")}
-                            </p>
+                            </p> */}
                             <ul className="flex mt-4">
                               <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-gray-500  mr-2 transition ease-in-out duration-500">
                                 <FacebookShareButton

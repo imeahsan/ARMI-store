@@ -12,8 +12,8 @@ export const DirectionProvider = ({ children }) => {
   useEffect(() => {
     // Read cookie
     const dir = Cookies.get("_lang");
-    console.log("curent locale=>>", currentLocale);
-    console.log("curent lang=>>", dir);
+    // console.log("curent locale=>>", currentLocale);
+    // console.log("curent lang=>>", dir);
     if (currentLocale === "ar") {
       setDirection("rtl");
     } else {
