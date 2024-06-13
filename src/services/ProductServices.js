@@ -9,6 +9,11 @@ const ProductServices = {
       `/products/store?category=${category}&title=${title}&slug=${slug}`
     );
   },
+  getFilteredProducts: async ( filter ) => {
+    return requests.get(
+        `/products/store/filter?filter=${filter}`
+    );
+  },
   getDiscountedProducts: async () => {
     return requests.get("/products/discount");
   },
