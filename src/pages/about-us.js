@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import Layout from "@layout/Layout";
@@ -9,7 +10,9 @@ import CMSkeleton from "@component/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import VideoPlayer from "@component/common/VideoPlayer";
 
+
 const AboutUs = () => {
+  const { t, lang } = useTranslation();
   const { storeCustomizationSetting, loading, error } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   useEffect(() => {
@@ -177,63 +180,103 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* About Us  */}
-        <div className="bg-gray-50 lg:py-20 py-10" id="team">
+        {/* CEO Message Section - Professional & Modern */}
+        <div className="relative bg-gradient-to-b from-gray-50 to-gray-100 lg:py-20 py-10" id="team">
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-            <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
-              <div className="max-w-2xl">
-                <h3 className="text-xl lg:text-3xl mb-2 font-serif font-bold">
-                  {showingTranslateValue(
-                    storeCustomizationSetting?.about_us?.ceo_title
-                  )}
-                </h3>
-                <p className="mt-2 md:mt-3 font-normal block text-base">
-                  {showingTranslateValue(
-                    storeCustomizationSetting?.about_us?.ceo_description
-                  )}
-                </p>
-              </div>
+            {/* Section Header */}
+            <div className="text-center mb-12 lg:mb-16">
+              {lang === 'en' && (
+                <span className="text-red-600 font-semibold text-sm uppercase tracking-wide mb-2 block">
+                  Leadership Message
+                </span>
+              )}
+              <h3 className="text-3xl lg:text-4xl font-serif font-bold text-gray-900 mb-3">
+                {t('common:ceo-title')}
+              </h3>
+              <div className="h-1 w-24 bg-red-600 mx-auto"></div>
             </div>
-            <div className="flex justify-center">
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.ceo_img ||
-                    "/team/team-1.jpg"
-                  }
-                  alt="ceo"
-                  className="block rounded-lg"
-                />
-                <div className="py-4 text-center">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.ceo_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.ceo_sub
-                    )}
-                  </span>
+
+            {/* CEO Card - Two Column Layout */}
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-32 items-start">
+              {/* Left Side - CEO Image & Info */}
+              <div className="flex justify-center lg:sticky lg:top-24 mb-20">
+                <div className="relative group w-full flex flex-col items-center">
+                  {/* Image Container */}
+                  <div className="relative flex justify-center">
+                    <div className="rounded-full overflow-hidden bg-white transform group-hover:scale-105 transition-all duration-500 w-64 h-64 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem]" style={{
+                      boxShadow: '0 0 0 8px white, 0 0 0 10px #dc2626,  0 0 0 1px #eab308, 0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                    }}>
+                      <Image
+                        width={500}
+                        height={500}
+                        src="/ceo/ceo.jpg"
+                        alt="CEO - Eng. Salem H. Balharith"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-full"
+                      />
+                    </div>
+                    
+                    {/* Name Badge */}
+                    <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-max">
+                      <div className=" pb-9 ">
+                        <h5 className="text-lg lg:text-2xl font-bold font-serif text-gray-900 whitespace-nowrap">
+                          {t('common:ceo-name')}
+                        </h5>
+                        <span className="text-red-600 font-semibold text-sm lg:text-base block mt-1">
+                          {t('common:ceo-position')}
+                        </span>
+                        <span className="text-gray-600 text-sm lg:text-base block mt-1">
+                          {t('common:ceo-company')}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                {/* CEO Message */}
-                {storeCustomizationSetting?.about_us?.ceo_message && (
-                  <div className="mt-6 p-4 bg-white rounded-lg shadow text-center">
-                    <h6 className="font-serif font-semibold text-base mb-2">
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.about_us?.ceo_message_title ||
-                          "Message from CEO"
-                      )}
-                    </h6>
-                    <p className="text-gray-700 text-sm">
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.about_us?.ceo_message
-                      )}
+              </div>
+
+              {/* Right Side - CEO Message */}
+              <div className=" mt-12 lg:mt-0 space-y-6">
+                {/* Quote Card */}
+                <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg border-l-4 border-red-600">
+                 
+                  <svg className="w-10 h-10 text-red-600 opacity-30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                  </svg>
+
+                  {/* Message Content */}
+                  <div className="space-y-5 text-gray-700">
+                    <p className="text-base lg:text-lg leading-relaxed">
+                      {t('common:ceo-message-p1')}
+                    </p>
+                    
+                    <p className="text-base lg:text-lg leading-relaxed">
+                      {t('common:ceo-message-p2')}
+                    </p>
+                    
+                    <p className="text-base lg:text-lg leading-relaxed">
+                      {t('common:ceo-message-p3')}
+                    </p>
+                    
+                    <p className="text-base lg:text-lg leading-relaxed italic text-gray-800 font-medium">
+                      {t('common:ceo-message-p4')}
                     </p>
                   </div>
-                )}
+
+                  {/* Signature */}
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <p className="text-gray-900 font-serif font-bold text-lg">
+                      {t('common:ceo-name')}
+                    </p>
+                    <p className="text-gray-600 text-sm mt-1">
+                      {t('common:ceo-position')} – {t('common:ceo-company')}
+                    </p>
+                  </div>
+                </div>
+
+              
+                
+              
+
+              
               </div>
             </div>
           </div>
