@@ -72,21 +72,21 @@ const NavbarPromo = () => {
     })();
   }, []);
 
-  const { t } = useTranslation();
+  const { t, lang: i18nLang } = useTranslation();
   return (
     <>
       <div
         className=" lg:block xl:block bg-white border-b"
-        style={{ zIndex: 99999, direction: "ltr" }}
+        style={{ zIndex: 99999 }}
       >
-        <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center">
+        <div className={`max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
           <div className="w-1/3 hidden lg:flex xl:flex">
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center md:justify-start md:space-x-10">
                   <Popover.Group
                     as="nav"
-                    className=" space-x-10 items-center hidden lg:flex xl:flex "
+                    className={`items-center hidden lg:flex xl:flex ${lang === 'ar' ? 'space-x-reverse space-x-8' : 'space-x-10'}`}
                   >
                     {storeCustomizationSetting?.navbar?.contact_menu_status && (
                       <Link
@@ -145,7 +145,7 @@ const NavbarPromo = () => {
                 <div className="flex justify-between items-center md:justify-start md:space-x-10 mx-10">
                   <Popover.Group
                     as="nav"
-                    className=" space-x-10 items-center hidden lg:flex xl:flex"
+                    className={`items-center hidden lg:flex xl:flex ${lang === 'ar' ? 'space-x-reverse space-x-10' : 'space-x-10'}`}
                   >
                     {storeCustomizationSetting?.navbar
                       ?.categories_menu_status && (

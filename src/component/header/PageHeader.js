@@ -11,6 +11,7 @@ const PageHeader = ({ title, headerBg }) => {
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold font-serif text-center">
             {/* {t(`common:${title}`)} */}
             {title}
+            
           </h2>
         </div>
       </div>

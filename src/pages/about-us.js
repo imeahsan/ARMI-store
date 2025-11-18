@@ -41,7 +41,7 @@ const AboutUs = () => {
 
       <div className="bg-white">
         <div className="max-w-screen-2xl mx-auto lg:py-20 py-10 px-4 sm:px-10">
-          <div className="grid grid-flow-row lg:grid-cols-2 gap-4 lg:gap-16 items-center">
+          <div className="grid grid-flow-row lg:grid-cols-1 gap-4 lg:gap-16 items-center">
             <div className="">
               <h3 className="text-xl lg:text-3xl mb-2 font-serif font-bold">
                 {/* {t("common:about-section-title")} */}
@@ -127,7 +127,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <div className="mt-10 lg:mt-0">
+            {/* <div className="mt-10 lg:mt-0">
               <Image
                 width={920}
                 height={750}
@@ -137,9 +137,9 @@ const AboutUs = () => {
                 }
                 alt="logo"
               />
-            </div>
+            </div> */}
           </div>
-          <div className="mt-10 lg:mt-16 text-base opacity-90 leading-7">
+          {/* <div className="mt-10 lg:mt-16 text-base opacity-90 leading-7">
             <p>
               <CMSkeleton
                 count={5}
@@ -163,7 +163,7 @@ const AboutUs = () => {
                 }
               />
             </p>
-          </div>
+          </div> */}
           <div className="mt-10 lg:mt-12 flex flex-col sm:grid gap-4">
             {/* <Image
               width={1920}
@@ -176,7 +176,7 @@ const AboutUs = () => {
               className="block rounded-lg"
             /> */}
 
-            <VideoPlayer />
+            {/* <VideoPlayer /> */}
           </div>
         </div>
 
