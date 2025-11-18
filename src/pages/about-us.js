@@ -24,7 +24,7 @@ const AboutUs = () => {
       }
     }, 3000);
   }, []);
-
+  console.log(storeCustomizationSetting);
   // console.log("data", data, );
 
   return (
@@ -177,177 +177,63 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* team */}
+        {/* About Us  */}
         <div className="bg-gray-50 lg:py-20 py-10" id="team">
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">
                 <h3 className="text-xl lg:text-3xl mb-2 font-serif font-bold">
-                  <CMSkeleton
-                    count={1}
-                    height={50}
-                    // error={error}
-                    loading={loading}
-                    data={storeCustomizationSetting?.about_us?.founder_title}
-                  />
+                  {showingTranslateValue(
+                    storeCustomizationSetting?.about_us?.ceo_title
+                  )}
                 </h3>
                 <p className="mt-2 md:mt-3 font-normal block text-base">
-                  <CMSkeleton
-                    count={3}
-                    height={20}
-                    // error={error}
-                    loading={loading}
-                    data={
-                      storeCustomizationSetting?.about_us?.founder_description
-                    }
-                  />
+                  {showingTranslateValue(
+                    storeCustomizationSetting?.about_us?.ceo_description
+                  )}
                 </p>
               </div>
             </div>
-            <div className="grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-6 xl:gap-x-8">
+            <div className="flex justify-center">
               <div className="max-w-sm">
                 <Image
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_one_img ||
+                    storeCustomizationSetting?.about_us?.ceo_img ||
                     "/team/team-1.jpg"
                   }
-                  alt="team-1"
+                  alt="ceo"
                   className="block rounded-lg"
                 />
-                <div className="py-4">
+                <div className="py-4 text-center">
                   <h5 className="text-lg font-bold font-serif">
                     {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_one_name
+                      storeCustomizationSetting?.about_us?.ceo_name
                     )}
                   </h5>
                   <span className="opacity-75 text-sm">
                     {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_one_sub
+                      storeCustomizationSetting?.about_us?.ceo_sub
                     )}
                   </span>
                 </div>
-              </div>
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.founder_two_img ||
-                    "/team/team-2.jpg"
-                  }
-                  alt="team-2"
-                  className="block rounded-lg"
-                />
-                <div className="py-4">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_two_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_two_sub
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.founder_three_img ||
-                    "/team/team-3.jpg"
-                  }
-                  alt="team-3"
-                  className="block rounded-lg"
-                />
-                <div className="py-4">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_three_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_three_sub
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.founder_four_img ||
-                    "/team/team-4.jpg"
-                  }
-                  alt="team-4"
-                  className="block rounded-lg"
-                />
-                <div className="py-4">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_four_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_four_sub
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.founder_five_img ||
-                    "/team/team-5.jpg"
-                  }
-                  alt="team-5"
-                  className="block rounded-lg"
-                />
-                <div className="py-4">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_five_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_five_sub
-                    )}
-                  </span>
-                </div>
-              </div>
-              <div className="max-w-sm">
-                <Image
-                  width={420}
-                  height={420}
-                  src={
-                    storeCustomizationSetting?.about_us?.founder_six_img ||
-                    "/team/team-6.jpg"
-                  }
-                  alt="team-6"
-                  className="block rounded-lg"
-                />
-                <div className="py-4">
-                  <h5 className="text-lg font-bold font-serif">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_six_name
-                    )}
-                  </h5>
-                  <span className="opacity-75 text-sm">
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.about_us?.founder_six_sub
-                    )}
-                  </span>
-                </div>
+                {/* CEO Message */}
+                {storeCustomizationSetting?.about_us?.ceo_message && (
+                  <div className="mt-6 p-4 bg-white rounded-lg shadow text-center">
+                    <h6 className="font-serif font-semibold text-base mb-2">
+                      {showingTranslateValue(
+                        storeCustomizationSetting?.about_us?.ceo_message_title ||
+                          "Message from CEO"
+                      )}
+                    </h6>
+                    <p className="text-gray-700 text-sm">
+                      {showingTranslateValue(
+                        storeCustomizationSetting?.about_us?.ceo_message
+                      )}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

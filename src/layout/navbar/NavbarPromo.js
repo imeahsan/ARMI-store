@@ -109,15 +109,15 @@ const NavbarPromo = () => {
                         )}
                       </Link>
                     )}
-                    {storeCustomizationSetting?.navbar?.about_menu_status && (
-                      <Link
-                        href="/about-us#team"
-                        onClick={() => setIsLoading(!isLoading)}
-                        className="font-serif mx-4 py-2 text-sm font-medium hover:text-red-600 tracking-wide"
-                      >
-                        {t("common:team")}
-                      </Link>
-                    )}
+                    {/*{storeCustomizationSetting?.navbar?.about_menu_status && (*/}
+                    {/*  <Link*/}
+                    {/*    href="/about-us#team"*/}
+                    {/*    onClick={() => setIsLoading(!isLoading)}*/}
+                    {/*    className="font-serif mx-4 py-2 text-sm font-medium hover:text-red-600 tracking-wide"*/}
+                    {/*  >*/}
+                    {/*    {t("common:team")}*/}
+                    {/*  </Link>*/}
+                    {/*)}*/}
                   </Popover.Group>
                 </div>
               </div>

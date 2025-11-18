@@ -55,7 +55,8 @@ module.exports = withPWA({
       "http://13.53.232.204",
       "http://192.168.18.131",
       "images.dashter.com",
-        "https://backend.armi.sa"
+        "https://backend.armi.sa",
+        "http://backend.armi.sa",
     ],
     remotePatterns: [
       {
@@ -78,6 +79,11 @@ module.exports = withPWA({
       },
       {
         protocol: "https",
+        hostname: "backend.armi.sa",
+        // port: "5055",
+        pathname: "/file/**",
+      }, {
+        protocol: "http",
         hostname: "backend.armi.sa",
         // port: "5055",
         pathname: "/file/**",
