@@ -232,16 +232,16 @@ const Footer = () => {
             )}
             {storeCustomizationSetting?.footer?.block4_status && (
               <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-                <Link href="/" className="" rel="noreferrer">
-                  {" "}
+                <Link href="/" className="block mb-4" rel="noreferrer">
                   <Image
-                    width={110}
-                    height={110}
+                    width={200}
+                    height={200}
                     src={
-                      storeCustomizationSetting?.footer?.block4_logo ||
-                      "/logo/logo-color.svg"
+                    "/logo/logo-color.svg" ||   storeCustomizationSetting?.footer?.block4_logo 
+                     
                     }
                     alt="logo"
+                    className="object-contain"
                   />
                 </Link>
                 <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
