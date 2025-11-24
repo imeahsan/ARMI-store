@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import useTranslation from "next-translate/useTranslation";
+import logo from "../../../public/logo/logo-color.svg";
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -237,7 +238,7 @@ const Footer = () => {
                     width={200}
                     height={200}
                     src={
-                    "/logo/logo-color.svg" ||   storeCustomizationSetting?.footer?.block4_logo 
+                    logo ||   storeCustomizationSetting?.footer?.block4_logo 
                      
                     }
                     alt="logo"
