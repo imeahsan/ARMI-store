@@ -6,20 +6,18 @@ const ProductServices = {
   },
   getShowingStoreProducts: async ({ category = "", title = "", slug = "" }) => {
     return requests.get(
-      `/products/store?category=${category}&title=${title}&slug=${slug}`
+      `/products/store?category=${category}&title=${title}&slug=${slug}`,
     );
   },
-  getFilteredProducts: async ( filter ) => {
-    return requests.get(
-        `/products/store/filter?filter=${filter}`
-    );
+  getFilteredProducts: async (filter) => {
+    return requests.get(`/products/store/filter?filter=${filter}`);
   },
   getDiscountedProducts: async () => {
     return requests.get("/products/discount");
   },
 
   getProductBySlug: async (slug) => {
-    return requests.get(`/products/${slug}`);
+    return requests.get(`/products/product/${slug}`);
   },
 };
 

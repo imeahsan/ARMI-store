@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { CardElement } from "@stripe/react-stripe-js";
 import Link from "next/link";
 import {
   IoReturnUpBackOutline,
@@ -33,10 +32,6 @@ const Checkout = () => {
     handleShippingCost,
     register,
     errors,
-    showCard,
-    setShowCard,
-    error,
-    stripe,
     couponInfo,
     couponRef,
     handleCouponCode,
@@ -67,7 +62,7 @@ const Checkout = () => {
                     <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       01.{" "}
                       {showingTranslateValue(
-                        storeCustomizationSetting?.checkout?.personal_details
+                        storeCustomizationSetting?.checkout?.personal_details,
                       )}
                     </h2>
                     <div className="grid grid-cols-6 gap-6">
@@ -75,7 +70,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.first_name
+                            storeCustomizationSetting?.checkout?.first_name,
                           )}
                           name="firstName"
                           type="text"
@@ -88,7 +83,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.last_name
+                            storeCustomizationSetting?.checkout?.last_name,
                           )}
                           name="lastName"
                           type="text"
@@ -101,7 +96,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.email_address
+                            storeCustomizationSetting?.checkout?.email_address,
                           )}
                           name="email"
                           type="email"
@@ -114,7 +109,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.checkout_phone
+                            storeCustomizationSetting?.checkout?.checkout_phone,
                           )}
                           name="contact"
                           type="tel"
@@ -130,7 +125,7 @@ const Checkout = () => {
                     <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       02.{" "}
                       {showingTranslateValue(
-                        storeCustomizationSetting?.checkout?.shipping_details
+                        storeCustomizationSetting?.checkout?.shipping_details,
                       )}
                     </h2>
 
@@ -139,7 +134,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.street_address
+                            storeCustomizationSetting?.checkout?.street_address,
                           )}
                           name="address"
                           type="text"
@@ -152,7 +147,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.city
+                            storeCustomizationSetting?.checkout?.city,
                           )}
                           name="city"
                           type="text"
@@ -165,7 +160,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.country
+                            storeCustomizationSetting?.checkout?.country,
                           )}
                           name="country"
                           type="text"
@@ -178,7 +173,7 @@ const Checkout = () => {
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.zip_code
+                            storeCustomizationSetting?.checkout?.zip_code,
                           )}
                           name="zipCode"
                           type="text"
@@ -190,7 +185,7 @@ const Checkout = () => {
 
                     <Label
                       label={showingTranslateValue(
-                        storeCustomizationSetting?.checkout?.shipping_cost
+                        storeCustomizationSetting?.checkout?.shipping_cost,
                       )}
                     />
                     <div className="grid grid-cols-6 gap-6">
@@ -224,20 +219,13 @@ const Checkout = () => {
                     <h2 className="font-bold font-serif text-base text-gray-700 pb-3">
                       03.{" "}
                       {showingTranslateValue(
-                        storeCustomizationSetting?.checkout?.payment_method
+                        storeCustomizationSetting?.checkout?.payment_method,
                       )}
                     </h2>
-                    {showCard && (
-                      <div className="mb-3">
-                        <CardElement />{" "}
-                        <p className="text-red-400 text-sm mt-1">{error}</p>
-                      </div>
-                    )}
                     <div className="grid grid-cols-6 gap-6">
                       {storeSetting?.cod_status && (
                         <div className="col-span-6 sm:col-span-3">
                           <InputPayment
-                            setShowCard={setShowCard}
                             register={register}
                             name={t("common:cashOnDelivery")}
                             value="Cash"
@@ -247,18 +235,15 @@ const Checkout = () => {
                         </div>
                       )}
 
-                      {/* {storeSetting?.stripe_status && (
-                        <div className="col-span-6 sm:col-span-3">
-                          <InputPayment
-                            setShowCard={setShowCard}
-                            register={register}
-                            name={t("common:creditCard")}
-                            value="Card"
-                            Icon={ImCreditCard}
-                          />
-                          <Error errorName={errors.paymentMethod} />
-                        </div>
-                      )} */}
+                      <div className="col-span-6 sm:col-span-3">
+                        <InputPayment
+                          register={register}
+                          name={t("common:creditCard")}
+                          value="Card"
+                          Icon={ImCreditCard}
+                        />
+                        <Error errorName={errors.paymentMethod} />
+                      </div>
                     </div>
                   </div>
 
@@ -272,14 +257,14 @@ const Checkout = () => {
                           <IoReturnUpBackOutline />
                         </span>
                         {showingTranslateValue(
-                          storeCustomizationSetting?.checkout?.continue_button
+                          storeCustomizationSetting?.checkout?.continue_button,
                         )}
                       </Link>
                     </div>
                     <div className="col-span-6 sm:col-span-3">
                       <button
                         type="submit"
-                        disabled={isEmpty || !stripe || isCheckoutSubmit}
+                        disabled={isEmpty || isCheckoutSubmit}
                         className="bg-red-500 hover:bg-red-600 border border-red-500 transition-all rounded py-3 text-center text-sm font-serif font-medium text-white flex justify-center w-full"
                       >
                         {isCheckoutSubmit ? (
@@ -299,7 +284,7 @@ const Checkout = () => {
                           <span className="flex justify-center text-center">
                             {showingTranslateValue(
                               storeCustomizationSetting?.checkout
-                                ?.confirm_button
+                                ?.confirm_button,
                             )}
                             <span className="text-xl ml-2">
                               <IoArrowForward />
@@ -317,7 +302,7 @@ const Checkout = () => {
               <div className="border p-5 lg:px-8 lg:py-8 rounded-lg bg-white order-1 sm:order-2">
                 <h2 className="font-bold font-serif text-lg pb-4">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.checkout?.order_summary
+                    storeCustomizationSetting?.checkout?.order_summary,
                   )}
                 </h2>
 
@@ -361,7 +346,7 @@ const Checkout = () => {
                           className="md:text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold text-center justify-center border border-gray-200 rounded-md placeholder-white focus-visible:outline-none focus:outline-none px-5 md:px-6 lg:px-8 py-3 md:py-3.5 lg:py-3 mt-3 sm:mt-0 sm:ml-3 md:mt-0 md:ml-3 lg:mt-0 lg:ml-3 hover:text-white hover:bg-gray-500 h-12 text-sm lg:text-base w-full sm:w-auto"
                         >
                           {showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.apply_button
+                            storeCustomizationSetting?.checkout?.apply_button,
                           )}
                         </button>
                       </div>
@@ -370,7 +355,7 @@ const Checkout = () => {
                 </div>
                 <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.checkout?.sub_total
+                    storeCustomizationSetting?.checkout?.sub_total,
                   )}
                   <span className="ml-auto flex-shrink-0 text-gray-800 font-bold">
                     {currency} {cartTotal?.toFixed(2)}
@@ -378,7 +363,7 @@ const Checkout = () => {
                 </div>
                 <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.checkout?.shipping_cost
+                    storeCustomizationSetting?.checkout?.shipping_cost,
                   )}
                   <span className="ml-auto flex-shrink-0 text-gray-800 font-bold">
                     {currency} {shippingCost.toFixed(2)}
@@ -386,7 +371,7 @@ const Checkout = () => {
                 </div>
                 <div className="flex items-center py-2 text-sm w-full font-bold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.checkout?.discount
+                    storeCustomizationSetting?.checkout?.discount,
                   )}
                   <span className="ml-auto flex-shrink-0 font-bold text-orange-400">
                     {currency} {discountAmount.toFixed(2)}
@@ -395,7 +380,7 @@ const Checkout = () => {
                 <div className="border-t mt-4">
                   <div className="flex items-center font-bold font-serif justify-between pt-5 text-sm uppercase">
                     {showingTranslateValue(
-                      storeCustomizationSetting?.checkout?.total_cost
+                      storeCustomizationSetting?.checkout?.total_cost,
                     )}
                     <span className="font-serif font-extrabold text-lg">
                       {currency} {parseFloat(total).toFixed(2)}

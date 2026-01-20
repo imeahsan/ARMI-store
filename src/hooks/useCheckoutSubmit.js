@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "react-use-cart";
-// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 //internal import
 import useAsync from "@hooks/useAsync";
@@ -21,11 +20,9 @@ const useCheckoutSubmit = () => {
     dispatch,
   } = useContext(UserContext);
 
-  const [error, setError] = useState("");
   const [total, setTotal] = useState("");
   const [couponInfo, setCouponInfo] = useState({});
   const [minimumAmount, setMinimumAmount] = useState(0);
-  const [showCard, setShowCard] = useState(false);
   const [shippingCost, setShippingCost] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
   const [discountPercentage, setDiscountPercentage] = useState(0);
@@ -33,8 +30,6 @@ const useCheckoutSubmit = () => {
   const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   const router = useRouter();
-  // const stripe = useStripe();
-  // const elements = useElements();
   const couponRef = useRef("");
   const { isEmpty, emptyCart, items, cartTotal } = useCart();
 
@@ -45,7 +40,8 @@ const useCheckoutSubmit = () => {
     formState: { errors },
   } = useForm();
 
-  const { data } = useAsync(CouponServices.getAllCoupons);
+  // use public coupon endpoint to avoid 401/logout from admin-only route
+  const { data } = useAsync(CouponServices.getShowingCoupons);
   const { data: globalSetting } = useAsync(SettingServices.getGlobalSetting);
   const currency = globalSetting?.default_currency || "$";
 
@@ -72,7 +68,7 @@ const useCheckoutSubmit = () => {
   useEffect(() => {
     const discountProductTotal = items?.reduce(
       (preValue, currentValue) => preValue + currentValue.itemTotal,
-      0
+      0,
     );
 
     let totalValue = "";
@@ -108,11 +104,10 @@ const useCheckoutSubmit = () => {
   }, []);
 
   const submitHandler = async (data) => {
+    setIsCheckoutSubmit(true);
     try {
       dispatch({ type: "SAVE_SHIPPING_ADDRESS", payload: data });
       Cookies.set("shippingAddress", JSON.stringify(data));
-      setIsCheckoutSubmit(true);
-      setError("");
 
       const userDetails = {
         name: `${data.firstName} ${data.lastName}`,
@@ -137,32 +132,22 @@ const useCheckoutSubmit = () => {
       };
 
       if (data.paymentMethod === "Card") {
-      //   if (!stripe || !elements) {
-      //     return;
-      //   }
+        const res = await OrderServices.initiateNoonPayment(orderInfo);
 
-        // const { error, paymentMethod } = await stripe.createPaymentMethod({
-        //   type: "card",
-        //   card: elements.getElement(CardElement),
-        // });
-
-        // console.log('error', error);
-
-        if (error && !paymentMethod) {
-          setError(error.message);
-          setIsCheckoutSubmit(false);
-        } else {
-          setError("");
-          const orderData = {
-            ...orderInfo,
-            cardInfo: paymentMethod,
-          };
-
-          handlePaymentWithStripe(orderData);
-
-          // console.log('cardInfo', orderData);
-          return;
+        if (!res?.paymentUrl) {
+          throw new Error("Unable to initiate payment");
         }
+
+        sessionStorage.setItem(
+          "pendingOrderId",
+          JSON.stringify({ orderId: res.orderId, reference: res.reference }),
+        );
+
+        Cookies.remove("couponInfo");
+        sessionStorage.removeItem("products");
+        // Redirect to Noon hosted payment page
+        window.location.href = res.paymentUrl;
+        return;
       }
       if (data.paymentMethod === "Cash") {
         const res = await OrderServices.addOrder(orderInfo);
@@ -171,7 +156,7 @@ const useCheckoutSubmit = () => {
         const notificationInfo = {
           orderId: res._id,
           message: `${res.user_info.name}, Placed ${currency}${parseFloat(
-            res.total
+            res.total,
           ).toFixed(2)} order!`,
           image: "image.png",
         };
@@ -183,54 +168,10 @@ const useCheckoutSubmit = () => {
         Cookies.remove("couponInfo");
         sessionStorage.removeItem("products");
         emptyCart();
-        setIsCheckoutSubmit(false);
       }
     } catch (err) {
-      notifyError(err.message);
-      setIsCheckoutSubmit(false);
-    }
-  };
-
-  const handlePaymentWithStripe = async (order) => {
-    try {
-      // console.log('try goes here!', order);
-      // const updatedOrder = {
-      //   ...order,
-      //   currency: 'usd',
-      // };
-      const res = await OrderServices.createPaymentIntent(order);
-      // console.log("res", res);
-      stripe.confirmCardPayment(res.client_secret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      });
-
-      const orderData = {
-        ...order,
-        cardInfo: res,
-      };
-      const resOrder = await OrderServices.addOrder(orderData);
-      // notification info
-      const notificationInfo = {
-        orderId: resOrder._id,
-        message: `${resOrder.user_info.name}, Placed ${currency}${parseFloat(
-          resOrder.total
-        ).toFixed(2)} order!`,
-        image: "image.png",
-      };
-      // notification api call
-      await NotificationServices.addNotification(notificationInfo);
-
-      router.push(`/order/${resOrder._id}`);
-      notifySuccess("Your Order Confirmed!");
-      Cookies.remove("couponInfo");
-      emptyCart();
-      sessionStorage.removeItem("products");
-      setIsCheckoutSubmit(false);
-    } catch (err) {
-      // console.log("err", err?.message);
-      notifyError(err?.response?.data?.message || err?.message);
+      notifyError(err?.response?.data?.message || err.message);
+    } finally {
       setIsCheckoutSubmit(false);
     }
   };
@@ -247,7 +188,7 @@ const useCheckoutSubmit = () => {
       return;
     }
     const result = data.filter(
-      (coupon) => coupon.couponCode === couponRef.current.value
+      (coupon) => coupon.couponCode === couponRef.current.value,
     );
 
     if (result.length < 1) {
@@ -262,12 +203,12 @@ const useCheckoutSubmit = () => {
 
     if (total < result[0]?.minimumAmount) {
       notifyError(
-        `Minimum ${result[0].minimumAmount} USD required for Apply this coupon!`
+        `Minimum ${result[0].minimumAmount} USD required for Apply this coupon!`,
       );
       return;
     } else {
       notifySuccess(
-        `Your Coupon ${result[0].couponCode} is Applied on ${result[0].productType}!`
+        `Your Coupon ${result[0].couponCode} is Applied on ${result[0].productType}!`,
       );
       setIsCouponApplied(true);
       setMinimumAmount(result[0]?.minimumAmount);
@@ -283,10 +224,6 @@ const useCheckoutSubmit = () => {
     handleShippingCost,
     register,
     errors,
-    showCard,
-    setShowCard,
-    error,
-    // stripe,
     couponInfo,
     couponRef,
     handleCouponCode,

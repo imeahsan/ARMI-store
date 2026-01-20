@@ -6,7 +6,7 @@ const AuctionServices = {
   },
   getShowingStoreProducts: async ({ category = "", title = "", slug = "" }) => {
     return requests.get(
-      `/auctions/store?category=${category}&title=${title}&slug=${slug}`
+      `/auctions/store?category=${category}&title=${title}&slug=${slug}`,
     );
   },
   getDiscountedProducts: async () => {
@@ -18,6 +18,9 @@ const AuctionServices = {
   },
   getBids: async (id) => {
     return requests.get(`/auctions/bids/${id}`);
+  },
+  placeBid: async (id, body) => {
+    return requests.patch(`/auctions/bid/${id}`, body);
   },
 };
 

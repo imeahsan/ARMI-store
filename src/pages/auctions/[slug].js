@@ -2,7 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { FiChevronRight, FiMinus, FiPlus } from "react-icons/fi";
 import {
   FacebookIcon,
@@ -22,7 +22,7 @@ import Price from "@component/common/Price";
 import Stock from "@component/common/Stock";
 import Tags from "@component/common/Tags";
 import Layout from "@layout/Layout";
-import { notifyError } from "@utils/toast";
+import { notifyError, notifySuccess } from "@utils/toast";
 import Card from "@component/slug-card/Card";
 import useAddToCart from "@hooks/useAddToCart";
 import Loading from "@component/preloader/Loading";
@@ -41,13 +41,14 @@ import AuctionPrice from "@component/common/AuctionPrice";
 import Bidder from "@component/Bidder";
 import { UserContext } from "@context/UserContext";
 import LoginModal from "@component/modal/LoginModal";
-import axios from "axios";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
   const {
     state: { userInfo },
   } = useContext(UserContext);
+  const productId = product?._id;
+  const userId = userInfo?._id;
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
 
@@ -74,10 +75,11 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [timeUntilEnd, setTimeUntilEnd] = useState();
   const [error, setError] = useState();
+  const [bidsError, setBidsError] = useState("");
   useEffect(() => {
     if (value) {
       const result = product?.variants?.filter((variant) =>
-        Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
+        Object.keys(selectVa).every((k) => selectVa[k] === variant[k]),
       );
       // console.log('result',result)
       const res = result?.map(
@@ -92,22 +94,22 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
           productId,
           image,
           ...rest
-        }) => ({ ...rest })
+        }) => ({ ...rest }),
       );
       // console.log("res", res);
 
       const filterKey = Object.keys(Object.assign({}, ...res));
       const selectVar = filterKey?.reduce(
         (obj, key) => ({ ...obj, [key]: selectVariant[key] }),
-        {}
+        {},
       );
       const newObj = Object.entries(selectVar).reduce(
         (a, [k, v]) => (v ? ((a[k] = v), a) : a),
-        {}
+        {},
       );
 
       const result2 = result?.find((v) =>
-        Object.keys(newObj).every((k) => newObj[k] === v[k])
+        Object.keys(newObj).every((k) => newObj[k] === v[k]),
       );
 
       // console.log("result2", result2);
@@ -121,7 +123,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       const price = getNumber(result2?.price);
       const originalPrice = getNumber(result2?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
@@ -129,7 +131,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       setItem(originalPrice);
     } else if (product?.variants?.length > 0) {
       const result = product?.variants?.filter((variant) =>
-        Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
+        Object.keys(selectVa).every((k) => selectVa[k] === variant[k]),
       );
 
       setVariants(result);
@@ -140,7 +142,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       const price = getNumber(product.variants[0]?.price);
       const originalPrice = getNumber(product.variants[0]?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
@@ -151,7 +153,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       const price = getNumber(product?.prices?.price);
       const originalPrice = getNumber(product?.prices?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
@@ -192,27 +194,67 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
   // console.log("discount", discount);
   // bids data
-  const [bids, setBids] = useState();
-  const getBids = async () => {
-    let { bids } = await AuctionServices.getBids(product._id);
-    if (bids.length > 0) {
-      setItem(bids[0].price);
-    } else {
-      setItem(originalPrice);
+  const [bids, setBids] = useState([]);
+
+  const getBids = useCallback(async () => {
+    if (!productId) {
+      return;
     }
-    setBids(bids);
-  };
+
+    if (!userId) {
+      setBids([]);
+      setItem(originalPrice);
+      setBidsError("");
+      return;
+    }
+
+    try {
+      const response = await AuctionServices.getBids(productId);
+      const fetchedBids = response?.bids || [];
+      if (fetchedBids.length > 0) {
+        setItem(fetchedBids[0].price);
+      } else {
+        setItem(originalPrice);
+      }
+      setBids(fetchedBids);
+      setBidsError("");
+    } catch (err) {
+      setBids([]);
+      setItem(originalPrice);
+      setBidsError(
+        err?.response?.data?.message || err?.message || "Unable to fetch bids",
+      );
+    }
+  }, [originalPrice, productId, setItem, userId]);
+
   useEffect(() => {
-    setInterval(getBids, 60000);
     getBids();
+    if (!userId) {
+      return;
+    }
+
+    const intervalId = setInterval(getBids, 60000);
+    return () => clearInterval(intervalId);
+  }, [getBids, userId]);
+
+  useEffect(() => {
+    if (!product?.endTime) {
+      return;
+    }
+
     if (new Date(product?.endTime) < new Date()) {
       setTimeUntilEnd("Bid Ended");
-    } else {
-      setInterval(() => {
-        calculateTimeUntilEnd(product?.endTime), 1000;
-      });
+      return;
     }
-  }, []);
+
+    const timerId = setInterval(() => {
+      calculateTimeUntilEnd(product?.endTime);
+    }, 1000);
+
+    calculateTimeUntilEnd(product?.endTime);
+
+    return () => clearInterval(timerId);
+  }, [product?.endTime]);
 
   function calculateTimeUntilEnd(bidEndTime) {
     var currentTime = new Date();
@@ -253,27 +295,28 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
   // for placing bid
   const handlePlaceBid = async () => {
-    console.log(userInfo);
-    if (bids.length > 1) {
-      console.log("iten", item);
-      console.log(bids[0]?.price);
-      console.log(item > bids[0]?.price);
-      if (item < bids[0]?.price) {
-        setError(
-          "Bid Amount should be greater than Highest Bid  " + bids[0]?.price
-        );
-        return;
-      } else {
-        // alert(34);
-        await axios.patch(
-          process.env.NEXT_PUBLIC_API_BASE_URL + "/auctions/bid/" + product._id,
-          {
-            bider: userInfo._id,
-            price: item,
-          }
-        );
-        getBids();
-      }
+    if (!userId) {
+      setModalOpen(true);
+      return;
+    }
+
+    const highestBid = bids[0]?.price || originalPrice;
+
+    if (Number(item) < Number(highestBid)) {
+      setError("Bid Amount should be greater than Highest Bid " + highestBid);
+      return;
+    }
+
+    try {
+      await AuctionServices.placeBid(productId, {
+        bider: userId,
+        price: item,
+      });
+      notifySuccess("Bid placed successfully");
+      setError("");
+      getBids();
+    } catch (err) {
+      notifyError(err?.response?.data?.message || err?.message);
     }
   };
   return (
@@ -373,7 +416,10 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           </p>
 
                           <div className="relative">
-                            <Bids bids={product.bids.length} page />
+                            <Bids
+                              bids={bids?.length || product?.bids?.length || 0}
+                              page
+                            />
                           </div>
                         </div>
                         <AuctionPrice
@@ -387,7 +433,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           <div className="text-sm leading-6 text-gray-500 md:leading-7 text-wrap">
                             {isReadMore
                               ? showingTranslateValue(
-                                  product?.description
+                                  product?.description,
                                 )?.slice(0, 230)
                               : showingTranslateValue(product?.description)}
                             <br />
@@ -479,6 +525,11 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             </div>
                           </div>
                           <p className="text-red-500 font-bold">{error}</p>
+                          {bidsError && (
+                            <p className="text-yellow-600 text-sm font-medium mt-1">
+                              {bidsError}
+                            </p>
+                          )}
                           {/* <div className="flex flex-col mt-4">
                             <span className="font-serif font-bold py-1 text-sm d-block">
                               <span className="text-gray-800">

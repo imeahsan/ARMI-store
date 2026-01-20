@@ -1,6 +1,5 @@
 import "@styles/custom.css";
 import { CartProvider } from "react-use-cart";
-import { Elements } from "@stripe/react-stripe-js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
@@ -12,7 +11,6 @@ import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
 //internal import
 import store from "@redux/store";
-import getStripe from "@utils/stripe";
 import useAsync from "@hooks/useAsync";
 import { UserProvider } from "@context/UserContext";
 import DefaultSeo from "@component/common/DefaultSeo";
@@ -22,8 +20,6 @@ import { handlePageView } from "@utils/analytics";
 import { DirectionProvider } from "@context/DirectionContext";
 
 let persistor = persistStore(store);
-
-let stripePromise = getStripe();
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -56,8 +52,6 @@ function MyApp({ Component, pageProps }) {
     }
   }, [storeSetting]);
 
-  // console.log("storeSetting", storeSetting, "stripePromise", stripePromise);
-
   return (
     <>
       {!loading && !error && storeSetting?.tawk_chat_status && (
@@ -72,12 +66,10 @@ function MyApp({ Component, pageProps }) {
             <Provider store={store}>
               <PersistGate loading={null} persistor={persistor}>
                 <SidebarProvider>
-                  {/* <Elements stripe={stripePromise}> */}
-                    <CartProvider>
-                      <DefaultSeo />
-                      <Component {...pageProps} />
-                    </CartProvider>
-                  {/* </Elements> */}
+                  <CartProvider>
+                    <DefaultSeo />
+                    <Component {...pageProps} />
+                  </CartProvider>
                 </SidebarProvider>
               </PersistGate>
             </Provider>

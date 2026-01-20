@@ -1,8 +1,8 @@
-import requests from './httpServices';
+import requests from "./httpServices";
 
 const AttributeServices = {
   getAllAttributes: async () => {
-    return requests.get('/attributes');
+    return requests.get("/attributes");
   },
 
   getShowingAttributes: async () => {
@@ -10,11 +10,11 @@ const AttributeServices = {
   },
 
   addAttribute: async (body) => {
-    return requests.post('/attributes/add', body);
+    return requests.post("/attributes/add", body);
   },
 
   addAllAttributes: async (body) => {
-    return requests.post('/attributes/add/all', body);
+    return requests.post("/attributes/add/all", body);
   },
 
   getAttributeById: async (id) => {
@@ -30,7 +30,7 @@ const AttributeServices = {
   },
 
   deleteAttribute: async (id, body) => {
-    return requests.delete(`/attributes/${id}`, body);
+    return requests.delete(`/attributes/${id}`, { data: body });
   },
 };
 

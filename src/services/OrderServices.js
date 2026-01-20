@@ -5,8 +5,12 @@ const OrderServices = {
     return requests.post("/order/add", body, headers);
   },
 
-  createPaymentIntent: async (body) => {
-    return requests.post("/order/create-payment-intent", body);
+  initiateNoonPayment: async (body) => {
+    return requests.post("/noon/initiate", body);
+  },
+
+  getNoonPaymentStatus: async (orderId) => {
+    return requests.get(`/noon/status/${orderId}`);
   },
 
   getOrderCustomer: async ({ page = 1, limit = 8 }) => {
@@ -15,8 +19,8 @@ const OrderServices = {
   getCustomerAuctions: async ({ id }) => {
     return requests.get(`/auctions/userWonBids/${id}`);
   },
-  getOrderById: async (id, body) => {
-    return requests.get(`/order/${id}`, body);
+  getOrderById: async (id) => {
+    return requests.get(`/order/${id}`);
   },
 };
 
