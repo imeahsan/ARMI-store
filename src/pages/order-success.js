@@ -15,17 +15,25 @@ const OrderSuccess = () => {
 
   useEffect(() => {
     // Resolve order id/reference from query or session storage
-    const stored =
-      typeof window !== "undefined"
-        ? sessionStorage.getItem("pendingOrderId")
-        : null;
-    const storedObj = stored ? JSON.parse(stored) : {};
-    const resolvedOrderId =
-      router.query.orderId || router.query.id || storedObj.orderId || "";
-    const resolvedReference =
-      router.query.reference || storedObj.reference || "";
+    let storedObj = {};
+    if (typeof window !== "undefined") {
+      try {
+        const stored = sessionStorage.getItem("pendingOrderId");
+        storedObj = stored ? JSON.parse(stored) : {};
+      } catch (_) {
+        storedObj = {};
+      }
+    }
 
-    if (!resolvedOrderId) {
+    const resolvedOrderId = router.query.orderId || storedObj?.orderId || "";
+    const resolvedReference =
+      router.query.merchantReference ||
+      router.query.reference ||
+      storedObj?.reference ||
+      "";
+    const orderIdentifier = resolvedOrderId || resolvedReference;
+
+    if (!orderIdentifier) {
       setStatus("Order not found");
       setLoading(false);
       return;
@@ -35,11 +43,21 @@ const OrderSuccess = () => {
     setReference(resolvedReference);
 
     let attempts = 0;
+    let intervalId = null;
     const poll = async () => {
       try {
-        const res = await OrderServices.getNoonPaymentStatus(resolvedOrderId);
+        const res = await OrderServices.getNoonPaymentStatus({
+          orderId: resolvedOrderId,
+          merchantReference: resolvedReference,
+        });
         const paymentStatus = res?.paymentStatus || res?.status || "Pending";
         setStatus(paymentStatus);
+        if (!orderId && res?.orderId) {
+          setOrderId(res.orderId);
+        }
+        if (!reference && res?.reference) {
+          setReference(res.reference);
+        }
 
         if (paymentStatus === "Paid") {
           notifySuccess("Payment successful");
@@ -67,17 +85,23 @@ const OrderSuccess = () => {
       const done = await poll();
       if (done) return;
 
-      const interval = setInterval(async () => {
+      intervalId = setInterval(async () => {
         attempts += 1;
         const finished = await poll();
         if (finished || attempts >= 5) {
-          clearInterval(interval);
+          clearInterval(intervalId);
           setLoading(false);
         }
       }, 4000);
     };
 
     startPoll();
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, [router.query]);
 
   return (

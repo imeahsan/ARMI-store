@@ -9,8 +9,11 @@ const OrderServices = {
     return requests.post("/noon/initiate", body);
   },
 
-  getNoonPaymentStatus: async (orderId) => {
-    return requests.get(`/noon/status/${orderId}`);
+  getNoonPaymentStatus: async ({ merchantReference, orderId }) => {
+    const query = new URLSearchParams();
+    if (merchantReference) query.append("merchantReference", merchantReference);
+    if (orderId) query.append("orderId", orderId);
+    return requests.get(`/noon/status?${query.toString()}`);
   },
 
   getOrderCustomer: async ({ page = 1, limit = 8 }) => {

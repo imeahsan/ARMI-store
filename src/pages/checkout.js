@@ -223,7 +223,7 @@ const Checkout = () => {
                       )}
                     </h2>
                     <div className="grid grid-cols-6 gap-6">
-                      {storeSetting?.cod_status && (
+                      {/* {storeSetting?.cod_status && (
                         <div className="col-span-6 sm:col-span-3">
                           <InputPayment
                             register={register}
@@ -233,7 +233,7 @@ const Checkout = () => {
                           />
                           <Error errorName={errors.paymentMethod} />
                         </div>
-                      )}
+                      )} */}
 
                       <div className="col-span-6 sm:col-span-3">
                         <InputPayment

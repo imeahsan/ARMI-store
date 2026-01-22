@@ -149,26 +149,26 @@ const useCheckoutSubmit = () => {
         window.location.href = res.paymentUrl;
         return;
       }
-      if (data.paymentMethod === "Cash") {
-        const res = await OrderServices.addOrder(orderInfo);
+      // if (data.paymentMethod === "Cash") {
+      //   const res = await OrderServices.addOrder(orderInfo);
 
-        // notification info
-        const notificationInfo = {
-          orderId: res._id,
-          message: `${res.user_info.name}, Placed ${currency}${parseFloat(
-            res.total,
-          ).toFixed(2)} order!`,
-          image: "image.png",
-        };
-        // notification api call
-        await NotificationServices.addNotification(notificationInfo);
+      //   // notification info
+      //   const notificationInfo = {
+      //     orderId: res._id,
+      //     message: `${res.user_info.name}, Placed ${currency}${parseFloat(
+      //       res.total,
+      //     ).toFixed(2)} order!`,
+      //     image: "image.png",
+      //   };
+      //   // notification api call
+      //   await NotificationServices.addNotification(notificationInfo);
 
-        router.push(`/order/${res._id}`);
-        notifySuccess("Your Order Confirmed!");
-        Cookies.remove("couponInfo");
-        sessionStorage.removeItem("products");
-        emptyCart();
-      }
+      //   router.push(`/order/${res._id}`);
+      //   notifySuccess("Your Order Confirmed!");
+      //   Cookies.remove("couponInfo");
+      //   sessionStorage.removeItem("products");
+      //   emptyCart();
+      // }
     } catch (err) {
       notifyError(err?.response?.data?.message || err.message);
     } finally {
