@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
-import ceo from "../../public/ceo/009 copy (1).jpg";
 //internal import
 import Layout from "@layout/Layout";
 import useGetSetting from "@hooks/useGetSetting";
@@ -15,6 +14,7 @@ const AboutUs = () => {
   const { t, lang } = useTranslation();
   const { storeCustomizationSetting, loading, error } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
+  const ceoImageSrc = "/ceo/009%20copy%20(1).jpg";
   useEffect(() => {
     const hash = window.location.hash;
 
@@ -209,7 +209,7 @@ const AboutUs = () => {
                       <Image
                         width={500}
                         height={500}
-                        src={ceo}
+                        src={ceoImageSrc}
                         alt="CEO - Eng. Salem H. Balharith"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 rounded-full"
                       />

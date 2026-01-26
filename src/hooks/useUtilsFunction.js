@@ -3,7 +3,9 @@ import Cookies from "js-cookie";
 import useGetSetting from "./useGetSetting";
 
 const useUtilsFunction = () => {
-  const lang = Cookies.get("_lang") || localStorage.getItem("_lang");
+  const lang = typeof window !== "undefined"
+    ? (Cookies.get("_lang") || localStorage.getItem("_lang") || "en")
+    : "en";
   // console.log("language", lang);
   const { globalSetting } = useGetSetting();
 
