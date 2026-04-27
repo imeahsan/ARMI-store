@@ -44,13 +44,7 @@ const Footer = () => {
             {storeCustomizationSetting?.footer?.block1_status && (
               <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
                 <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
-                  <CMSkeleton
-                    count={1}
-                    height={20}
-                    // error={error}
-                    loading={loading}
-                    data={storeCustomizationSetting?.footer?.block1_title}
-                  />
+                  {t("common:footer-menu-title")}
                 </h3>
                 <ul className="text-sm flex flex-col space-y-3">
                   <li className="flex items-baseline">
@@ -58,15 +52,7 @@ const Footer = () => {
                       href={`${storeCustomizationSetting?.footer?.block1_sub_link1}`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title1
-                        }
-                      />
+                      {t("common:footer-about-us")}
                     </Link>
                   </li>
                   <li className="flex items-baseline">
@@ -74,15 +60,7 @@ const Footer = () => {
                       href={`${storeCustomizationSetting?.footer?.block1_sub_link2}`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title2
-                        }
-                      />
+                      {t("common:footer-contact-us")}
                     </Link>
                   </li>
                   <li className="flex items-baseline">
@@ -90,18 +68,7 @@ const Footer = () => {
                       href={`${storeCustomizationSetting?.footer?.block1_sub_link3}`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.footer_block_one_link_three_title
-                      )}
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title3
-                        }
-                      />
+                      {t("common:footer-careers")}
                     </Link>
                   </li>
                   <li className="flex items-baseline">
@@ -109,15 +76,7 @@ const Footer = () => {
                       href={`${storeCustomizationSetting?.footer?.block1_sub_link4}`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title4
-                        }
-                      />
+                      {t("common:footer-news")}
                     </Link>
                   </li>
                 </ul>
@@ -127,13 +86,7 @@ const Footer = () => {
             {storeCustomizationSetting?.footer?.block3_status && (
               <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
                 <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
-                  <CMSkeleton
-                    count={1}
-                    height={20}
-                    // error={error}
-                    loading={loading}
-                    data={storeCustomizationSetting?.footer?.block3_title}
-                  />
+                  {t("common:footer-my-account-title")}
                 </h3>
                 <ul className="text-sm lg:text-15px flex flex-col space-y-3">
                   <li
@@ -148,15 +101,7 @@ const Footer = () => {
                       }`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title1
-                        }
-                      />
+                      {t("common:footer-my-account-dashboard")}
                     </Link>
                   </li>
                   <li
@@ -171,15 +116,7 @@ const Footer = () => {
                       }`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title2
-                        }
-                      />
+                      {t("common:footer-my-account-myOrders")}
                     </Link>
                   </li>
                   <li
@@ -194,15 +131,7 @@ const Footer = () => {
                       }`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title3
-                        }
-                      />
+                      {t("common:footer-my-account-recentOrders")}
                     </Link>
                   </li>
                   <li
@@ -217,15 +146,7 @@ const Footer = () => {
                       }`}
                       className="text-gray-600 inline-block w-full hover:text-red-500"
                     >
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title4
-                        }
-                      />
+                      {t("common:footer-my-account-updatedProfile")}
                     </Link>
                   </li>
                 </ul>
@@ -237,10 +158,7 @@ const Footer = () => {
                   <Image
                     width={200}
                     height={200}
-                    src={
-                    logo ||   storeCustomizationSetting?.footer?.block4_logo 
-                     
-                    }
+                    src={logo || storeCustomizationSetting?.footer?.block4_logo}
                     alt="logo"
                     className="object-contain"
                   />
@@ -259,12 +177,14 @@ const Footer = () => {
                   <br />
                   <span>
                     {" "}
-                    Tel : {storeCustomizationSetting?.footer?.block4_phone}
+                    {t("common:tel-label")} :{" "}
+                    {storeCustomizationSetting?.footer?.block4_phone}
                   </span>
                   <br />
                   <span>
                     {" "}
-                    Email : {storeCustomizationSetting?.footer?.block4_email}
+                    {t("common:email-label")} :{" "}
+                    {storeCustomizationSetting?.footer?.block4_email}
                   </span>
                 </p>
               </div>
@@ -411,17 +331,7 @@ const Footer = () => {
 
         <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">
           <p className="text-sm text-gray-500 leading-6">
-            Copyright 2023 @{" "}
-            <Link
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-600"
-              style={{ color: "#D24549" }}
-            >
-              ARMI
-            </Link>
-            , All rights reserved.
+            {t("common:copyright")}
           </p>
         </div>
       </div>

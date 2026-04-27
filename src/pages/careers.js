@@ -40,7 +40,7 @@ const Careers = () => {
       if (res.data.success) {
         console.log(res.data);
         notifySuccess(
-          "your message sent successfully. We will contact you shortly."
+          "your message sent successfully. We will contact you shortly.",
         );
         return true;
       }
@@ -88,7 +88,7 @@ const Careers = () => {
                       loading={loading}
                       data={{
                         en: t("common:careerHeading"),
-                        de: t("common:careerHeading"),
+                        ar: t("common:careerHeading"),
                       }}
                     />
                   </h3>
@@ -100,7 +100,7 @@ const Careers = () => {
                       loading={loading}
                       data={{
                         en: t("common:careerDesc"),
-                        de: t("common:careerDesc"),
+                        ar: t("common:careerDesc"),
                       }}
                     />
                   </p>
@@ -115,7 +115,7 @@ const Careers = () => {
                         name="name"
                         type="text"
                         placeholder={t(
-                          "common:contact-page-form-plaholder-name"
+                          "common:contact-page-form-plaholder-name",
                         )}
                       />
                       <Error errorName={errors.name} />
@@ -127,7 +127,7 @@ const Careers = () => {
                         name="email"
                         type="email"
                         placeholder={t(
-                          "common:contact-page-form-plaholder-email"
+                          "common:contact-page-form-plaholder-email",
                         )}
                       />
                       <Error errorName={errors.email} />
@@ -144,7 +144,7 @@ const Careers = () => {
                     <Error errorName={errors.subject} />
                   </div>
                   <div className="relative">
-                    <Label label={"Position"} />
+                    <Label label={t("common:position")} />
 
                     <select
                       name="job_position"
@@ -155,34 +155,40 @@ const Careers = () => {
                         "py-2 px-4 md:px-5 w-full appearance-none border text-sm opacity-75 text-input rounded-md placeholder-body min-h-12 transition duration-200 focus:ring-0 ease-in-out bg-white border-gray-200 focus:outline-none focus:border-gray-500 h-11 md:h-12"
                       }
                     >
-                      <option value="" selected disabled>
-                        Position
+                      <option value="" disabled>
+                        {t("common:selectPosition")}
                       </option>
                       <option value="software_engineer">
-                        Software Engineer
+                        {t("common:job-software-engineer")}
                       </option>
                       <option value="marketing_manager">
-                        Marketing Manager
+                        {t("common:job-marketing-manager")}
                       </option>
                       <option value="sales_representative">
-                        Sales Representative
+                        {t("common:job-sales-representative")}
                       </option>
                       <option value="customer_support_specialist">
-                        Customer Support Specialist
+                        {t("common:job-customer-support")}
                       </option>
-                      <option value="project_manager">Project Manager</option>
-                      <option value="data_analyst">Data Analyst</option>
+                      <option value="project_manager">
+                        {t("common:job-project-manager")}
+                      </option>
+                      <option value="data_analyst">
+                        {t("common:job-data-analyst")}
+                      </option>
                       <option value="human_resources_coordinator">
-                        Human Resources Coordinator
+                        {t("common:job-hr-coordinator")}
                       </option>
-                      <option value="graphic_designer">Graphic Designer</option>
+                      <option value="graphic_designer">
+                        {t("common:job-graphic-designer")}
+                      </option>
                       <option value="financial_analyst">
-                        Financial Analyst
+                        {t("common:job-financial-analyst")}
                       </option>
                       <option value="content_writer_editor">
-                        Content Writer/Editor
+                        {t("common:job-content-writer")}
                       </option>
-                      <option value="other">Other </option>
+                      <option value="other">{t("common:job-other")}</option>
                     </select>
 
                     <Error errorName={errors.subject} />
@@ -201,7 +207,7 @@ const Careers = () => {
                       spellCheck="false"
                       rows="4"
                       placeholder={t(
-                        "common:contact-page-form-plaholder-message"
+                        "common:contact-page-form-plaholder-message",
                       )}
                     ></textarea>
                     <Error errorName={errors.message} />
@@ -234,7 +240,7 @@ const Careers = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.email_box_title
+                    storeCustomizationSetting?.contact_us?.email_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
@@ -243,11 +249,11 @@ const Careers = () => {
                     className="text-red-500"
                   >
                     {showingTranslateValue(
-                      storeCustomizationSetting?.contact_us?.email_box_email
+                      storeCustomizationSetting?.contact_us?.email_box_email,
                     )}
                   </a>{" "}
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.email_box_text
+                    storeCustomizationSetting?.contact_us?.email_box_text,
                   )}
                 </p>
               </div>
@@ -267,7 +273,7 @@ const Careers = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.call_box_title
+                    storeCustomizationSetting?.contact_us?.call_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
@@ -276,11 +282,11 @@ const Careers = () => {
                     className="text-red-500"
                   >
                     {showingTranslateValue(
-                      storeCustomizationSetting?.contact_us?.call_box_phone
+                      storeCustomizationSetting?.contact_us?.call_box_phone,
                     )}
                   </a>{" "}
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.call_box_text
+                    storeCustomizationSetting?.contact_us?.call_box_text,
                   )}
                 </p>
               </div>
@@ -299,25 +305,25 @@ const Careers = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.address_box_title
+                    storeCustomizationSetting?.contact_us?.address_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
                   <span>
                     {showingTranslateValue(
                       storeCustomizationSetting?.contact_us
-                        ?.address_box_address_one
+                        ?.address_box_address_one,
                     )}
                   </span>{" "}
                   <br />
                   {showingTranslateValue(
                     storeCustomizationSetting?.contact_us
-                      ?.address_box_address_two
+                      ?.address_box_address_two,
                   )}{" "}
                   <br />
                   {showingTranslateValue(
                     storeCustomizationSetting?.contact_us
-                      ?.address_box_address_three
+                      ?.address_box_address_three,
                   )}
                 </p>
               </div>

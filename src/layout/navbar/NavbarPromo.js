@@ -79,14 +79,16 @@ const NavbarPromo = () => {
         className=" lg:block xl:block bg-white border-b"
         style={{ zIndex: 99999 }}
       >
-        <div className={`max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+        <div
+          className={`max-w-screen-2xl mx-auto px-3 sm:px-10 h-32 flex justify-between items-center ${lang === "ar" ? "flex-row-reverse" : ""}`}
+        >
           <div className="w-1/3 hidden lg:flex xl:flex">
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center md:justify-start md:space-x-10">
                   <Popover.Group
                     as="nav"
-                    className={`items-center hidden lg:flex xl:flex ${lang === 'ar' ? 'space-x-reverse space-x-8' : 'space-x-10'}`}
+                    className={`items-center hidden lg:flex xl:flex ${lang === "ar" ? "space-x-reverse space-x-8" : "space-x-10"}`}
                   >
                     {storeCustomizationSetting?.navbar?.contact_menu_status && (
                       <Link
@@ -104,9 +106,7 @@ const NavbarPromo = () => {
                         onClick={() => setIsLoading(!isLoading)}
                         className="font-serif mx-4 py-2 text-sm font-medium hover:text-red-600 tracking-wide"
                       >
-                        {showingTranslateValue(
-                          storeCustomizationSetting?.navbar?.about_us
-                        )}
+                        {t("common:About Us")}
                       </Link>
                     )}
                     {/*{storeCustomizationSetting?.navbar?.about_menu_status && (*/}
@@ -145,16 +145,14 @@ const NavbarPromo = () => {
                 <div className="flex justify-between items-center md:justify-start md:space-x-10 mx-10">
                   <Popover.Group
                     as="nav"
-                    className={`items-center hidden lg:flex xl:flex ${lang === 'ar' ? 'space-x-reverse space-x-10' : 'space-x-10'}`}
+                    className={`items-center hidden lg:flex xl:flex ${lang === "ar" ? "space-x-reverse space-x-10" : "space-x-10"}`}
                   >
                     {storeCustomizationSetting?.navbar
                       ?.categories_menu_status && (
                       <Popover className="relative font-serif">
                         <Popover.Button className="group inline-flex items-center py-2 hover:text-red-600 focus:outline-none">
                           <span className="font-serif text-sm font-medium tracking-wide">
-                            {showingTranslateValue(
-                              storeCustomizationSetting?.navbar?.categories
-                            )}
+                            {t("common:Categories")}
                           </span>
 
                           <ChevronDownIcon
@@ -186,9 +184,7 @@ const NavbarPromo = () => {
                         onClick={() => setIsLoading(!isLoading)}
                         className="relative inline-flex items-center tracking-wide  bg-red-100 font-serif mx-4 py-0 px-2 rounded text-sm font-medium text-red-500 hover:text-red-600"
                       >
-                        {showingTranslateValue(
-                          storeCustomizationSetting?.navbar?.offers
-                        )}
+                        {t("common:Offers")}
                         <div className="absolute flex w-2 h-2 left-auto -right-1 -top-1">
                           <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
@@ -202,9 +198,7 @@ const NavbarPromo = () => {
                         href="/contact-us"
                         className="font-serif mx-4 py-2 text-sm font-medium tracking-wide hover:text-red-600"
                       >
-                        {showingTranslateValue(
-                          storeCustomizationSetting?.navbar?.contact_us
-                        )}
+                        {t("common:Contact Us")}
                       </Link>
                     )}
                   </Popover.Group>
@@ -219,7 +213,9 @@ const NavbarPromo = () => {
                 }`}
               ></div>
               <button className="dropbtn lg:block hidden">
-                {currentLang?.name}
+                {currentLang?.iso_code
+                  ? t(`common:lang-${currentLang.iso_code}`)
+                  : currentLang?.name}
                 &nbsp;<i className="fas fa-angle-down"></i>
               </button>
               <div
@@ -243,7 +239,9 @@ const NavbarPromo = () => {
                       <div
                         className={`flot-l  flag ${language?.flag?.toLowerCase()}`}
                       ></div>
-                      {language?.name}
+                      {language?.iso_code
+                        ? t(`common:lang-${language.iso_code}`)
+                        : language?.name}
                     </Link>
                   );
                 })}

@@ -19,27 +19,6 @@ module.exports = withPWA({
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  i18n: {
-    // These are all the locales you want to support in
-    // your application
-    locales: ["ar", "en"],
-    // This is the default locale you want to be used when visiting
-    // a non-locale prefixed path e.g. `/hello`
-    // defaultLocale: "ar",
-    // This is a list of locale domains and the default locale they
-    // should handle (these are only required when setting up domain routing)
-    domains: [
-      {
-        domain: "example.ar",
-        defaultLocale: "ar",
-      },
-      {
-        domain: "example.en",
-        // defaultLocale: "en",
-      },
-    ],
-  },
-
   images: {
     domains: [
       "images.unsplash.com",
@@ -55,8 +34,8 @@ module.exports = withPWA({
       "http://13.53.232.204",
       "http://192.168.18.131",
       "images.dashter.com",
-        "https://backend.armi.sa",
-        "http://backend.armi.sa",
+      "https://backend.armi.sa",
+      "http://backend.armi.sa",
     ],
     remotePatterns: [
       {
@@ -82,7 +61,8 @@ module.exports = withPWA({
         hostname: "backend.armi.sa",
         // port: "5055",
         pathname: "/file/**",
-      }, {
+      },
+      {
         protocol: "http",
         hostname: "backend.armi.sa",
         // port: "5055",

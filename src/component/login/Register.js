@@ -1,4 +1,5 @@
 import { FiLock, FiMail, FiPhone, FiUser } from "react-icons/fi";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import Error from "@component/form/Error";
@@ -8,13 +9,16 @@ import useLoginSubmit from "@hooks/useLoginSubmit";
 const Register = ({ setShowResetPassword, setModalOpen }) => {
   const { handleSubmit, submitHandler, register, errors, loading } =
     useLoginSubmit(setModalOpen);
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold font-serif">Signing Up</h2>
+        <h2 className="text-3xl font-bold font-serif">
+          {t("common:signingUp")}
+        </h2>
         <p className="text-sm md:text-base text-gray-500 mt-2 mb-8 sm:mb-10">
-          Create an account with email
+          {t("common:createAccountWithEmail")}
         </p>
       </div>
       <form
@@ -25,10 +29,10 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
           <div className="form-group">
             <InputArea
               register={register}
-              label="Name"
+              label={t("common:name")}
               name="name"
               type="text"
-              placeholder="Full Name"
+              placeholder={t("common:fullNamePlaceholder")}
               Icon={FiUser}
             />
 
@@ -38,10 +42,10 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
           <div className="form-group">
             <InputArea
               register={register}
-              label="Email"
+              label={t("common:email")}
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t("common:emailPlaceholder")}
               Icon={FiMail}
             />
             <Error errorName={errors.email} />
@@ -49,10 +53,10 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
           <div className="form-group">
             <InputArea
               register={register}
-              label="Phone"
+              label={t("common:phoneNumber")}
               name="phone"
               type="tel"
-              placeholder="Phone"
+              placeholder={t("common:phonePlaceholder")}
               Icon={FiPhone}
             />
             <Error errorName={errors.email} />
@@ -60,10 +64,10 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
           <div className="form-group">
             <InputArea
               register={register}
-              label="Password"
+              label={t("common:password")}
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t("common:password")}
               Icon={FiLock}
             />
 
@@ -77,7 +81,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
                 onClick={() => setShowResetPassword(true)}
                 className="text-end text-sm text-heading ps-3 underline hover:no-underline focus:outline-none"
               >
-                Forgot password?
+                {t("common:forgotPassword")}
               </button>
             </div>
           </div>
@@ -93,7 +97,9 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
                 width={20}
                 height={10}
               />
-              <span className="font-serif ml-2 font-light">Processing</span>
+              <span className="font-serif ml-2 font-light">
+                {t("common:processing")}
+              </span>
             </button>
           ) : (
             <button
@@ -101,7 +107,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               type="submit"
               className="w-full text-center py-3 rounded bg-red-500 text-white hover:bg-red-600 transition-all focus:outline-none my-1"
             >
-              Register
+              {t("common:register")}
             </button>
           )}
         </div>

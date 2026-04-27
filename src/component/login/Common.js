@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ImFacebook, ImGoogle } from "react-icons/im";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import useAsync from "@hooks/useAsync";
@@ -13,6 +14,7 @@ import SettingServices from "@services/SettingServices";
 const Common = ({ setModalOpen }) => {
   const [showRegister, setShowRegister] = useState(false);
   const [showResetPassword, setShowResetPassword] = useState(false);
+  const { t } = useTranslation();
 
   const { handleGoogleSignIn, GoogleLogin } = useLoginSubmit(setModalOpen);
   const { data: storeSetting } = useAsync(SettingServices.getStoreSetting);
@@ -43,30 +45,26 @@ const Common = ({ setModalOpen }) => {
         )}
 
         <div className="my-8 after:bg-gray-100 before:bg-gray-100 fo10t-sans text-center font-medium">
-          OR
+          {t("common:or")}
         </div>
 
         <div className="flex justify-between flex-col lg:flex-row">
-          {/* <button className="text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold font-serif text-center justify-center rounded-md focus:outline-none text-gray-600 bg-gray-100 shadow-sm md:px-2 my-1 sm:my-1 md:my-1 lg:my-0 lg:px-3 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-blue-600 h-11 md:h-12 w-full mr-2">
-            <ImFacebook /> <span className="ml-2">Login With Facebook</span>
-          </button> */}
-
           {storeSetting?.google_login_status && (
             <GoogleLogin
-              // clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}
               render={(renderProps) => (
                 <button
                   className="text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-bold font-serif text-center justify-center rounded-md focus:outline-none text-gray-600 bg-gray-100 shadow-sm md:px-2 my-1 sm:my-1 md:my-1 lg:my-0 lg:px-3 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-emerald-500 h-11 md:h-12 w-full"
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
                 >
-                  <ImGoogle /> <span className="ml-2">Login With Google</span>
+                  <ImGoogle />{" "}
+                  <span className="ml-2">{t("common:loginWithGoogle")}</span>
                 </button>
               )}
               onSuccess={handleGoogleSignIn}
               onFailure={(err) =>
                 notifyError(
-                  err?.message || "Something wrong on your auth setup!"
+                  err?.message || "Something wrong on your auth setup!",
                 )
               }
               cookiePolicy={"single_host_origin"}
@@ -75,12 +73,14 @@ const Common = ({ setModalOpen }) => {
         </div>
         <div className="text-center text-sm text-gray-900 mt-4">
           <div className="text-gray-500 mt-2.5">
-            {showRegister ? "Already have a account ?" : "Not have a account ?"}
+            {showRegister
+              ? t("common:alreadyHaveAccount")
+              : t("common:notAccount")}
             <button
               onClick={handleModal}
               className="text-gray-800 hover:text-gray-500 font-bold mx-2"
             >
-              {showRegister ? "Login" : "Register"}
+              {showRegister ? t("common:loginBtn") : t("common:register")}
             </button>
           </div>
         </div>

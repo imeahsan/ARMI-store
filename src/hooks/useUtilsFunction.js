@@ -1,11 +1,15 @@
 import dayjs from "dayjs";
 import Cookies from "js-cookie";
+import useTranslation from "next-translate/useTranslation";
 import useGetSetting from "./useGetSetting";
 
 const useUtilsFunction = () => {
-  const lang = typeof window !== "undefined"
-    ? (Cookies.get("_lang") || localStorage.getItem("_lang") || "en")
-    : "en";
+  const { lang: i18nLang } = useTranslation();
+  const lang =
+    i18nLang ||
+    (typeof window !== "undefined"
+      ? Cookies.get("_lang") || localStorage.getItem("_lang") || "en"
+      : "en");
   // console.log("language", lang);
   const { globalSetting } = useGetSetting();
 

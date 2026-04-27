@@ -1,4 +1,5 @@
 import { FiLock, FiMail } from "react-icons/fi";
+import useTranslation from "next-translate/useTranslation";
 
 //internal  import
 import Error from "@component/form/Error";
@@ -8,13 +9,16 @@ import InputArea from "@component/form/InputArea";
 const Login = ({ setShowResetPassword, setModalOpen }) => {
   const { handleSubmit, submitHandler, register, errors, loading } =
     useLoginSubmit(setModalOpen);
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold font-serif">Login</h2>
+        <h2 className="text-3xl font-bold font-serif">
+          {t("common:loginTitle")}
+        </h2>
         <p className="text-sm md:text-base text-gray-500 mt-2 mb-8 sm:mb-10">
-          Login with your email and password
+          {t("common:loginBoxText")}
         </p>
       </div>
       <form
@@ -29,7 +33,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
               label=""
               name="registerEmail"
               type="text"
-              placeholder="Email / Phone"
+              placeholder={t("common:emailPhonePlaceholder")}
               Icon={FiMail}
             />
             <Error errorName={errors.registerEmail} />
@@ -38,10 +42,9 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
             <InputArea
               register={register}
               defaultValue="12345678"
-              // label="Password"
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t("common:password")}
               Icon={FiLock}
             />
 
@@ -55,7 +58,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
                 onClick={() => setShowResetPassword(true)}
                 className="text-end text-sm text-heading ps-3 underline hover:no-underline focus:outline-none"
               >
-                Forgot password?
+                {t("common:forgotPassword")}
               </button>
             </div>
           </div>
@@ -71,7 +74,9 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
                 width={20}
                 height={10}
               />
-              <span className="font-serif ml-2 font-light">Processing</span>
+              <span className="font-serif ml-2 font-light">
+                {t("common:processing")}
+              </span>
             </button>
           ) : (
             <button
@@ -79,7 +84,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
               type="submit"
               className="w-full text-center py-3 rounded bg-red-500 text-white hover:bg-red-600 transition-all focus:outline-none my-1"
             >
-              Login
+              {t("common:loginBtn")}
             </button>
           )}
         </div>

@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import dynamic from "next/dynamic";
 import { IoLockOpenOutline } from "react-icons/io5";
 import { FiPhoneCall, FiUser } from "react-icons/fi";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import LoginModal from "@component/modal/LoginModal";
@@ -19,6 +20,7 @@ const NavBarTop = () => {
   } = useContext(UserContext);
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
@@ -50,21 +52,15 @@ const NavBarTop = () => {
           <div className="text-gray-700 py-2 font-sans text-xs font-medium border-b flex justify-between items-center">
             <span className="flex items-center mx-auto sm:mx-0">
               <FiPhoneCall className="mr-2  " />
-              <span className="">
-                {showingTranslateValue(
-                  storeCustomizationSetting?.navbar?.help_text
-                )}
-              </span>
+              <span className="">{t("common:Call Us")}</span>
 
               <a
                 href={`tel:${
-                  storeCustomizationSetting?.navbar?.phone ||
-                  "920005662"
+                  storeCustomizationSetting?.navbar?.phone || "920005662"
                 }`}
                 className="font-bold text-red-500 ml-1"
               >
-                {storeCustomizationSetting?.navbar?.phone ||
-                  "920005662"}
+                {storeCustomizationSetting?.navbar?.phone || "920005662"}
               </a>
             </span>
 
@@ -99,9 +95,7 @@ const NavBarTop = () => {
                 onClick={handleModal}
                 className="font-medium hover:text-red-600"
               >
-                {showingTranslateValue(
-                  storeCustomizationSetting?.navbar?.my_account
-                )}
+                {t("common:My account")}
               </button>
               <span className="mx-2 hidden sm:block">|</span>
               <div className="hidden sm:block">
@@ -113,10 +107,7 @@ const NavBarTop = () => {
                     <span className="mr-1">
                       <IoLockOpenOutline />
                     </span>
-                    {/* {showingTranslateValue(
-                      storeCustomizationSetting?.navbar?.logout
-                    )} */}
-                    Logout
+                    {t("common:Pages")}
                   </button>
                 ) : (
                   <button
@@ -127,9 +118,7 @@ const NavBarTop = () => {
                       <FiUser />
                     </span>
 
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.navbar?.login
-                    )}
+                    {t("common:Login")}
                   </button>
                 )}
               </div>
