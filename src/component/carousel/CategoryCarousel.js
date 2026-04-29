@@ -15,6 +15,7 @@ import useAsync from "@hooks/useAsync";
 import { SidebarContext } from "@context/SidebarContext";
 import CategoryServices from "@services/CategoryServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import DynamicIcon from "@component/icon/DynamicIcon";
 
 const CategoryCarousel = () => {
   const router = useRouter();
@@ -104,7 +105,7 @@ const CategoryCarousel = () => {
           </p>
         ) : (
           <div>
-            {data[0]?.children?.map((category, i) => (
+            {data?.map((category, i) => (
               <SwiperSlide key={i + 1} className="group">
                 <div
                   onClick={() =>
@@ -112,22 +113,12 @@ const CategoryCarousel = () => {
                   }
                   className="text-center cursor-pointer p-3 bg-white rounded-lg"
                 >
-                  <div className="bg-white p-2 mx-auto w-10 h-10 rounded-full shadow-md">
-                    {category?.icon ? (
-                      <Image
-                        src={category?.icon}
-                        alt="category"
-                        width="35"
-                        height="35"
-                      />
-                    ) : (
-                      <Image
-                        src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        alt="category"
-                        width="35"
-                        height="35"
-                      />
-                    )}
+                  <div className="bg-white p-2 mx-auto w-10 h-10 rounded-full shadow-md flex items-center justify-center">
+                    <DynamicIcon
+                      iconName={category?.icon}
+                      size={24}
+                      className="text-red-500"
+                    />
                   </div>
 
                   <h3 className="text-xs text-gray-600 mt-2 font-serif group-hover:text-gray-500">

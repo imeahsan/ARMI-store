@@ -1,43 +1,33 @@
 import React from "react";
 import { FiCreditCard, FiGift, FiPhoneCall, FiTruck } from "react-icons/fi";
-
-//internal import
-import useGetSetting from "@hooks/useGetSetting";
-import useUtilsFunction from "@hooks/useUtilsFunction";
+import useTranslation from "next-translate/useTranslation";
 
 const FeatureCard = () => {
-  const { storeCustomizationSetting } = useGetSetting();
-  const { showingTranslateValue } = useUtilsFunction();
+  const { t } = useTranslation();
 
   const featurePromo = [
     {
       id: 1,
-      title: showingTranslateValue(
-        storeCustomizationSetting?.footer?.shipping_card
-      ),
-
+      title: t("common:featurePromo1-title"),
+      info: t("common:featurePromo1-info"),
       icon: FiTruck,
     },
     {
       id: 2,
-      title: showingTranslateValue(
-        storeCustomizationSetting?.footer?.support_card
-      ),
-
+      title: t("common:featurePromo2-title"),
+      info: t("common:featurePromo2-info"),
       icon: FiPhoneCall,
     },
     {
       id: 3,
-      title: showingTranslateValue(
-        storeCustomizationSetting?.footer?.payment_card
-      ),
+      title: t("common:featurePromo3-title"),
+      info: t("common:featurePromo3-info"),
       icon: FiCreditCard,
     },
     {
       id: 4,
-      title: showingTranslateValue(
-        storeCustomizationSetting?.footer?.offer_card
-      ),
+      title: t("common:featurePromo4-title"),
+      info: t("common:featurePromo4-info"),
       icon: FiGift,
     },
   ];
@@ -61,6 +51,9 @@ const FeatureCard = () => {
           <div className="">
             <span className="block font-serif text-sm font-medium leading-5">
               {promo?.title}
+            </span>
+            <span className="block font-serif text-xs text-gray-500 leading-4">
+              {promo?.info}
             </span>
           </div>
         </div>

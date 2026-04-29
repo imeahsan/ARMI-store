@@ -10,6 +10,7 @@ import {
 //internal import
 import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import DynamicIcon from "@component/icon/DynamicIcon";
 
 const CategoryCard = ({ title, icon, nested, id }) => {
   const router = useRouter();
@@ -60,14 +61,9 @@ const CategoryCard = ({ title, icon, nested, id }) => {
         role="button"
       >
         {icon ? (
-          <Image src={icon} width={18} height={18} alt="Category" />
+          <DynamicIcon iconName={icon} size={18} className="text-red-500" />
         ) : (
-          <Image
-            src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-            width={18}
-            height={18}
-            alt="category"
-          />
+          <DynamicIcon iconName="FaCar" size={18} className="text-red-500" />
         )}
 
         <div className="inline-flex items-center justify-between ml-3 text-sm font-medium w-full hover:text-red-600">
@@ -88,7 +84,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
                   onClick={() =>
                     handleSubNestedCategory(
                       children._id,
-                      showingTranslateValue(children.name)
+                      showingTranslateValue(children.name),
                     )
                   }
                   className="flex items-center font-serif pr-2 text-sm text-gray-600 hover:text-red-600 py-1 cursor-pointer"
@@ -117,7 +113,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
                   onClick={() =>
                     handleSubCategory(
                       children._id,
-                      showingTranslateValue(children.name)
+                      showingTranslateValue(children.name),
                     )
                   }
                   className="flex items-center font-serif py-1 text-sm text-gray-600 hover:text-red-600 cursor-pointer"
@@ -139,7 +135,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
                         onClick={() =>
                           handleSubCategory(
                             subChildren._id,
-                            showingTranslateValue(subChildren?.name)
+                            showingTranslateValue(subChildren?.name),
                           )
                         }
                         className="flex items-center font-serif py-1 text-sm text-gray-600 hover:text-red-600 cursor-pointer"

@@ -17,7 +17,7 @@ const Category = () => {
     useContext(SidebarContext);
   const { showingTranslateValue } = useUtilsFunction();
   const { data, loading, error } = useAsync(() =>
-    CategoryServices.getShowingCategory()
+    CategoryServices.getShowingCategory(),
   );
 
   return (
@@ -57,7 +57,7 @@ const Category = () => {
           <Loading loading={loading} />
         ) : (
           <div className="relative grid gap-2 p-6">
-            {data[0]?.children?.map((category) => (
+            {data?.map((category) => (
               <CategoryCard
                 key={category._id}
                 id={category._id}

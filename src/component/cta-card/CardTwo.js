@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 //internal import
 import useGetSetting from "@hooks/useGetSetting";
@@ -12,6 +13,7 @@ const CardTwo = () => {
   const { storeCustomizationSetting, error, loading } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
   const { direction } = useDirection();
+  const { t } = useTranslation();
   return (
     <>
       <div className="w-full bg-red-100 shadow-sm lg:px-10 lg:py-5  rounded-lg">
@@ -27,32 +29,16 @@ const CardTwo = () => {
               />
             </span> */}
             <h2 className="font-serif text-lg lg:text-2xl font-bold mb-1">
-              <CMSkeleton
-                count={1}
-                height={30}
-                error={error}
-                loading={loading}
-                data={storeCustomizationSetting?.home?.quick_delivery_title}
-              />
+              {t("common:quick-delivery-title")}
             </h2>
             <p className="text-sm font-sans leading-6">
-              <CMSkeleton
-                count={4}
-                height={20}
-                error={error}
-                loading={loading}
-                data={
-                  storeCustomizationSetting?.home?.quick_delivery_description
-                }
-              />
+              {t("common:quick-delivery-description")}
             </p>
             <Link
               href={`/request-quotation`}
               className="lg:w-1/3 text-xs font-serif font-medium inline-block mt-5 mb-5  px-8 py-3 bg-red-500 text-center text-white rounded-full hover:text-white contact-btn"
             >
-              {showingTranslateValue(
-                storeCustomizationSetting?.home?.quick_delivery_button
-              )}
+              {t("common:quick-delivery-button")}
             </Link>
           </div>
           <div className="w-full sm:w-1/5  md:w-1/2 lg:w-2/5 flex-grow  lg:flex md:flex md:justify-items-end lg:justify-end right-500  relative left-16">

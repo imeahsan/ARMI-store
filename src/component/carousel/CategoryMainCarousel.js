@@ -16,6 +16,7 @@ import { SidebarContext } from "@context/SidebarContext";
 import CategoryServices from "@services/CategoryServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import useTranslation from "next-translate/useTranslation";
+import DynamicIcon from "@component/icon/DynamicIcon";
 
 const CategoryMainCarousel = () => {
   const router = useRouter();
@@ -112,15 +113,9 @@ const CategoryMainCarousel = () => {
           </p>
         ) : (
           <div className="px-10 mx-auto max-w-screen-xl   ">
-            {data[0]?.children?.map((category, i) => (
+            {data?.map((category, i) => (
               <SwiperSlide key={i + 1} className="">
-                <div
-                  onClick={
-                    () => {}
-                    // handleCategoryClick(category?._id, category.name)
-                  }
-                  className="bg-gray-50 lg:py-8     sm:px-4 mb-2 category-container"
-                >
+                <div className="bg-gray-50 lg:py-8     sm:px-4 mb-2 category-container">
                   <div className="flex w-full h-full border shadow-md rounded-lg	 bg-gray-200   cursor-pointer  image-container">
                     <div className=" w-full justify-center	 items-center pb">
                       <div class="  relative h-72 lg:h-96">
@@ -134,16 +129,10 @@ const CategoryMainCarousel = () => {
                               {" "}
                               {showingTranslateValue(category?.description)}
                             </p>
-                            <Image
-                              src={category?.icon}
-                              alt="category"
-                              width={275}
-                              height={275}
-                              style={{
-                                objectFit: "contain",
-                              }}
-                              sizes="100%"
-                              className="mt-4 object-contain transition duration-150 ease-linear transform hover:-translate-y-2"
+                            <DynamicIcon
+                              iconName={category?.icon}
+                              size={120}
+                              className="mt-4 mx-auto text-gray-700"
                             />
 
                             {/* </div> */}
@@ -152,7 +141,7 @@ const CategoryMainCarousel = () => {
                         <div class="absolute top-0  left-0 right-0 bottom-0  flex items-end mb-8 justify-center ">
                           <div class="text-center ">
                             <Link
-                              href={`#`}
+                              href={`/search?category=${category?.name?.en?.toLowerCase()?.replace(/[^A-Z0-9]+/gi, "-")}&_id=${category?._id}`}
                               className="text-sm font-serif font-medium px-6 py-2 bg-red-500 text-center rounded-full text-white hover:bg-red-700"
                             >
                               {t("common:shopNow")}
