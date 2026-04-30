@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useCart } from "react-use-cart";
+import Cookies from "js-cookie";
 import Link from "next/link";
 
 import Layout from "@layout/Layout";
@@ -8,6 +10,7 @@ import { notifyError, notifySuccess } from "@utils/toast";
 
 const OrderSuccess = () => {
   const router = useRouter();
+  const { emptyCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("Checking");
   const [orderId, setOrderId] = useState("");
@@ -61,7 +64,11 @@ const OrderSuccess = () => {
 
         if (paymentStatus === "Paid") {
           notifySuccess("Payment successful");
+          // Clear cart and checkout data
+          emptyCart();
+          Cookies.remove("couponInfo");
           sessionStorage.removeItem("pendingOrderId");
+          sessionStorage.removeItem("products");
           setLoading(false);
           return true;
         }
@@ -118,9 +125,9 @@ const OrderSuccess = () => {
             {reference ? (
               <p className="text-sm text-gray-500">Reference: {reference}</p>
             ) : null}
-            {orderId ? (
+            {reference ? (
               <Link
-                href={`/order/${orderId}`}
+                href={`/order/${reference.replace("ORD-", "")}`}
                 className="inline-flex items-center justify-center px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
               >
                 View Order
