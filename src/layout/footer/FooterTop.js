@@ -20,7 +20,7 @@ const FooterTop = () => {
             <Image
               src={
                 storeCustomizationSetting?.home?.daily_need_img_left ||
-                "/app-download-img-left.png"
+                "/car-image.png"
               }
               alt="app download"
               width={500}
@@ -87,7 +87,7 @@ const FooterTop = () => {
               <Image
                 src={
                   storeCustomizationSetting?.home?.daily_need_img_right ||
-                  "/app-download-img.png"
+                  "/car-image-min.png"
                 }
                 width={500}
                 height={394}

@@ -40,7 +40,7 @@ const ContactUs = () => {
       if (res.data.success) {
         console.log(res.data);
         notifySuccess(
-          "your message sent successfully. We will contact you shortly."
+          "your message sent successfully. We will contact you shortly.",
         );
         return true;
       }
@@ -56,7 +56,7 @@ const ContactUs = () => {
       <PageHeader
         headerBg={storeCustomizationSetting?.contact_us?.header_bg}
         title={showingTranslateValue(
-          storeCustomizationSetting?.contact_us?.title
+          storeCustomizationSetting?.contact_us?.title,
         )}
       />
 
@@ -78,7 +78,7 @@ const ContactUs = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.email_box_title
+                    storeCustomizationSetting?.contact_us?.email_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
@@ -87,11 +87,11 @@ const ContactUs = () => {
                     className="text-red-500"
                   >
                     {showingTranslateValue(
-                      storeCustomizationSetting?.contact_us?.email_box_email
+                      storeCustomizationSetting?.contact_us?.email_box_email,
                     )}
                   </a>{" "}
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.email_box_text
+                    storeCustomizationSetting?.contact_us?.email_box_text,
                   )}
                 </p>
               </div>
@@ -111,7 +111,7 @@ const ContactUs = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.call_box_title
+                    storeCustomizationSetting?.contact_us?.call_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
@@ -120,11 +120,11 @@ const ContactUs = () => {
                     className="text-red-500"
                   >
                     {showingTranslateValue(
-                      storeCustomizationSetting?.contact_us?.call_box_phone
+                      storeCustomizationSetting?.contact_us?.call_box_phone,
                     )}
                   </a>{" "}
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.call_box_text
+                    storeCustomizationSetting?.contact_us?.call_box_text,
                   )}
                 </p>
               </div>
@@ -143,25 +143,25 @@ const ContactUs = () => {
                 </span>
                 <h5 className="text-xl mb-2 font-bold">
                   {showingTranslateValue(
-                    storeCustomizationSetting?.contact_us?.address_box_title
+                    storeCustomizationSetting?.contact_us?.address_box_title,
                   )}
                 </h5>
                 <p className="mb-0 text-base opacity-90 leading-7">
                   <span>
                     {showingTranslateValue(
                       storeCustomizationSetting?.contact_us
-                        ?.address_box_address_one
+                        ?.address_box_address_one,
                     )}
                   </span>{" "}
                   <br />
                   {showingTranslateValue(
                     storeCustomizationSetting?.contact_us
-                      ?.address_box_address_two
+                      ?.address_box_address_two,
                   )}{" "}
                   <br />
                   {showingTranslateValue(
                     storeCustomizationSetting?.contact_us
-                      ?.address_box_address_three
+                      ?.address_box_address_three,
                   )}
                 </p>
               </div>
@@ -176,7 +176,7 @@ const ContactUs = () => {
                 height={874}
                 src={
                   storeCustomizationSetting?.contact_us?.midLeft_col_img ||
-                  "/contact-us.avif"
+                  "/car-image.png"
                 }
                 alt="logo"
                 className="block w-auto"
@@ -219,7 +219,7 @@ const ContactUs = () => {
                         name="name"
                         type="text"
                         placeholder={t(
-                          "common:contact-page-form-plaholder-name"
+                          "common:contact-page-form-plaholder-name",
                         )}
                       />
                       <Error errorName={errors.name} />
@@ -231,7 +231,7 @@ const ContactUs = () => {
                         name="email"
                         type="email"
                         placeholder={t(
-                          "common:contact-page-form-plaholder-email"
+                          "common:contact-page-form-plaholder-email",
                         )}
                       />
                       <Error errorName={errors.email} />
@@ -244,7 +244,7 @@ const ContactUs = () => {
                       name="subject"
                       type="text"
                       placeholder={t(
-                        "common:contact-page-form-plaholder-subject"
+                        "common:contact-page-form-plaholder-subject",
                       )}
                     />
                     <Error errorName={errors.subject} />
@@ -263,7 +263,7 @@ const ContactUs = () => {
                       spellCheck="false"
                       rows="4"
                       placeholder={t(
-                        "common:contact-page-form-plaholder-message"
+                        "common:contact-page-form-plaholder-message",
                       )}
                     ></textarea>
                     <Error errorName={errors.message} />

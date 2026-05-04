@@ -8,14 +8,14 @@ const settingSlice = createSlice({
   reducers: {
     addSetting: (state, action) => {
       const existsItem = state.settingItem.find(
-        (x) => x.name === action.payload.name
+        (x) => x.name === action.payload.name,
       );
       if (existsItem) {
         return {
           ...state,
           settingItem: state.settingItem.map((x) => {
             if (x.name === existsItem.name) {
-              return x;
+              return action.payload;
             }
             return x;
           }),

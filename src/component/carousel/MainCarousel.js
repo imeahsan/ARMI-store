@@ -22,18 +22,18 @@ const MainCarousel = () => {
       id: 1,
 
       title: showingTranslateValue(
-        storeCustomizationSetting?.slider?.first_title
+        storeCustomizationSetting?.slider?.first_title,
       ),
       info: showingTranslateValue(
-        storeCustomizationSetting?.slider?.first_description
+        storeCustomizationSetting?.slider?.first_description,
       ),
       buttonName: showingTranslateValue(
-        storeCustomizationSetting?.slider?.first_button
+        storeCustomizationSetting?.slider?.first_button,
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.first_link),
       image:
         showingImage(storeCustomizationSetting?.slider?.first_img) ||
-        "/slider/slider-1.jpg",
+        "/slider/slider-2.jpg",
     },
     // {
     //   id: 2,
