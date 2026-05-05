@@ -46,6 +46,7 @@ const AuctionCard = ({ product, attributes }) => {
       ...updatedProduct,
       title: showingTranslateValue(p?.title),
       id: p._id,
+      image: Array.isArray(p?.image) ? p.image[0] : p.image,
       variant: p.prices,
       price: p.prices.price,
       originalPrice: product.prices?.originalPrice,
@@ -84,7 +85,7 @@ const AuctionCard = ({ product, attributes }) => {
             handleModalOpen(!modalOpen, product._id);
             handleLogEvent(
               "product",
-              `opened ${showingTranslateValue(product?.title)} product modal`
+              `opened ${showingTranslateValue(product?.title)} product modal`,
             );
           }}
           className="relative flex justify-center cursor-pointer pt-2 w-full h-44"

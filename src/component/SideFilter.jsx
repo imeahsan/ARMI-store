@@ -22,6 +22,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/outline";
+import useUtilsFunction from "@hooks/useUtilsFunction";
 // import {
 
 // } from "@heroicons/react/20/solid";
@@ -92,13 +93,16 @@ export default function SideFilter({
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filters, setFilters] = useState([]);
   const [appliedFilters, setAppliedFilters] = useState([]);
+  const { lang, showingTranslateValue } = useUtilsFunction();
 
   useEffect(() => {
     let tmpFilters = [];
     attributes?.forEach((attribute) => {
       let filter = {
         id: attribute._id,
-        name: attribute.title.en || attribute.name.en,
+        name:
+          showingTranslateValue(attribute.title) ||
+          showingTranslateValue(attribute.name),
         options: [],
       };
 
@@ -106,14 +110,14 @@ export default function SideFilter({
         filter.options.push({
           id: v._id,
           value: v.name.en,
-          label: v.name.en,
+          label: showingTranslateValue(v.name),
           checked: false,
         });
       });
       tmpFilters.push(filter);
     });
     setFilters([...tmpFilters]);
-  }, []);
+  }, [lang]);
 
   // to add  filter keyword in array
   const handleFilterClick = (value, id) => {

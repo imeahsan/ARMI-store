@@ -52,7 +52,7 @@ const AuctionModal = ({
     // console.log('value', value, product);
     if (value) {
       const result = product?.variants?.filter((variant) =>
-        Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
+        Object.keys(selectVa).every((k) => selectVa[k] === variant[k]),
       );
 
       const res = result?.map(
@@ -68,21 +68,21 @@ const AuctionModal = ({
           ...rest
         }) => ({
           ...rest,
-        })
+        }),
       );
 
       const filterKey = Object.keys(Object.assign({}, ...res));
       const selectVar = filterKey?.reduce(
         (obj, key) => ({ ...obj, [key]: selectVariant[key] }),
-        {}
+        {},
       );
       const newObj = Object.entries(selectVar).reduce(
         (a, [k, v]) => (v ? ((a[k] = v), a) : a),
-        {}
+        {},
       );
 
       const result2 = result?.find((v) =>
-        Object.keys(newObj).every((k) => newObj[k] === v[k])
+        Object.keys(newObj).every((k) => newObj[k] === v[k]),
       );
 
       // console.log("result2", result2);
@@ -92,41 +92,41 @@ const AuctionModal = ({
       setVariants(result);
       setSelectVariant(result2);
       setSelectVa(result2);
-      // setImg(result2?.image);
+      setImg(result2?.image || product?.image[0]);
       setStock(result2?.quantity);
       const price = getNumber(result2?.price);
       const originalPrice = getNumber(result2?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
       setOriginalPrice(originalPrice);
     } else if (product?.variants?.length > 0) {
       const result = product?.variants?.filter((variant) =>
-        Object.keys(selectVa).every((k) => selectVa[k] === variant[k])
+        Object.keys(selectVa).every((k) => selectVa[k] === variant[k]),
       );
 
       setVariants(result);
       setStock(product.variants[0]?.quantity);
       setSelectVariant(product.variants[0]);
       setSelectVa(product.variants[0]);
-      // setImg(product.variants[0]?.image);
+      setImg(product.variants[0]?.image || product?.image[0]);
       const price = getNumber(product.variants[0]?.price);
       const originalPrice = getNumber(product.variants[0]?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
       setOriginalPrice(originalPrice);
     } else {
       setStock(product?.stock);
-      // setImg(product?.image[0]);
+      setImg(product?.image[0]);
       const price = getNumber(product?.prices?.price);
       const originalPrice = getNumber(product?.prices?.originalPrice);
       const discountPercentage = getNumber(
-        ((originalPrice - price) / originalPrice) * 100
+        ((originalPrice - price) / originalPrice) * 100,
       );
       setDiscount(getNumber(discountPercentage));
       setPrice(price);
@@ -162,7 +162,7 @@ const AuctionModal = ({
       product?.variants.map(
         (variant) =>
           Object.entries(variant).sort().toString() ===
-          Object.entries(selectVariant).sort().toString()
+          Object.entries(selectVariant).sort().toString(),
       )
     ) {
       const { variants, categories, description, ...updatedProduct } = product;
@@ -182,7 +182,7 @@ const AuctionModal = ({
               "-" +
               variantTitle
                 ?.map((att) =>
-                  att.variants?.find((v) => v._id === selectVariant[att._id])
+                  att.variants?.find((v) => v._id === selectVariant[att._id]),
                 )
                 .map((el) => showingTranslateValue(el?.name))
         }`,
@@ -319,7 +319,9 @@ const AuctionModal = ({
               <div className="flex justify-end mt-2">
                 <p className="text-xs sm:text-sm text-gray-600">
                   Call Us To Order By Mobile Number :{" "}
-                  <span className="text-red-700 font-bold">+0044235234</span>{" "}
+                  <span className="text-red-700 font-bold">
+                    +0044235234
+                  </span>{" "}
                 </p>
               </div>
             </div>
